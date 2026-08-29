@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SOFT2412 A1 Setup Helper</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <main class="container">
+
+    <section class="card">
+      <h1>SOFT2412 A1 Setup Helper</h1>
+      <p class="subtitle">Tutorial 27 · Group 43</p>
+
+      <form id="setupForm">
+
+        <fieldset>
+          <legend>Who are you?</legend>
+
+          <div class="radio-list">
+            <label>
+              <input
+                type="radio"
+                name="studentName"
+                value="Daniel Kostandy"
+                required
+              />
+              Daniel Kostandy
+            </label>
+
+            <label>
+              <input
+                type="radio"
+                name="studentName"
+                value="Natasha Sutanto"
+              />
+              Natasha Sutanto
+            </label>
+
+            <label>
+              <input
+                type="radio"
+                name="studentName"
+                value="Raj Shah"
+              />
+              Raj Shah
+            </label>
+
+            <label>
+              <input
+                type="radio"
+                name="studentName"
+                value="Tiya Agrawal"
+              />
+              Tiya Agrawal
+            </label>
+
+            <label>
+              <input
+                type="radio"
+                name="studentName"
+                value="Mohammad"
+              />
+              Mohammad
+            </label>
+          </div>
+        </fieldset>
+
+        <label>
+          UniKey
+
+          <input
+            id="unikey"
+            type="text"
+            placeholder="rsha0537"
+            maxlength="8"
+            autocomplete="off"
+            spellcheck="false"
+            required
+          />
+
+          <span class="hint">
+            4 letters followed by 4 digits.
+          </span>
+
+          <span
+            id="unikeyError"
+            class="error"
+          ></span>
+        </label>
+
+        <label>
+          USYD Email
+
+          <input
+            id="email"
+            type="email"
+            placeholder="unikey@uni.sydney.edu.au"
+            readonly
+          />
+
+          <span class="hint">
+            Generated automatically from your UniKey.
+          </span>
+        </label>
+
+        <fieldset>
+          <legend>Computer</legend>
+
+          <div class="os-options">
+            <label>
+              <input
+                type="radio"
+                name="os"
+                value="mac"
+                required
+              />
+              macOS
+            </label>
+
+            <label>
+              <input
+                type="radio"
+                name="os"
+                value="windows"
+              />
+              Windows
+            </label>
+
+            <label>
+              <input
+                type="radio"
+                name="os"
+                value="linux"
+              />
+              Linux
+            </label>
+          </div>
+        </fieldset>
+
+        <div class="repo-box">
+          <p>
+            Your required empty GitHub Enterprise repository:
+          </p>
+
+          <code id="repoName">
+            A1-T27-43-&lt;unikey&gt;
+          </code>
+        </div>
+
+        <label class="checkbox">
+          <input
+            id="repoCreated"
+            type="checkbox"
+            required
+          />
+
+          <span>
+            I have created this repository on GitHub Enterprise
+            and left it completely empty.
+          </span>
+        </label>
+
+        <button
+          type="submit"
+          class="generate-button"
+        >
+          Generate Setup Commands
+        </button>
+
+      </form>
+    </section>
+
+    <section
+      id="outputSection"
+      class="card hidden"
+    >
+
+      <div class="output-header">
+
+        <div>
+          <h2>Your Setup Commands</h2>
+
+          <p
+            id="terminalType"
+            class="subtitle output-subtitle"
+          ></p>
+        </div>
+
+        <button
+          id="copyButton"
+          type="button"
+        >
+          Copy
+        </button>
+
+      </div>
+
+      <div class="instruction-box">
+        <strong>Before running this:</strong>
+        open your terminal in the folder where you want
+        your two A1 folders created.
+      </div>
+
+      <pre><code id="commandOutput"></code></pre>
+
+      <p class="warning">
+        ⚠️ Run these commands only once.
+      </p>
+
+    </section>
+
+  </main>
+
+  <script src="script.js" defer></script>
+</body>
+</html>
