@@ -8,13 +8,58 @@
 </head>
 
 <body>
+  <header class="member-bar">
+    <div class="member-bar__inner">
+      <div class="member-bar__label">
+        <span class="eyebrow">Active member</span>
+        <strong id="selectedMemberLabel">Select your name</strong>
+      </div>
+
+      <div class="member-selector" role="group" aria-label="Select active member">
+        <button type="button" class="member-button" data-member="Daniel Kostandy">Daniel</button>
+        <button type="button" class="member-button" data-member="Raj Shah">Raj</button>
+        <button type="button" class="member-button" data-member="Tiya Agrawal">Tiya</button>
+        <button type="button" class="member-button" data-member="Natasha Sutanto">Natasha</button>
+        <button type="button" class="member-button" data-member="Mohammad">Mohammad</button>
+      </div>
+    </div>
+  </header>
+
+  <div id="testModeBanner" class="test-mode-banner hidden" role="status">
+    TEST MODE — DUMMY REPOSITORIES
+  </div>
+
+  <div class="app-shell">
+    <aside class="sidebar" aria-label="Assignment workflow navigation">
+      <div class="sidebar__brand">
+        <span class="eyebrow">SOFT2412</span>
+        <strong>A1 Workflow</strong>
+      </div>
+
+      <nav class="sidebar__nav">
+        <button type="button" class="nav-button active" data-view="setup" aria-current="page">Setup</button>
+        <button type="button" class="nav-button" data-view="round-1">Round 1</button>
+        <button type="button" class="nav-button" data-view="round-2">Round 2</button>
+        <button type="button" class="nav-button" data-view="round-3">Round 3</button>
+      </nav>
+    </aside>
+
   <main class="container">
+    <div id="setupView" class="page-view">
 
     <section class="card">
       <h1>SOFT2412 A1 Setup Helper</h1>
       <p class="subtitle">Tutorial 27 · Group 43</p>
 
       <form id="setupForm">
+
+        <label class="test-mode-toggle">
+          <input id="testModeToggle" type="checkbox" />
+          <span>
+            <strong>TEST MODE</strong>
+            <small>Use isolated dummy team resources for end-to-end testing.</small>
+          </span>
+        </label>
 
         <fieldset>
           <legend>Who are you?</legend>
@@ -105,6 +150,15 @@
             Generated automatically from your UniKey.
           </span>
         </label>
+
+        <section id="resolvedTargets" class="resolved-targets" aria-label="Resolved repository targets">
+          <h2>Resolved targets</h2>
+          <dl>
+            <div><dt>Team repository</dt><dd><code id="resolvedTeamRepo">A1-T27-43-IM</code></dd></div>
+            <div><dt>Personal repository</dt><dd><code id="resolvedPersonalRepo">A1-T27-43-&lt;unikey&gt;</code></dd></div>
+            <div><dt>Git identity email</dt><dd><code id="resolvedGitEmail">&lt;unikey&gt;@uni.sydney.edu.au</code></dd></div>
+          </dl>
+        </section>
 
         <fieldset>
           <legend>Computer</legend>
@@ -212,7 +266,159 @@
 
     </section>
 
+    </div>
+
+    <section id="roundView" class="page-view hidden" aria-labelledby="roundTitle">
+      <div class="card round-heading">
+        <div>
+          <span class="eyebrow">Guided assignment workflow</span>
+          <h1 id="roundTitle">Round 1</h1>
+          <p id="roundContext" class="subtitle">Select a member to begin this round.</p>
+        </div>
+        <div class="round-badge" id="roundBadge">01</div>
+      </div>
+
+      <div class="git-rules" role="note">
+        <strong>Plain Git workflow only.</strong>
+        No Pull Requests, forks, GitHub web merges, force pushes, or automatic conflict resolution. Integrate one member at a time.
+      </div>
+
+      <div class="workflow-list">
+        <details class="workflow-step" id="assignmentStep" open>
+          <summary><span class="step-number">01</span><span>Assignment</span></summary>
+          <div class="assignment-panel">
+            <p id="assignmentMessage" class="assignment-message">Select a member to view their assignment.</p>
+            <dl id="assignmentDetails" class="assignment-details">
+              <div><dt>Member</dt><dd id="assignmentMember">—</dd></div>
+              <div><dt>Round</dt><dd id="assignmentRound">—</dd></div>
+              <div><dt>Assigned class</dt><dd id="assignmentClass">—</dd></div>
+              <div><dt>Assigned method</dt><dd id="assignmentMethod">—</dd></div>
+              <div class="assignment-wide"><dt>Production source file</dt><dd><code id="assignmentSource">—</code></dd></div>
+              <div class="assignment-wide"><dt>Existing shared test file</dt><dd><code id="assignmentTest">—</code></dd></div>
+              <div class="assignment-wide"><dt>Suggested feature branch</dt><dd><code id="assignmentBranch">—</code></dd></div>
+            </dl>
+          </div>
+        </details>
+        <details class="workflow-step" data-feature-step>
+          <summary><span class="step-number">02</span><span>Start Feature</span></summary>
+          <div class="workflow-content">
+            <p id="repositoryStateNote" class="workflow-note"></p>
+            <div class="code-header"><span>Personal working repository</span><button type="button" class="copy-code-button" data-copy-target="startFeatureCommands">Copy</button></div>
+            <pre class="workflow-code"><code id="startFeatureCommands"></code></pre>
+          </div>
+        </details>
+        <details class="workflow-step" data-feature-step>
+          <summary><span class="step-number">03</span><span>Production Method</span></summary>
+          <div class="workflow-content">
+            <p id="productionInstruction" class="workflow-note">Place the exact method implementation in the assigned production source file. Shell commands must not modify Java source code.</p>
+            <div class="code-header"><span id="productionCodeLabel">Java production method</span><button type="button" class="copy-code-button" data-copy-target="productionCode">Copy</button></div>
+            <pre class="workflow-code java-code"><code id="productionCode" data-placeholder="No implementation code has been configured."></code></pre>
+          </div>
+        </details>
+        <details class="workflow-step" data-feature-step>
+          <summary><span class="step-number">04</span><span>Test</span></summary>
+          <div class="workflow-content">
+            <p id="testFileNote" class="workflow-note"></p>
+            <div class="code-header"><span id="testCodeLabel">Java test method(s)</span><button type="button" class="copy-code-button" data-copy-target="testCode">Copy</button></div>
+            <pre class="workflow-code java-code"><code id="testCode" data-placeholder="No test code has been configured."></code></pre>
+          </div>
+        </details>
+        <details class="workflow-step" data-feature-step>
+          <summary><span class="step-number">05</span><span>CHANGELOG</span></summary>
+          <div class="workflow-content">
+            <p id="changelogInstruction" class="workflow-note">Add this exact line underneath <code>## Unreleased</code> in <code>CHANGELOG.md</code>.</p>
+            <div class="code-header"><span>CHANGELOG entry</span><button type="button" class="copy-code-button" data-copy-target="changelogLine">Copy</button></div>
+            <pre class="workflow-code compact-code"><code id="changelogLine"></code></pre>
+          </div>
+        </details>
+        <section class="workflow-phase member-workflow-phase" aria-labelledby="memberWorkflowPhaseTitle">
+          <header class="workflow-phase__header">
+            <span class="workflow-phase__eyebrow">Repeat for each assigned member</span>
+            <h2 id="memberWorkflowPhaseTitle">ONE MEMBER AT A TIME</h2>
+            <p>Complete Steps 06–07 for one member before moving to the next member.</p>
+            <div class="workflow-phase__sequence" aria-label="One member completes Step 06 then Step 07 before the next member starts">
+              <span>One member</span><strong>06</strong><span aria-hidden="true">→</span><strong>07</strong><span aria-hidden="true">→</span><span>Next member</span>
+            </div>
+          </header>
+          <details class="workflow-step" data-feature-step>
+          <summary><span class="step-number">06</span><span>Commit + Push Feature</span></summary>
+          <div class="workflow-content">
+            <p class="workflow-note">Stages only the production file, shared class test file, and CHANGELOG. Personal master is not pushed here.</p>
+            <div class="code-header"><span>Personal working repository</span><button type="button" class="copy-code-button" data-copy-target="commitPushCommands">Copy</button></div>
+            <pre class="workflow-code"><code id="commitPushCommands"></code></pre>
+          </div>
+        </details>
+          <details class="workflow-step">
+          <summary><span class="step-number">07</span><span>Integration</span></summary>
+          <div class="workflow-content">
+            <p class="stop-notice"><strong>Integrate one member at a time.</strong> Step 07 handles CHANGELOG-only conflicts automatically. Any Java, test, source, or mixed conflict must STOP for careful manual resolution.</p>
+            <p id="integrationTestNote" class="workflow-note"></p>
+            <p class="workflow-note"><strong>Dependency-aware validation:</strong> Step 07 runs only the selected feature test. A failure blocks an independent feature; an explicitly declared cross-round dependency may be deferred only after production and test compilation pass.</p>
+            <div class="code-header"><span id="integrationLocationLabel">Run from im-A1-T27-43</span><button type="button" class="copy-code-button" data-copy-target="integrationCommands">Copy</button></div>
+            <pre class="workflow-code"><code id="integrationCommands"></code></pre>
+            <section class="conflict-continuation" aria-labelledby="conflictContinuationTitle">
+              <h3 id="conflictContinuationTitle">CHANGELOG-only conflicts are handled automatically</h3>
+              <p>Step 07 preserves the current team entries, adds the selected feature's exact entry, completes the merge, and continues validation. Java, test, and source conflicts always stop for careful manual resolution.</p>
+            </section>
+            <div class="conflict-grid">
+              <section>
+                <h3>CHANGELOG.md conflicts</h3>
+                <ul>
+                  <li>Step 07 automatically keeps the team version as its base.</li>
+                  <li>The selected feature entry is inserted once under <code>## Unreleased</code>.</li>
+                  <li>No second command block is required.</li>
+                </ul>
+              </section>
+              <section>
+                <h3>Java/test conflicts</h3>
+                <ul>
+                  <li>Never blindly choose ours or theirs.</li>
+                  <li>Preserve functionality and tests already integrated.</li>
+                  <li>Add the incoming member's implementation and test.</li>
+                  <li>Remove markers, stage resolved files, and finish the merge.</li>
+                </ul>
+              </section>
+            </div>
+          </div>
+        </details>
+        </section>
+        <div class="workflow-phase-gate" role="note" aria-label="Proceed only after all members are integrated">
+          <span aria-hidden="true">↓</span><strong>ALL MEMBERS INTEGRATED?</strong><span aria-hidden="true">↓</span>
+        </div>
+        <section class="workflow-phase round-workflow-phase" aria-labelledby="roundWorkflowPhaseTitle">
+          <header class="workflow-phase__header">
+            <span class="workflow-phase__eyebrow">Round-wide actions</span>
+            <h2 id="roundWorkflowPhaseTitle">ONLY AFTER EVERYONE IS INTEGRATED</h2>
+            <p>Do not continue below until every member in this round has completed Steps 06–07 and their feature has been integrated into the team repository.</p>
+            <div class="workflow-phase__sequence workflow-phase__sequence--release" aria-label="Step 08 happens once per round, followed by Step 09 after release">
+              <strong>08</strong><span>ONCE PER ROUND</span><span aria-hidden="true">→</span><strong>09</strong><span>AFTER THE ROUND RELEASE</span>
+            </div>
+          </header>
+          <details class="workflow-step release-step">
+          <summary><span class="step-number">08</span><span>Round Release</span></summary>
+          <div class="workflow-content">
+            <p class="release-notice">Run once after every member in this round has been integrated.</p>
+            <p class="release-notice">All deferred tests whose complete dependency set is available by this round MUST pass before release. Tests that still depend on later rounds are carried forward and remain explicitly deferred.</p>
+            <p id="releaseVersionNote" class="workflow-note"></p>
+            <div class="code-header"><span id="releaseLocationLabel">Team IM repository master</span><button type="button" class="copy-code-button" data-copy-target="releaseCommands">Copy</button></div>
+            <pre class="workflow-code"><code id="releaseCommands"></code></pre>
+            <p class="workflow-note">The final complete assignment becomes <strong>v1.0.0</strong>.</p>
+          </div>
+        </details>
+          <details class="workflow-step">
+          <summary><span class="step-number">09</span><span>Sync Personal Repository</span></summary>
+          <div class="workflow-content">
+            <p class="workflow-note">Run separately for each member after the round release. This step automatically enters the selected member's personal repository.</p>
+            <div class="code-header"><span id="syncLocationLabel">Personal working repository</span><button type="button" class="copy-code-button" data-copy-target="syncCommands">Copy</button></div>
+            <pre class="workflow-code compact-code"><code id="syncCommands"></code></pre>
+          </div>
+        </details>
+        </section>
+      </div>
+    </section>
+
   </main>
+  </div>
 
   <script src="script.js" defer></script>
 </body>

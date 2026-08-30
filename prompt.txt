@@ -1,0 +1,4680 @@
+rajdipshah@Rajdips-MacBook-Air ~/UNI/Y3S1 - 2026 sem 2/SOFT2412/A1 test/rsha4444 % clear
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+rajdipshah@Rajdips-MacBook-Air ~/UNI/Y3S1 - 2026 sem 2/SOFT2412/A1 test/rsha4444 % >....      
+echo "PERSONAL REPOSITORY"
+echo "=================================="
+
+echo ""
+echo "Remotes:"
+git remote -v
+
+echo ""
+echo "Git identity:"
+git config --local user.name
+git config --local user.email
+
+echo ""
+echo "Status:"
+git status
+
+echo ""
+echo "=================================="
+echo "INTEGRATION MANAGER REPOSITORY"
+echo "=================================="
+
+cd "../im-A1-T27-43-DUMMY"
+
+echo ""
+echo "Remotes:"
+git remote -v
+
+echo ""
+echo "Git identity:"
+git config --local user.name
+git config --local user.email
+
+echo ""
+echo "Status:"
+git status
+
+echo ""
+echo "=================================="
+echo "SETUP COMPLETE"
+echo "=================================="
+
+echo ""
+echo "Your coding folder:"
+echo "A1-T27-43-rsha4444"
+
+echo ""
+echo "Your integration folder:"
+echo "im-A1-T27-43-DUMMY"
+
+cd ..
+
+echo ""
+echo "Current working folder:"
+pwd
+
+echo ""
+echo "Run the Round workflow commands from this folder."
+else
+  echo ""
+  echo "STOP: Setup checks failed. No repositories were cloned or configured."
+fi
+Checking Git...
+Git found.
+
+Checking Java 17...
+Java 17 JDK found: /opt/homebrew/Cellar/openjdk@17/17.0.20.1/libexec/openjdk.jdk/Contents/Home
+
+Checking Gradle...
+Gradle found.
+
+Checking access to the team repository...
+Team repository reachable.
+
+Checking your personal repository...
+Personal repository reachable.
+
+Checking local folders...
+Local folders are clear.
+
+All checks passed.
+
+Creating personal working repository...
+Cloning into 'A1-T27-43-rsha4444'...
+** WARNING: connection is not using a post-quantum key exchange algorithm.
+** This session may be vulnerable to "store now, decrypt later" attacks.
+** The server may need to be upgraded. See https://openssh.com/pq.html
+remote: Enumerating objects: 23, done.
+remote: Counting objects: 100% (23/23), done.
+remote: Compressing objects: 100% (20/20), done.
+remote: Total 23 (delta 0), reused 23 (delta 0), pack-reused 0 (from 0)
+Receiving objects: 100% (23/23), 2.68 MiB | 6.69 MiB/s, done.
+Renaming remote references: 100% (3/3), done.
+** WARNING: connection is not using a post-quantum key exchange algorithm.
+** This session may be vulnerable to "store now, decrypt later" attacks.
+** The server may need to be upgraded. See https://openssh.com/pq.html
+Enumerating objects: 23, done.
+Counting objects: 100% (23/23), done.
+Delta compression using up to 8 threads
+Compressing objects: 100% (20/20), done.
+Writing objects: 100% (23/23), 2.68 MiB | 6.19 MiB/s, done.
+Total 23 (delta 0), reused 23 (delta 0), pack-reused 0 (from 0)
+To github.sydney.edu.au:SOFT2412-COMP9412-2026s2/A1-T27-43-rsha4444.git
+ * [new branch]      master -> master
+ * [new tag]         v0.1.0 -> v0.1.0
+branch 'master' set up to track 'origin/master'.
+
+Personal repository configured.
+
+Creating Integration Manager clone...
+Cloning into 'im-A1-T27-43-DUMMY'...
+** WARNING: connection is not using a post-quantum key exchange algorithm.
+** This session may be vulnerable to "store now, decrypt later" attacks.
+** The server may need to be upgraded. See https://openssh.com/pq.html
+remote: Enumerating objects: 23, done.
+remote: Counting objects: 100% (23/23), done.
+remote: Compressing objects: 100% (20/20), done.
+remote: Total 23 (delta 0), reused 23 (delta 0), pack-reused 0 (from 0)
+Receiving objects: 100% (23/23), 2.68 MiB | 5.06 MiB/s, done.
+
+Integration Manager repository configured.
+** WARNING: connection is not using a post-quantum key exchange algorithm.
+** This session may be vulnerable to "store now, decrypt later" attacks.
+** The server may need to be upgraded. See https://openssh.com/pq.html
+Already up to date.
+
+==================================
+PERSONAL REPOSITORY
+==================================
+
+Remotes:
+origin	git@github.sydney.edu.au:SOFT2412-COMP9412-2026s2/A1-T27-43-rsha4444.git (fetch)
+origin	git@github.sydney.edu.au:SOFT2412-COMP9412-2026s2/A1-T27-43-rsha4444.git (push)
+upstream	git@github.sydney.edu.au:SOFT2412-COMP9412-2026s2/A1-T27-43-IM-DUMMY.git (fetch)
+upstream	git@github.sydney.edu.au:SOFT2412-COMP9412-2026s2/A1-T27-43-IM-DUMMY.git (push)
+
+Git identity:
+Mohammad
+rsha0537@uni.sydney.edu.au
+
+Status:
+On branch master
+Your branch is up to date with 'origin/master'.
+
+nothing to commit, working tree clean
+
+==================================
+INTEGRATION MANAGER REPOSITORY
+==================================
+
+Remotes:
+me	git@github.sydney.edu.au:SOFT2412-COMP9412-2026s2/A1-T27-43-rsha4444.git (fetch)
+me	git@github.sydney.edu.au:SOFT2412-COMP9412-2026s2/A1-T27-43-rsha4444.git (push)
+origin	git@github.sydney.edu.au:SOFT2412-COMP9412-2026s2/A1-T27-43-IM-DUMMY.git (fetch)
+origin	git@github.sydney.edu.au:SOFT2412-COMP9412-2026s2/A1-T27-43-IM-DUMMY.git (push)
+
+Git identity:
+Mohammad
+rsha0537@uni.sydney.edu.au
+
+Status:
+On branch master
+Your branch is up to date with 'origin/master'.
+
+nothing to commit, working tree clean
+
+==================================
+SETUP COMPLETE
+==================================
+
+Your coding folder:
+A1-T27-43-rsha4444
+
+Your integration folder:
+im-A1-T27-43-DUMMY
+
+Current working folder:
+/Users/rajdipshah/UNI/Y3S1 - 2026 sem 2/SOFT2412/A1 test/rsha4444
+
+Run the Round workflow commands from this folder.
+rajdipshah@Rajdips-MacBook-Air ~/UNI/Y3S1 - 2026 sem 2/SOFT2412/A1 test/rsha4444 % cd "A1-T27-43-rsha4444"
+git rev-parse --show-toplevel
+git remote get-url origin
+git remote get-url upstream
+git checkout master
+git fetch upstream
+git merge --no-edit upstream/master
+git checkout -b feature/parse-amount
+git status
+/Users/rajdipshah/UNI/Y3S1 - 2026 sem 2/SOFT2412/A1 test/rsha4444/A1-T27-43-rsha4444
+git@github.sydney.edu.au:SOFT2412-COMP9412-2026s2/A1-T27-43-rsha4444.git
+git@github.sydney.edu.au:SOFT2412-COMP9412-2026s2/A1-T27-43-IM-DUMMY.git
+Already on 'master'
+Your branch is up to date with 'origin/master'.
+** WARNING: connection is not using a post-quantum key exchange algorithm.
+** This session may be vulnerable to "store now, decrypt later" attacks.
+** The server may need to be upgraded. See https://openssh.com/pq.html
+Already up to date.
+Switched to a new branch 'feature/parse-amount'
+On branch feature/parse-amount
+nothing to commit, working tree clean
+rajdipshah@Rajdips-MacBook-Air ~/UNI/Y3S1 - 2026 sem 2/SOFT2412/A1 test/rsha4444/A1-T27-43-rsha4444 % cd "A1-T27-43-rsha3333"
+git rev-parse --show-toplevel
+git remote get-url origin
+git remote get-url upstream
+git checkout master
+git fetch upstream
+git merge --no-edit upstream/master
+git checkout -b feature/normalize-currency
+git status
+cd: no such file or directory: A1-T27-43-rsha3333
+/Users/rajdipshah/UNI/Y3S1 - 2026 sem 2/SOFT2412/A1 test/rsha4444/A1-T27-43-rsha4444
+git@github.sydney.edu.au:SOFT2412-COMP9412-2026s2/A1-T27-43-rsha4444.git
+git@github.sydney.edu.au:SOFT2412-COMP9412-2026s2/A1-T27-43-IM-DUMMY.git
+Switched to branch 'master'
+Your branch is up to date with 'origin/master'.
+** WARNING: connection is not using a post-quantum key exchange algorithm.
+** This session may be vulnerable to "store now, decrypt later" attacks.
+** The server may need to be upgraded. See https://openssh.com/pq.html
+Already up to date.
+Switched to a new branch 'feature/normalize-currency'
+On branch feature/normalize-currency
+nothing to commit, working tree clean
+rajdipshah@Rajdips-MacBook-Air ~/UNI/Y3S1 - 2026 sem 2/SOFT2412/A1 test/rsha4444/A1-T27-43-rsha4444 % cd "A1-T27-43-rsha4444"
+git rev-parse --show-toplevel
+git remote get-url origin
+git remote get-url upstream
+git checkout master
+git fetch upstream
+git merge --no-edit upstream/master
+git checkout -b feature/parse-amount
+git status
+cd: no such file or directory: A1-T27-43-rsha4444
+/Users/rajdipshah/UNI/Y3S1 - 2026 sem 2/SOFT2412/A1 test/rsha4444/A1-T27-43-rsha4444
+git@github.sydney.edu.au:SOFT2412-COMP9412-2026s2/A1-T27-43-rsha4444.git
+git@github.sydney.edu.au:SOFT2412-COMP9412-2026s2/A1-T27-43-IM-DUMMY.git
+Switched to branch 'master'
+Your branch is up to date with 'origin/master'.
+** WARNING: connection is not using a post-quantum key exchange algorithm.
+** This session may be vulnerable to "store now, decrypt later" attacks.
+** The server may need to be upgraded. See https://openssh.com/pq.html
+Already up to date.
+fatal: a branch named 'feature/parse-amount' already exists
+On branch master
+Your branch is up to date with 'origin/master'.
+
+rajdipshah@Rajdips-MacBook-Air ~/UNI/Y3S1 - 2026 sem 2/SOFT2412/A1 test/rsha4444/A1-T27-43-rsha4444 % git status
+git add src/main/java/DataValidator.java src/test/java/DataValidatorTest.java CHANGELOG.md
+git commit -m "Parse validated amounts" -m "Implement parseAmount independently with null and invalid-input handling and retain the existing shared DataValidator tests."
+git push -u origin feature/parse-amount
+On branch master
+Your branch is up to date with 'origin/master'.
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+	modified:   CHANGELOG.md
+	modified:   src/main/java/DataValidator.java
+
+no changes added to commit (use "git add" and/or "git commit -a")
+[master 0756cff] Parse validated amounts
+ 2 files changed, 11 insertions(+), 4 deletions(-)
+** WARNING: connection is not using a post-quantum key exchange algorithm.
+** This session may be vulnerable to "store now, decrypt later" attacks.
+** The server may need to be upgraded. See https://openssh.com/pq.html
+Total 0 (delta 0), reused 0 (delta 0), pack-reused 0 (from 0)
+remote: 
+remote: Create a pull request for 'feature/parse-amount' on GitHub by visiting:
+remote:      https://github.sydney.edu.au/SOFT2412-COMP9412-2026s2/A1-T27-43-rsha4444/pull/new/feature/parse-amount
+remote: 
+To github.sydney.edu.au:SOFT2412-COMP9412-2026s2/A1-T27-43-rsha4444.git
+ * [new branch]      feature/parse-amount -> feature/parse-amount
+branch 'feature/parse-amount' set up to track 'origin/feature/parse-amount'.
+rajdipshah@Rajdips-MacBook-Air ~/UNI/Y3S1 - 2026 sem 2/SOFT2412/A1 test/rsha4444/A1-T27-43-rsha4444 % >....                                                                           
+        fi
+      elif [ "$changelog_ready" = true ] && ! cmp -s "$changelog_base" CHANGELOG.md; then
+        echo "STOP: Existing team CHANGELOG content changed unexpectedly. CHANGELOG.md was not staged."
+        changelog_ready=false
+      fi
+      if [ "$changelog_ready" = true ] && ! git add CHANGELOG.md; then changelog_ready=false; fi
+      if [ "$changelog_ready" = true ]; then
+        remaining_unresolved=$(git diff --name-only --diff-filter=U)
+        if ! git rev-parse -q --verify MERGE_HEAD >/dev/null 2>&1 || [ -n "$remaining_unresolved" ]; then
+          echo "STOP: Unresolved files remain or MERGE_HEAD disappeared. Team master was not pushed."
+          printf '%s
+' "$remaining_unresolved"
+          changelog_ready=false
+        fi
+      fi
+      if [ "$changelog_ready" = true ]; then
+        echo "CHANGELOG RESOLVED: preserved existing entries and added - parseAmount(): parses valid amounts and returns zero for invalid input -- Mohammad."
+        if git commit --no-edit; then
+          git status
+if git diff --check && git diff --cached --check && gradle classes && gradle testClasses; then
+  if gradle test --tests DataValidatorTest.testParseAmount; then
+    echo "PASS: The selected feature test passed."
+    git push origin master
+  else
+    echo "STOP: The selected independent feature test failed. Team master was not pushed."
+  fi
+else
+  echo "STOP: Working-tree, production compilation, or test compilation validation failed. Team master was not pushed."
+fi
+        else
+          echo "STOP: The automatic CHANGELOG merge commit failed. Team master was not pushed."
+        fi
+      fi
+      rm -f "$changelog_base" "$changelog_expected"
+    elif [ "$merge_in_progress" = true ] && [ -n "$unresolved_files" ]; then
+      echo "STOP: Conflicts include Java, test, source, or multiple files. Resolve every file carefully; these conflicts are never handled automatically."
+      printf '%s
+' "$unresolved_files"
+      echo "Team master was not pushed."
+    else
+      echo "STOP: The feature merge failed and no merge is in progress. Review the Git output; no validation or push was run."
+    fi
+  fi
+else
+  echo "STOP: Could not prepare team master or fetch the selected member's feature. No feature merge, tests, or push were run."
+fi
+else
+  echo "STOP: Cannot find the Integration Manager folder ../im-A1-T27-43-DUMMY. No integration commands were run."
+fi
+/Users/rajdipshah/UNI/Y3S1 - 2026 sem 2/SOFT2412/A1 test/rsha4444/im-A1-T27-43-DUMMY
+git@github.sydney.edu.au:SOFT2412-COMP9412-2026s2/A1-T27-43-IM-DUMMY.git
+git@github.sydney.edu.au:SOFT2412-COMP9412-2026s2/A1-T27-43-rsha4444.git
+Already on 'master'
+Your branch is up to date with 'origin/master'.
+** WARNING: connection is not using a post-quantum key exchange algorithm.
+** This session may be vulnerable to "store now, decrypt later" attacks.
+** The server may need to be upgraded. See https://openssh.com/pq.html
+remote: Enumerating objects: 74, done.
+remote: Counting objects: 100% (74/74), done.
+remote: Compressing objects: 100% (20/20), done.
+remote: Total 62 (delta 36), reused 56 (delta 30), pack-reused 0 (from 0)
+Unpacking objects: 100% (62/62), 6.03 KiB | 154.00 KiB/s, done.
+From github.sydney.edu.au:SOFT2412-COMP9412-2026s2/A1-T27-43-IM-DUMMY
+   ae89aab..60fbc5d  master     -> origin/master
+Updating ae89aab..60fbc5d
+Fast-forward
+ CHANGELOG.md                             |  6 ++++--
+ src/main/java/CurrencyConverter.java     |  3 +--
+ src/main/java/DataValidator.java         |  8 +++++---
+ src/main/java/UserInterface.java         | 43 +++++++++++++++++++++++++++++++++++++------
+ src/test/java/CurrencyConverterTest.java | 11 ++++++++---
+ src/test/java/UserInterfaceTest.java     | 42 ++++++++++++++++++++++++++++++++++++------
+ 6 files changed, 91 insertions(+), 22 deletions(-)
+** WARNING: connection is not using a post-quantum key exchange algorithm.
+** This session may be vulnerable to "store now, decrypt later" attacks.
+** The server may need to be upgraded. See https://openssh.com/pq.html
+From github.sydney.edu.au:SOFT2412-COMP9412-2026s2/A1-T27-43-rsha4444
+ * [new branch]      feature/parse-amount -> me/feature/parse-amount
+ * [new branch]      master               -> me/master
+Already up to date.
+On branch master
+Your branch is up to date with 'origin/master'.
+
+nothing to commit, working tree clean
+
+BUILD SUCCESSFUL in 989ms
+1 actionable task: 1 executed
+Consider enabling configuration cache to speed up this build: https://docs.gradle.org/9.7.1/userguide/configuration_cache_enabling.html
+
+BUILD SUCCESSFUL in 772ms
+2 actionable tasks: 1 executed, 1 up-to-date
+Consider enabling configuration cache to speed up this build: https://docs.gradle.org/9.7.1/userguide/configuration_cache_enabling.html
+
+> Task :test FAILED
+
+DataValidatorTest > testParseAmount() FAILED
+    org.opentest4j.AssertionFailedError at DataValidatorTest.java:62
+
+1 test completed, 1 failed
+
+FAILURE: Build failed with an exception.
+
+* What went wrong:
+Execution failed for task ':test'.
+> There were failing tests. See the report at: file:///Users/rajdipshah/UNI/Y3S1%20-%202026%20sem%202/SOFT2412/A1%20test/rsha4444/im-A1-T27-43-DUMMY/build/reports/tests/test/index.html
+
+* Try:
+> Run with --scan to get full insights from a Build Scan (powered by Develocity).
+
+BUILD FAILED in 1s
+4 actionable tasks: 2 executed, 2 up-to-date
+STOP: The selected independent feature test failed. Team master was not pushed.
+rajdipshah@Rajdips-MacBook-Air ~/UNI/Y3S1 - 2026 sem 2/SOFT2412/A1 test/rsha4444/im-A1-T27-43-DUMMY % cd "../A1-T27-43-rsha4444"
+rajdipshah@Rajdips-MacBook-Air ~/UNI/Y3S1 - 2026 sem 2/SOFT2412/A1 test/rsha4444/A1-T27-43-rsha4444 % git checkout feature/parse-amount
+git cherry-pick 0756cff
+git push origin feature/parse-amount
+Switched to branch 'feature/parse-amount'
+Your branch is up to date with 'origin/feature/parse-amount'.
+[feature/parse-amount a98f88f] Parse validated amounts
+ Date: Sun Aug 30 09:45:19 2026 +1000
+ 2 files changed, 11 insertions(+), 4 deletions(-)
+** WARNING: connection is not using a post-quantum key exchange algorithm.
+** This session may be vulnerable to "store now, decrypt later" attacks.
+** The server may need to be upgraded. See https://openssh.com/pq.html
+Enumerating objects: 13, done.
+Counting objects: 100% (13/13), done.
+Delta compression using up to 8 threads
+Compressing objects: 100% (6/6), done.
+Writing objects: 100% (7/7), 814 bytes | 814.00 KiB/s, done.
+Total 7 (delta 4), reused 0 (delta 0), pack-reused 0 (from 0)
+remote: Resolving deltas: 100% (4/4), completed with 4 local objects.
+To github.sydney.edu.au:SOFT2412-COMP9412-2026s2/A1-T27-43-rsha4444.git
+   ae89aab..a98f88f  feature/parse-amount -> feature/parse-amount
+rajdipshah@Rajdips-MacBook-Air ~/UNI/Y3S1 - 2026 sem 2/SOFT2412/A1 test/rsha4444/A1-T27-43-rsha4444 % git checkout master
+git reset --hard origin/master
+Switched to branch 'master'
+Your branch is ahead of 'origin/master' by 1 commit.
+  (use "git push" to publish your local commits)
+HEAD is now at ae89aab Initial scaffolding for Assignment 1
+rajdipshah@Rajdips-MacBook-Air ~/UNI/Y3S1 - 2026 sem 2/SOFT2412/A1 test/rsha4444/A1-T27-43-rsha4444 % git branch -D feature/normalize-currency
+Deleted branch feature/normalize-currency (was ae89aab).
+rajdipshah@Rajdips-MacBook-Air ~/UNI/Y3S1 - 2026 sem 2/SOFT2412/A1 test/rsha4444/A1-T27-43-rsha4444 % git checkout feature/parse-amount
+Switched to branch 'feature/parse-amount'
+Your branch is up to date with 'origin/feature/parse-amount'.
+rajdipshah@Rajdips-MacBook-Air ~/UNI/Y3S1 - 2026 sem 2/SOFT2412/A1 test/rsha4444/A1-T27-43-rsha4444 % >....                                                                           
+        fi
+      elif [ "$changelog_ready" = true ] && ! cmp -s "$changelog_base" CHANGELOG.md; then
+        echo "STOP: Existing team CHANGELOG content changed unexpectedly. CHANGELOG.md was not staged."
+        changelog_ready=false
+      fi
+      if [ "$changelog_ready" = true ] && ! git add CHANGELOG.md; then changelog_ready=false; fi
+      if [ "$changelog_ready" = true ]; then
+        remaining_unresolved=$(git diff --name-only --diff-filter=U)
+        if ! git rev-parse -q --verify MERGE_HEAD >/dev/null 2>&1 || [ -n "$remaining_unresolved" ]; then
+          echo "STOP: Unresolved files remain or MERGE_HEAD disappeared. Team master was not pushed."
+          printf '%s
+' "$remaining_unresolved"
+          changelog_ready=false
+        fi
+      fi
+      if [ "$changelog_ready" = true ]; then
+        echo "CHANGELOG RESOLVED: preserved existing entries and added - parseAmount(): parses valid amounts and returns zero for invalid input -- Mohammad."
+        if git commit --no-edit; then
+          git status
+if git diff --check && git diff --cached --check && gradle classes && gradle testClasses; then
+  if gradle test --tests DataValidatorTest.testParseAmount; then
+    echo "PASS: The selected feature test passed."
+    git push origin master
+  else
+    echo "STOP: The selected independent feature test failed. Team master was not pushed."
+  fi
+else
+  echo "STOP: Working-tree, production compilation, or test compilation validation failed. Team master was not pushed."
+fi
+        else
+          echo "STOP: The automatic CHANGELOG merge commit failed. Team master was not pushed."
+        fi
+      fi
+      rm -f "$changelog_base" "$changelog_expected"
+    elif [ "$merge_in_progress" = true ] && [ -n "$unresolved_files" ]; then
+      echo "STOP: Conflicts include Java, test, source, or multiple files. Resolve every file carefully; these conflicts are never handled automatically."
+      printf '%s
+' "$unresolved_files"
+      echo "Team master was not pushed."
+    else
+      echo "STOP: The feature merge failed and no merge is in progress. Review the Git output; no validation or push was run."
+    fi
+  fi
+else
+  echo "STOP: Could not prepare team master or fetch the selected member's feature. No feature merge, tests, or push were run."
+fi
+else
+  echo "STOP: Cannot find the Integration Manager folder ../im-A1-T27-43-DUMMY. No integration commands were run."
+fi
+/Users/rajdipshah/UNI/Y3S1 - 2026 sem 2/SOFT2412/A1 test/rsha4444/im-A1-T27-43-DUMMY
+git@github.sydney.edu.au:SOFT2412-COMP9412-2026s2/A1-T27-43-IM-DUMMY.git
+git@github.sydney.edu.au:SOFT2412-COMP9412-2026s2/A1-T27-43-rsha4444.git
+Already on 'master'
+Your branch is up to date with 'origin/master'.
+** WARNING: connection is not using a post-quantum key exchange algorithm.
+** This session may be vulnerable to "store now, decrypt later" attacks.
+** The server may need to be upgraded. See https://openssh.com/pq.html
+Already up to date.
+** WARNING: connection is not using a post-quantum key exchange algorithm.
+** This session may be vulnerable to "store now, decrypt later" attacks.
+** The server may need to be upgraded. See https://openssh.com/pq.html
+remote: Enumerating objects: 13, done.
+remote: Counting objects: 100% (13/13), done.
+remote: Compressing objects: 100% (2/2), done.
+remote: Total 7 (delta 4), reused 7 (delta 4), pack-reused 0 (from 0)
+Unpacking objects: 100% (7/7), 794 bytes | 158.00 KiB/s, done.
+From github.sydney.edu.au:SOFT2412-COMP9412-2026s2/A1-T27-43-rsha4444
+   ae89aab..a98f88f  feature/parse-amount -> me/feature/parse-amount
+Auto-merging CHANGELOG.md
+CONFLICT (content): Merge conflict in CHANGELOG.md
+Auto-merging src/main/java/DataValidator.java
+Automatic merge failed; fix conflicts and then commit the result.
+CHANGELOG-ONLY CONFLICT: resolving automatically...
+Updated 1 path from the index
+CHANGELOG RESOLVED: preserved existing entries and added - parseAmount(): parses valid amounts and returns zero for invalid input -- Mohammad.
+[master f230e9c] Merge remote-tracking branch 'me/feature/parse-amount'
+On branch master
+Your branch is ahead of 'origin/master' by 2 commits.
+  (use "git push" to publish your local commits)
+
+nothing to commit, working tree clean
+
+BUILD SUCCESSFUL in 504ms
+1 actionable task: 1 executed
+Consider enabling configuration cache to speed up this build: https://docs.gradle.org/9.7.1/userguide/configuration_cache_enabling.html
+
+BUILD SUCCESSFUL in 342ms
+2 actionable tasks: 2 up-to-date
+Consider enabling configuration cache to speed up this build: https://docs.gradle.org/9.7.1/userguide/configuration_cache_enabling.html
+
+> Task :test
+
+DataValidatorTest > testParseAmount() PASSED
+
+BUILD SUCCESSFUL in 1s
+4 actionable tasks: 2 executed, 2 up-to-date
+Consider enabling configuration cache to speed up this build: https://docs.gradle.org/9.7.1/userguide/configuration_cache_enabling.html
+PASS: The selected feature test passed.
+** WARNING: connection is not using a post-quantum key exchange algorithm.
+** This session may be vulnerable to "store now, decrypt later" attacks.
+** The server may need to be upgraded. See https://openssh.com/pq.html
+Enumerating objects: 26, done.
+Counting objects: 100% (26/26), done.
+Delta compression using up to 8 threads
+Compressing objects: 100% (12/12), done.
+Writing objects: 100% (14/14), 1.40 KiB | 1.40 MiB/s, done.
+Total 14 (delta 8), reused 0 (delta 0), pack-reused 0 (from 0)
+remote: Resolving deltas: 100% (8/8), completed with 5 local objects.
+rajdipshah@Rajdips-MacBook-Air ~/UNI/Y3S1 - 2026 sem 2/SOFT2412/A1 test/rsha4444/im-A1-T27-43-DUMMY % cd ..
+rajdipshah@Rajdips-MacBook-Air ~/UNI/Y3S1 - 2026 sem 2/SOFT2412/A1 test/rsha4444 % >....                 
+
+if [ ! -d "$expected_repo/.git" ]; then
+  echo "STOP: Expected personal repository A1-T27-43-rsha4444 was not found in the current member root."
+  echo "No Git commands were run."
+  step_verified=false
+elif ! cd "$expected_repo"; then
+  echo "STOP: Could not enter A1-T27-43-rsha4444."
+  step_verified=false
+fi
+
+if [ "$step_verified" = true ]; then
+  git_root=$(git rev-parse --show-toplevel 2>/dev/null) || step_verified=false
+fi
+if [ "$step_verified" = true ]; then
+  actual_root=$(cd "$git_root" && pwd -P) || step_verified=false
+  if [ "$step_verified" = true ] && { [ "$actual_root" != "$expected_repo" ] || [ "$(basename "$actual_root")" != "A1-T27-43-rsha4444" ]; }; then
+    echo "STOP: The current Git repository is not the expected A1-T27-43-rsha4444 repository."
+    step_verified=false
+  fi
+fi
+
+if [ "$step_verified" = true ]; then
+  origin_url=$(git remote get-url origin 2>/dev/null) || step_verified=false
+  if [ "$step_verified" = true ] && [ "$origin_url" != "git@github.sydney.edu.au:SOFT2412-COMP9412-2026s2/A1-T27-43-rsha4444.git" ]; then
+    echo "STOP: origin does not match the expected personal repository URL."
+    step_verified=false
+  fi
+fi
+if [ "$step_verified" = true ]; then
+  upstream_url=$(git remote get-url upstream 2>/dev/null) || step_verified=false
+  if [ "$step_verified" = true ] && [ "$upstream_url" != "git@github.sydney.edu.au:SOFT2412-COMP9412-2026s2/A1-T27-43-IM-DUMMY.git" ]; then
+    echo "STOP: upstream does not match the expected personal repository URL."
+    step_verified=false
+  fi
+fi
+
+if [ "$step_verified" = true ]; then
+sync_ready=true
+if ! git checkout master; then sync_ready=false; fi
+if [ "$sync_ready" = true ] && ! git fetch upstream; then sync_ready=false; fi
+if [ "$sync_ready" = true ] && ! git merge --no-edit upstream/master; then sync_ready=false; fi
+if [ "$sync_ready" = true ] && ! git push origin master --tags; then sync_ready=false; fi
+if [ "$sync_ready" != true ]; then echo "STOP: Personal repository sync did not complete."; fi
+fi
+
+if ! cd "$member_root"; then
+  echo "STOP: Could not return to the member root: $member_root"
+else
+  echo ""
+  echo "Current working folder:"
+  pwd
+  if [ "$step_verified" = true ] && [ "$sync_ready" = true ]; then
+    echo "=================================="
+    echo "STEP COMPLETE"
+    echo "=================================="
+    echo "READY FOR STEP 02 OF THE NEXT ROUND"
+  fi
+fi
+Switched to branch 'master'
+Your branch is up to date with 'origin/master'.
+** WARNING: connection is not using a post-quantum key exchange algorithm.
+** This session may be vulnerable to "store now, decrypt later" attacks.
+** The server may need to be upgraded. See https://openssh.com/pq.html
+remote: Enumerating objects: 99, done.
+remote: Counting objects: 100% (92/92), done.
+remote: Compressing objects: 100% (26/26), done.
+remote: Total 73 (delta 41), reused 66 (delta 34), pack-reused 0 (from 0)
+Unpacking objects: 100% (73/73), 7.24 KiB | 7.00 KiB/s, done.
+From github.sydney.edu.au:SOFT2412-COMP9412-2026s2/A1-T27-43-IM-DUMMY
+   ae89aab..7e56f97  master     -> upstream/master
+ * [new tag]         v0.2.0     -> v0.2.0
+Updating ae89aab..7e56f97
+Fast-forward
+ CHANGELOG.md                             |  7 +++++--
+ build.gradle                             |  2 +-
+ src/main/java/CurrencyConverter.java     |  3 +--
+ src/main/java/DataValidator.java         | 21 +++++++++++++++------
+ src/main/java/UserInterface.java         | 43 +++++++++++++++++++++++++++++++++++++------
+ src/test/java/CurrencyConverterTest.java | 11 ++++++++---
+ src/test/java/UserInterfaceTest.java     | 42 ++++++++++++++++++++++++++++++++++++------
+ 7 files changed, 103 insertions(+), 26 deletions(-)
+** WARNING: connection is not using a post-quantum key exchange algorithm.
+** This session may be vulnerable to "store now, decrypt later" attacks.
+** The server may need to be upgraded. See https://openssh.com/pq.html
+Enumerating objects: 99, done.
+Counting objects: 100% (92/92), done.
+Delta compression using up to 8 threads
+Compressing objects: 100% (60/60), done.
+Writing objects: 100% (73/73), 7.83 KiB | 421.00 KiB/s, done.
+Total 73 (delta 39), reused 0 (delta 0), pack-reused 0 (from 0)
+remote: Resolving deltas: 100% (39/39), completed with 8 local objects.
+To github.sydney.edu.au:SOFT2412-COMP9412-2026s2/A1-T27-43-rsha4444.git
+   ae89aab..7e56f97  master -> master
+ * [new tag]         v0.2.0 -> v0.2.0
+
+Current working folder:
+/Users/rajdipshah/UNI/Y3S1 - 2026 sem 2/SOFT2412/A1 test/rsha4444
+==================================
+STEP COMPLETE
+==================================
+READY FOR STEP 02 OF THE NEXT ROUND
+rajdipshah@Rajdips-MacBook-Air ~/UNI/Y3S1 - 2026 sem 2/SOFT2412/A1 test/rsha4444 % >....                 
+  step_verified=false
+fi
+
+if [ "$step_verified" = true ]; then
+  git_root=$(git rev-parse --show-toplevel 2>/dev/null) || step_verified=false
+fi
+if [ "$step_verified" = true ]; then
+  actual_root=$(cd "$git_root" && pwd -P) || step_verified=false
+  if [ "$step_verified" = true ] && { [ "$actual_root" != "$expected_repo" ] || [ "$(basename "$actual_root")" != "A1-T27-43-rsha4444" ]; }; then
+    echo "STOP: The current Git repository is not the expected A1-T27-43-rsha4444 repository."
+    step_verified=false
+  fi
+fi
+
+if [ "$step_verified" = true ]; then
+  origin_url=$(git remote get-url origin 2>/dev/null) || step_verified=false
+  if [ "$step_verified" = true ] && [ "$origin_url" != "git@github.sydney.edu.au:SOFT2412-COMP9412-2026s2/A1-T27-43-rsha4444.git" ]; then
+    echo "STOP: origin does not match the expected personal repository URL."
+    step_verified=false
+  fi
+fi
+if [ "$step_verified" = true ]; then
+  upstream_url=$(git remote get-url upstream 2>/dev/null) || step_verified=false
+  if [ "$step_verified" = true ] && [ "$upstream_url" != "git@github.sydney.edu.au:SOFT2412-COMP9412-2026s2/A1-T27-43-IM-DUMMY.git" ]; then
+    echo "STOP: upstream does not match the expected personal repository URL."
+    step_verified=false
+  fi
+fi
+
+if [ "$step_verified" = true ]; then
+step_succeeded=false
+if git checkout master && git fetch upstream && git merge --no-edit upstream/master; then
+  if git show-ref --verify --quiet refs/heads/feature/is-valid-amount; then
+    git checkout feature/is-valid-amount
+  else
+    git checkout -b feature/is-valid-amount
+  fi
+  if [ "$(git branch --show-current)" = "feature/is-valid-amount" ] && git status; then
+    step_succeeded=true
+  else
+    echo "STOP: Expected feature branch feature/is-valid-amount is not checked out."
+  fi
+fi
+fi
+
+if ! cd "$member_root"; then
+  echo "STOP: Could not return to the member root: $member_root"
+else
+  echo ""
+  echo "Current working folder:"
+  pwd
+  if [ "$step_verified" = true ] && [ "$step_succeeded" = true ]; then
+    echo "=================================="
+    echo "STEP COMPLETE"
+    echo "=================================="
+    echo "READY FOR STEP 03"
+  fi
+fi
+Already on 'master'
+Your branch is up to date with 'origin/master'.
+** WARNING: connection is not using a post-quantum key exchange algorithm.
+** This session may be vulnerable to "store now, decrypt later" attacks.
+** The server may need to be upgraded. See https://openssh.com/pq.html
+Already up to date.
+Switched to a new branch 'feature/is-valid-amount'
+On branch feature/is-valid-amount
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+	bin/
+	src/main/java/.LCKDataValidator.java~
+
+nothing added to commit but untracked files present (use "git add" to track)
+
+Current working folder:
+/Users/rajdipshah/UNI/Y3S1 - 2026 sem 2/SOFT2412/A1 test/rsha4444
+==================================
+STEP COMPLETE
+==================================
+READY FOR STEP 03
+rajdipshah@Rajdips-MacBook-Air ~/UNI/Y3S1 - 2026 sem 2/SOFT2412/A1 test/rsha4444 % echo step6
+step6
+rajdipshah@Rajdips-MacBook-Air ~/UNI/Y3S1 - 2026 sem 2/SOFT2412/A1 test/rsha4444 % >....                 
+  step_verified=false
+fi
+
+if [ "$step_verified" = true ]; then
+  git_root=$(git rev-parse --show-toplevel 2>/dev/null) || step_verified=false
+fi
+if [ "$step_verified" = true ]; then
+  actual_root=$(cd "$git_root" && pwd -P) || step_verified=false
+  if [ "$step_verified" = true ] && { [ "$actual_root" != "$expected_repo" ] || [ "$(basename "$actual_root")" != "A1-T27-43-rsha4444" ]; }; then
+    echo "STOP: The current Git repository is not the expected A1-T27-43-rsha4444 repository."
+    step_verified=false
+  fi
+fi
+
+if [ "$step_verified" = true ]; then
+  origin_url=$(git remote get-url origin 2>/dev/null) || step_verified=false
+  if [ "$step_verified" = true ] && [ "$origin_url" != "git@github.sydney.edu.au:SOFT2412-COMP9412-2026s2/A1-T27-43-rsha4444.git" ]; then
+    echo "STOP: origin does not match the expected personal repository URL."
+    step_verified=false
+  fi
+fi
+if [ "$step_verified" = true ]; then
+  upstream_url=$(git remote get-url upstream 2>/dev/null) || step_verified=false
+  if [ "$step_verified" = true ] && [ "$upstream_url" != "git@github.sydney.edu.au:SOFT2412-COMP9412-2026s2/A1-T27-43-IM-DUMMY.git" ]; then
+    echo "STOP: upstream does not match the expected personal repository URL."
+    step_verified=false
+  fi
+fi
+
+if [ "$step_verified" = true ]; then
+step_succeeded=false
+current_branch=$(git branch --show-current)
+if [ "$current_branch" != "feature/is-valid-amount" ]; then
+  echo "STOP: Step 06 requires branch feature/is-valid-amount; current branch is $current_branch. Nothing was staged or committed."
+else
+  if git status &&       git add src/main/java/DataValidator.java src/test/java/DataValidatorTest.java CHANGELOG.md &&       git commit -m "Validate positive amounts" -m "Implement null-safe positive numeric amount validation and retain the existing shared DataValidator tests." &&       git push -u origin feature/is-valid-amount; then
+    step_succeeded=true
+  fi
+fi
+fi
+
+if ! cd "$member_root"; then
+  echo "STOP: Could not return to the member root: $member_root"
+else
+  echo ""
+  echo "Current working folder:"
+  pwd
+  if [ "$step_verified" = true ] && [ "$step_succeeded" = true ]; then
+    echo "=================================="
+    echo "STEP COMPLETE"
+    echo "=================================="
+    echo "READY FOR STEP 07"
+  fi
+fi
+On branch feature/is-valid-amount
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+	modified:   CHANGELOG.md
+	modified:   src/main/java/DataValidator.java
+
+no changes added to commit (use "git add" and/or "git commit -a")
+[feature/is-valid-amount 05108bc] Validate positive amounts
+ 2 files changed, 13 insertions(+), 4 deletions(-)
+** WARNING: connection is not using a post-quantum key exchange algorithm.
+** This session may be vulnerable to "store now, decrypt later" attacks.
+** The server may need to be upgraded. See https://openssh.com/pq.html
+Enumerating objects: 13, done.
+Counting objects: 100% (13/13), done.
+Delta compression using up to 8 threads
+Compressing objects: 100% (6/6), done.
+Writing objects: 100% (7/7), 809 bytes | 809.00 KiB/s, done.
+Total 7 (delta 4), reused 0 (delta 0), pack-reused 0 (from 0)
+remote: Resolving deltas: 100% (4/4), completed with 4 local objects.
+remote: 
+remote: Create a pull request for 'feature/is-valid-amount' on GitHub by visiting:
+remote:      https://github.sydney.edu.au/SOFT2412-COMP9412-2026s2/A1-T27-43-rsha4444/pull/new/feature/is-valid-amount
+remote: 
+To github.sydney.edu.au:SOFT2412-COMP9412-2026s2/A1-T27-43-rsha4444.git
+ * [new branch]      feature/is-valid-amount -> feature/is-valid-amount
+branch 'feature/is-valid-amount' set up to track 'origin/feature/is-valid-amount'.
+
+Current working folder:
+/Users/rajdipshah/UNI/Y3S1 - 2026 sem 2/SOFT2412/A1 test/rsha4444
+==================================
+STEP COMPLETE
+==================================
+READY FOR STEP 07
+rajdipshah@Rajdips-MacBook-Air ~/UNI/Y3S1 - 2026 sem 2/SOFT2412/A1 test/rsha4444 % >....                 
+      if [ "$changelog_ready" = true ]; then
+        remaining_unresolved=$(git diff --name-only --diff-filter=U)
+        if ! git rev-parse -q --verify MERGE_HEAD >/dev/null 2>&1 || [ -n "$remaining_unresolved" ]; then 
+          echo "STOP: Unresolved files remain or MERGE_HEAD disappeared. Team master was not pushed."
+          printf '%s
+' "$remaining_unresolved"
+          changelog_ready=false
+        fi
+      fi
+      if [ "$changelog_ready" = true ]; then
+        echo "CHANGELOG RESOLVED: preserved existing entries and added - isValidAmount(): validates positive finite numeric amounts -- Mohammad."
+        if git commit --no-edit; then
+          git status
+if git diff --check && git diff --cached --check && gradle classes && gradle testClasses; then
+  if gradle test --tests DataValidatorTest.testIsValidAmount; then
+    echo "PASS: The selected feature test passed."
+    if git push origin master; then workflow_succeeded=true; fi
+  else
+    echo "STOP: The selected independent feature test failed. Team master was not pushed."
+  fi
+else
+  echo "STOP: Working-tree, production compilation, or test compilation validation failed. Team master was not pushed."
+fi
+        else
+          echo "STOP: The automatic CHANGELOG merge commit failed. Team master was not pushed."
+        fi
+      fi
+      rm -f "$changelog_base" "$changelog_expected"
+    elif [ "$merge_in_progress" = true ] && [ -n "$unresolved_files" ]; then
+      echo "STOP: Conflicts include Java, test, source, or multiple files. Resolve every file carefully; these conflicts are never handled automatically."
+      printf '%s
+' "$unresolved_files"
+      echo "Team master was not pushed."
+    else
+      echo "STOP: The feature merge failed and no merge is in progress. Review the Git output; no validation or push was run."
+    fi
+  fi
+else
+  echo "STOP: Could not prepare team master or fetch the selected member's feature. No feature merge, tests, or push were run."
+fi
+fi
+
+if ! cd "$member_root"; then
+  echo "STOP: Could not return to the member root: $member_root"
+else
+  echo ""
+  echo "Current working folder:"
+  pwd
+  if [ "$step_verified" = true ] && [ "$workflow_succeeded" = true ]; then
+    echo "=================================="
+    echo "STEP COMPLETE"
+    echo "=================================="
+    echo "READY FOR STEP 08"
+  fi
+fi
+Already on 'master'
+Your branch is up to date with 'origin/master'.
+** WARNING: connection is not using a post-quantum key exchange algorithm.
+** This session may be vulnerable to "store now, decrypt later" attacks.
+** The server may need to be upgraded. See https://openssh.com/pq.html
+remote: Enumerating objects: 59, done.
+remote: Counting objects: 100% (59/59), done.
+remote: Compressing objects: 100% (17/17), done.
+remote: Total 46 (delta 26), reused 41 (delta 21), pack-reused 0 (from 0)
+Unpacking objects: 100% (46/46), 4.44 KiB | 122.00 KiB/s, done.
+From github.sydney.edu.au:SOFT2412-COMP9412-2026s2/A1-T27-43-IM-DUMMY
+   f230e9c..ae6a326  master     -> origin/master
+ * [new tag]         v0.2.0     -> v0.2.0
+Updating f230e9c..ae6a326
+Fast-forward
+ CHANGELOG.md                             |  8 +++++++-
+ build.gradle                             |  2 +-
+ src/main/java/CurrencyConverter.java     | 29 +++++++++++++++++++++++++++--
+ src/main/java/DataValidator.java         | 13 ++++++++++---
+ src/main/java/UserInterface.java         |  7 +++----
+ src/test/java/CurrencyConverterTest.java | 16 ++++++++++++----
+ src/test/java/UserInterfaceTest.java     | 18 +++++++++++++++---
+ 7 files changed, 75 insertions(+), 18 deletions(-)
+** WARNING: connection is not using a post-quantum key exchange algorithm.
+** This session may be vulnerable to "store now, decrypt later" attacks.
+** The server may need to be upgraded. See https://openssh.com/pq.html
+remote: Enumerating objects: 13, done.
+remote: Counting objects: 100% (13/13), done.
+remote: Compressing objects: 100% (2/2), done.
+remote: Total 7 (delta 4), reused 7 (delta 4), pack-reused 0 (from 0)
+Unpacking objects: 100% (7/7), 789 bytes | 131.00 KiB/s, done.
+From github.sydney.edu.au:SOFT2412-COMP9412-2026s2/A1-T27-43-rsha4444
+ * [new branch]      feature/is-valid-amount -> me/feature/is-valid-amount
+   ae89aab..7e56f97  master                  -> me/master
+Auto-merging CHANGELOG.md
+CONFLICT (content): Merge conflict in CHANGELOG.md
+Auto-merging src/main/java/DataValidator.java
+Automatic merge failed; fix conflicts and then commit the result.
+CHANGELOG-ONLY CONFLICT: resolving automatically...
+Updated 1 path from the index
+CHANGELOG RESOLVED: preserved existing entries and added - isValidAmount(): validates positive finite numeric amounts -- Mohammad.
+[master 469bd48] Merge remote-tracking branch 'me/feature/is-valid-amount'
+On branch master
+Your branch is ahead of 'origin/master' by 2 commits.
+  (use "git push" to publish your local commits)
+
+nothing to commit, working tree clean
+
+BUILD SUCCESSFUL in 1s
+1 actionable task: 1 executed
+Consider enabling configuration cache to speed up this build: https://docs.gradle.org/9.7.1/userguide/configuration_cache_enabling.html
+
+BUILD SUCCESSFUL in 1s
+2 actionable tasks: 1 executed, 1 up-to-date
+Consider enabling configuration cache to speed up this build: https://docs.gradle.org/9.7.1/userguide/configuration_cache_enabling.html
+> Task :test FAILED
+
+FAILURE: Build failed with an exception.
+
+* What went wrong:
+Execution failed for task ':test'.
+> No tests found for given includes: [DataValidatorTest.testIsValidAmount](--tests filter)
+
+* Try:
+> Run with --scan to get full insights from a Build Scan (powered by Develocity).
+
+BUILD FAILED in 2s
+4 actionable tasks: 2 executed, 2 up-to-date
+STOP: The selected independent feature test failed. Team master was not pushed.
+
+Current working folder:
+/Users/rajdipshah/UNI/Y3S1 - 2026 sem 2/SOFT2412/A1 test/rsha4444
+rajdipshah@Rajdips-MacBook-Air ~/UNI/Y3S1 - 2026 sem 2/SOFT2412/A1 test/rsha4444 % cd "im-A1-T27-43-DUMMY"
+
+gradle test \
+  --tests DataValidatorTest.testValidAmounts \
+  --tests DataValidatorTest.testInvalidAmounts
+
+> Task :test
+
+DataValidatorTest > testValidAmounts() PASSED
+
+DataValidatorTest > testInvalidAmounts() PASSED
+
+BUILD SUCCESSFUL in 54s
+4 actionable tasks: 2 executed, 2 up-to-date
+Consider enabling configuration cache to speed up this build: https://docs.gradle.org/9.7.1/userguide/configuration_cache_enabling.html
+rajdipshah@Rajdips-MacBook-Air ~/UNI/Y3S1 - 2026 sem 2/SOFT2412/A1 test/rsha4444/im-A1-T27-43-DUMMY % git push origin master
+** WARNING: connection is not using a post-quantum key exchange algorithm.
+** This session may be vulnerable to "store now, decrypt later" attacks.
+** The server may need to be upgraded. See https://openssh.com/pq.html
+Enumerating objects: 26, done.
+Counting objects: 100% (26/26), done.
+Delta compression using up to 8 threads
+Compressing objects: 100% (12/12), done.
+Writing objects: 100% (14/14), 1.43 KiB | 733.00 KiB/s, done.
+Total 14 (delta 8), reused 0 (delta 0), pack-reused 0 (from 0)
+remote: Resolving deltas: 100% (8/8), completed with 5 local objects.
+To github.sydney.edu.au:SOFT2412-COMP9412-2026s2/A1-T27-43-IM-DUMMY.git
+   ae6a326..469bd48  master -> master
+rajdipshah@Rajdips-MacBook-Air ~/UNI/Y3S1 - 2026 sem 2/SOFT2412/A1 test/rsha4444/im-A1-T27-43-DUMMY % >....
+
+if [ ! -d "$expected_repo/.git" ]; then
+  echo "STOP: Expected personal repository A1-T27-43-rsha4444 was not found in the current member root."
+  echo "No Git commands were run."
+  step_verified=false
+elif ! cd "$expected_repo"; then
+  echo "STOP: Could not enter A1-T27-43-rsha4444."
+  step_verified=false
+fi
+
+if [ "$step_verified" = true ]; then
+  git_root=$(git rev-parse --show-toplevel 2>/dev/null) || step_verified=false
+fi
+if [ "$step_verified" = true ]; then
+  actual_root=$(cd "$git_root" && pwd -P) || step_verified=false
+  if [ "$step_verified" = true ] && { [ "$actual_root" != "$expected_repo" ] || [ "$(basename "$actual_root")" != "A1-T27-43-rsha4444" ]; }; then
+    echo "STOP: The current Git repository is not the expected A1-T27-43-rsha4444 repository."
+    step_verified=false
+  fi
+fi
+
+if [ "$step_verified" = true ]; then
+  origin_url=$(git remote get-url origin 2>/dev/null) || step_verified=false
+  if [ "$step_verified" = true ] && [ "$origin_url" != "git@github.sydney.edu.au:SOFT2412-COMP9412-2026s2/A1-T27-43-rsha4444.git" ]; then
+    echo "STOP: origin does not match the expected personal repository URL."
+    step_verified=false
+  fi
+fi
+if [ "$step_verified" = true ]; then
+  upstream_url=$(git remote get-url upstream 2>/dev/null) || step_verified=false
+  if [ "$step_verified" = true ] && [ "$upstream_url" != "git@github.sydney.edu.au:SOFT2412-COMP9412-2026s2/A1-T27-43-IM-DUMMY.git" ]; then
+    echo "STOP: upstream does not match the expected personal repository URL."
+    step_verified=false
+  fi
+fi
+
+if [ "$step_verified" = true ]; then
+sync_ready=true
+if ! git checkout master; then sync_ready=false; fi
+if [ "$sync_ready" = true ] && ! git fetch upstream; then sync_ready=false; fi
+if [ "$sync_ready" = true ] && ! git merge --no-edit upstream/master; then sync_ready=false; fi
+if [ "$sync_ready" = true ] && ! git push origin master --tags; then sync_ready=false; fi
+if [ "$sync_ready" != true ]; then echo "STOP: Personal repository sync did not complete."; fi
+fi
+
+if ! cd "$member_root"; then
+  echo "STOP: Could not return to the member root: $member_root"
+else
+  echo ""
+  echo "Current working folder:"
+  pwd
+  if [ "$step_verified" = true ] && [ "$sync_ready" = true ]; then
+    echo "=================================="
+    echo "STEP COMPLETE"
+    echo "=================================="
+    echo "READY FOR STEP 02 OF THE NEXT ROUND"
+  fi
+fi
+STOP: Expected personal repository A1-T27-43-rsha4444 was not found in the current member root.
+No Git commands were run.
+
+Current working folder:
+/Users/rajdipshah/UNI/Y3S1 - 2026 sem 2/SOFT2412/A1 test/rsha4444/im-A1-T27-43-DUMMY
+rajdipshah@Rajdips-MacBook-Air ~/UNI/Y3S1 - 2026 sem 2/SOFT2412/A1 test/rsha4444/im-A1-T27-43-DUMMY % cd ..
+rajdipshah@Rajdips-MacBook-Air ~/UNI/Y3S1 - 2026 sem 2/SOFT2412/A1 test/rsha4444 % >....                   
+
+if [ ! -d "$expected_repo/.git" ]; then
+  echo "STOP: Expected personal repository A1-T27-43-rsha4444 was not found in the current member root."
+  echo "No Git commands were run."
+  step_verified=false
+elif ! cd "$expected_repo"; then
+  echo "STOP: Could not enter A1-T27-43-rsha4444."
+  step_verified=false
+fi
+
+if [ "$step_verified" = true ]; then
+  git_root=$(git rev-parse --show-toplevel 2>/dev/null) || step_verified=false
+fi
+if [ "$step_verified" = true ]; then
+  actual_root=$(cd "$git_root" && pwd -P) || step_verified=false
+  if [ "$step_verified" = true ] && { [ "$actual_root" != "$expected_repo" ] || [ "$(basename "$actual_root")" != "A1-T27-43-rsha4444" ]; }; then
+    echo "STOP: The current Git repository is not the expected A1-T27-43-rsha4444 repository."
+    step_verified=false
+  fi
+fi
+
+if [ "$step_verified" = true ]; then
+  origin_url=$(git remote get-url origin 2>/dev/null) || step_verified=false
+  if [ "$step_verified" = true ] && [ "$origin_url" != "git@github.sydney.edu.au:SOFT2412-COMP9412-2026s2/A1-T27-43-rsha4444.git" ]; then
+    echo "STOP: origin does not match the expected personal repository URL."
+    step_verified=false
+  fi
+fi
+if [ "$step_verified" = true ]; then
+  upstream_url=$(git remote get-url upstream 2>/dev/null) || step_verified=false
+  if [ "$step_verified" = true ] && [ "$upstream_url" != "git@github.sydney.edu.au:SOFT2412-COMP9412-2026s2/A1-T27-43-IM-DUMMY.git" ]; then
+    echo "STOP: upstream does not match the expected personal repository URL."
+    step_verified=false
+  fi
+fi
+
+if [ "$step_verified" = true ]; then
+sync_ready=true
+if ! git checkout master; then sync_ready=false; fi
+if [ "$sync_ready" = true ] && ! git fetch upstream; then sync_ready=false; fi
+if [ "$sync_ready" = true ] && ! git merge --no-edit upstream/master; then sync_ready=false; fi
+if [ "$sync_ready" = true ] && ! git push origin master --tags; then sync_ready=false; fi
+if [ "$sync_ready" != true ]; then echo "STOP: Personal repository sync did not complete."; fi
+fi
+
+if ! cd "$member_root"; then
+  echo "STOP: Could not return to the member root: $member_root"
+else
+  echo ""
+  echo "Current working folder:"
+  pwd
+  if [ "$step_verified" = true ] && [ "$sync_ready" = true ]; then
+    echo "=================================="
+    echo "STEP COMPLETE"
+    echo "=================================="
+    echo "READY FOR STEP 02 OF THE NEXT ROUND"
+  fi
+fi
+Switched to branch 'master'
+Your branch is up to date with 'origin/master'.
+** WARNING: connection is not using a post-quantum key exchange algorithm.
+** This session may be vulnerable to "store now, decrypt later" attacks.
+** The server may need to be upgraded. See https://openssh.com/pq.html
+remote: Enumerating objects: 105, done.
+remote: Counting objects: 100% (98/98), done.
+remote: Compressing objects: 100% (30/30), done.
+remote: Total 79 (delta 45), reused 69 (delta 35), pack-reused 0 (from 0)
+Unpacking objects: 100% (79/79), 7.17 KiB | 135.00 KiB/s, done.
+From github.sydney.edu.au:SOFT2412-COMP9412-2026s2/A1-T27-43-IM-DUMMY
+   7e56f97..a96dcb6  master     -> upstream/master
+ * [new tag]         v0.3.0     -> v0.3.0
+Updating 7e56f97..a96dcb6
+Fast-forward
+ CHANGELOG.md                             | 12 ++++++++++--
+ build.gradle                             |  2 +-
+ src/main/java/CurrencyConverter.java     | 36 ++++++++++++++++++++++++++++++------
+ src/main/java/DataValidator.java         | 27 +++++++++++++++++++++------
+ src/main/java/UserInterface.java         |  7 +++----
+ src/test/java/CurrencyConverterTest.java | 25 +++++++++++++++++--------
+ src/test/java/UserInterfaceTest.java     | 18 +++++++++++++++---
+ 7 files changed, 97 insertions(+), 30 deletions(-)
+** WARNING: connection is not using a post-quantum key exchange algorithm.
+** This session may be vulnerable to "store now, decrypt later" attacks.
+** The server may need to be upgraded. See https://openssh.com/pq.html
+Enumerating objects: 105, done.
+Counting objects: 100% (98/98), done.
+Delta compression using up to 8 threads
+Compressing objects: 100% (65/65), done.
+Writing objects: 100% (79/79), 7.49 KiB | 219.00 KiB/s, done.
+Total 79 (delta 44), reused 0 (delta 0), pack-reused 0 (from 0)
+remote: Resolving deltas: 100% (44/44), completed with 10 local objects.
+To github.sydney.edu.au:SOFT2412-COMP9412-2026s2/A1-T27-43-rsha4444.git
+   7e56f97..a96dcb6  master -> master
+ * [new tag]         v0.3.0 -> v0.3.0
+
+Current working folder:
+/Users/rajdipshah/UNI/Y3S1 - 2026 sem 2/SOFT2412/A1 test/rsha4444
+==================================
+STEP COMPLETE
+==================================
+READY FOR STEP 02 OF THE NEXT ROUND
+rajdipshah@Rajdips-MacBook-Air ~/UNI/Y3S1 - 2026 sem 2/SOFT2412/A1 test/rsha4444 % >....                   
+
+if [ ! -d "$expected_repo/.git" ]; then
+  echo "STOP: Expected personal repository A1-T27-43-rsha4444 was not found in the current member root."
+  echo "No Git commands were run."
+  step_verified=false
+elif ! cd "$expected_repo"; then
+  echo "STOP: Could not enter A1-T27-43-rsha4444."
+  step_verified=false
+fi
+
+if [ "$step_verified" = true ]; then
+  git_root=$(git rev-parse --show-toplevel 2>/dev/null) || step_verified=false
+fi
+if [ "$step_verified" = true ]; then
+  actual_root=$(cd "$git_root" && pwd -P) || step_verified=false
+  if [ "$step_verified" = true ] && { [ "$actual_root" != "$expected_repo" ] || [ "$(basename "$actual_root")" != "A1-T27-43-rsha4444" ]; }; then
+    echo "STOP: The current Git repository is not the expected A1-T27-43-rsha4444 repository."
+    step_verified=false
+  fi
+fi
+
+if [ "$step_verified" = true ]; then
+  origin_url=$(git remote get-url origin 2>/dev/null) || step_verified=false
+  if [ "$step_verified" = true ] && [ "$origin_url" != "git@github.sydney.edu.au:SOFT2412-COMP9412-2026s2/A1-T27-43-rsha4444.git" ]; then
+    echo "STOP: origin does not match the expected personal repository URL."
+    step_verified=false
+  fi
+fi
+if [ "$step_verified" = true ]; then
+  upstream_url=$(git remote get-url upstream 2>/dev/null) || step_verified=false
+  if [ "$step_verified" = true ] && [ "$upstream_url" != "git@github.sydney.edu.au:SOFT2412-COMP9412-2026s2/A1-T27-43-IM.git" ]; then
+    echo "STOP: upstream does not match the expected personal repository URL."
+    step_verified=false
+  fi
+fi
+
+if [ "$step_verified" = true ]; then
+sync_ready=true
+if ! git checkout master; then sync_ready=false; fi
+if [ "$sync_ready" = true ] && ! git fetch upstream; then sync_ready=false; fi
+if [ "$sync_ready" = true ] && ! git merge --no-edit upstream/master; then sync_ready=false; fi
+if [ "$sync_ready" = true ] && ! git push origin master --tags; then sync_ready=false; fi
+if [ "$sync_ready" != true ]; then echo "STOP: Personal repository sync did not complete."; fi
+fi
+
+if ! cd "$member_root"; then
+  echo "STOP: Could not return to the member root: $member_root"
+else
+  echo ""
+  echo "Current working folder:"
+  pwd
+  if [ "$step_verified" = true ] && [ "$sync_ready" = true ]; then
+    echo "=================================="
+    echo "STEP COMPLETE"
+    echo "=================================="
+    echo "READY FOR STEP 02 OF THE NEXT ROUND"
+  fi
+fi
+STOP: upstream does not match the expected personal repository URL.
+
+Current working folder:
+/Users/rajdipshah/UNI/Y3S1 - 2026 sem 2/SOFT2412/A1 test/rsha4444
+rajdipshah@Rajdips-MacBook-Air ~/UNI/Y3S1 - 2026 sem 2/SOFT2412/A1 test/rsha4444 % >....                   
+
+if [ ! -d "$expected_repo/.git" ]; then
+  echo "STOP: Expected personal repository A1-T27-43-rsha4444 was not found in the current member root."
+  echo "No Git commands were run."
+  step_verified=false
+elif ! cd "$expected_repo"; then
+  echo "STOP: Could not enter A1-T27-43-rsha4444."
+  step_verified=false
+fi
+
+if [ "$step_verified" = true ]; then
+  git_root=$(git rev-parse --show-toplevel 2>/dev/null) || step_verified=false
+fi
+if [ "$step_verified" = true ]; then
+  actual_root=$(cd "$git_root" && pwd -P) || step_verified=false
+  if [ "$step_verified" = true ] && { [ "$actual_root" != "$expected_repo" ] || [ "$(basename "$actual_root")" != "A1-T27-43-rsha4444" ]; }; then
+    echo "STOP: The current Git repository is not the expected A1-T27-43-rsha4444 repository."
+    step_verified=false
+  fi
+fi
+
+if [ "$step_verified" = true ]; then
+  origin_url=$(git remote get-url origin 2>/dev/null) || step_verified=false
+  if [ "$step_verified" = true ] && [ "$origin_url" != "git@github.sydney.edu.au:SOFT2412-COMP9412-2026s2/A1-T27-43-rsha4444.git" ]; then
+    echo "STOP: origin does not match the expected personal repository URL."
+    step_verified=false
+  fi
+fi
+if [ "$step_verified" = true ]; then
+  upstream_url=$(git remote get-url upstream 2>/dev/null) || step_verified=false
+  if [ "$step_verified" = true ] && [ "$upstream_url" != "git@github.sydney.edu.au:SOFT2412-COMP9412-2026s2/A1-T27-43-IM-DUMMY.git" ]; then
+    echo "STOP: upstream does not match the expected personal repository URL."
+    step_verified=false
+  fi
+fi
+
+if [ "$step_verified" = true ]; then
+sync_ready=true
+if ! git checkout master; then sync_ready=false; fi
+if [ "$sync_ready" = true ] && ! git fetch upstream; then sync_ready=false; fi
+if [ "$sync_ready" = true ] && ! git merge --no-edit upstream/master; then sync_ready=false; fi
+if [ "$sync_ready" = true ] && ! git push origin master --tags; then sync_ready=false; fi
+if [ "$sync_ready" != true ]; then echo "STOP: Personal repository sync did not complete."; fi
+fi
+
+if ! cd "$member_root"; then
+  echo "STOP: Could not return to the member root: $member_root"
+else
+  echo ""
+  echo "Current working folder:"
+  pwd
+  if [ "$step_verified" = true ] && [ "$sync_ready" = true ]; then
+    echo "=================================="
+    echo "STEP COMPLETE"
+    echo "=================================="
+    echo "READY FOR STEP 02 OF THE NEXT ROUND"
+  fi
+fi
+Already on 'master'
+Your branch is up to date with 'origin/master'.
+** WARNING: connection is not using a post-quantum key exchange algorithm.
+** This session may be vulnerable to "store now, decrypt later" attacks.
+** The server may need to be upgraded. See https://openssh.com/pq.html
+remote: Enumerating objects: 45, done.
+remote: Counting objects: 100% (45/45), done.
+remote: Compressing objects: 100% (9/9), done.
+remote: Total 33 (delta 19), reused 32 (delta 18), pack-reused 0 (from 0)
+Unpacking objects: 100% (33/33), 3.38 KiB | 128.00 KiB/s, done.
+From github.sydney.edu.au:SOFT2412-COMP9412-2026s2/A1-T27-43-IM-DUMMY
+   a96dcb6..a43c4cc  master     -> upstream/master
+ * [new tag]         v0.4.0     -> v0.4.0
+Updating a96dcb6..a43c4cc
+Fast-forward
+ CHANGELOG.md                             |  4 +++-
+ build.gradle                             |  2 +-
+ src/main/java/CurrencyConverter.java     | 14 +++-----------
+ src/main/java/UserInterface.java         | 26 ++++++++++++++++++--------
+ src/test/java/CurrencyConverterTest.java | 54 +++++++++++++++++++++++++++++++++---------------------
+ src/test/java/UserInterfaceTest.java     | 25 +++++++++++++++++++++----
+ 6 files changed, 79 insertions(+), 46 deletions(-)
+** WARNING: connection is not using a post-quantum key exchange algorithm.
+** This session may be vulnerable to "store now, decrypt later" attacks.
+** The server may need to be upgraded. See https://openssh.com/pq.html
+Enumerating objects: 45, done.
+Counting objects: 100% (45/45), done.
+Delta compression using up to 8 threads
+Compressing objects: 100% (27/27), done.
+Writing objects: 100% (33/33), 3.50 KiB | 1.75 MiB/s, done.
+Total 33 (delta 19), reused 0 (delta 0), pack-reused 0 (from 0)
+remote: Resolving deltas: 100% (19/19), completed with 9 local objects.
+To github.sydney.edu.au:SOFT2412-COMP9412-2026s2/A1-T27-43-rsha4444.git
+   a96dcb6..a43c4cc  master -> master
+ * [new tag]         v0.4.0 -> v0.4.0
+
+Current working folder:
+/Users/rajdipshah/UNI/Y3S1 - 2026 sem 2/SOFT2412/A1 test/rsha4444
+==================================
+STEP COMPLETE
+==================================
+READY FOR STEP 02 OF THE NEXT ROUND
+rajdipshah@Rajdips-MacBook-Air ~/UNI/Y3S1 - 2026 sem 2/SOFT2412/A1 test/rsha4444 % 
+
+rajdipshah@Rajdips-MacBook-Air ~/UNI/Y3S1 - 2026 sem 2/SOFT2412/A1 test/rsha3333/im-A1-T27-43-DUMMY % clear
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+rajdipshah@Rajdips-MacBook-Air ~/UNI/Y3S1 - 2026 sem 2/SOFT2412/A1 test/rsha3333/im-A1-T27-43-DUMMY % echo "round 2"
+
+round 2
+rajdipshah@Rajdips-MacBook-Air ~/UNI/Y3S1 - 2026 sem 2/SOFT2412/A1 test/rsha3333/im-A1-T27-43-DUMMY % cd ..
+rajdipshah@Rajdips-MacBook-Air ~/UNI/Y3S1 - 2026 sem 2/SOFT2412/A1 test/rsha3333 % >....                 
+
+if [ ! -d "$expected_repo/.git" ]; then
+  echo "STOP: Expected personal repository A1-T27-43-rsha3333 was not found in the current member root."
+  echo "No Git commands were run."
+  step_verified=false
+elif ! cd "$expected_repo"; then
+  echo "STOP: Could not enter A1-T27-43-rsha3333."
+  step_verified=false
+fi
+
+if [ "$step_verified" = true ]; then
+  git_root=$(git rev-parse --show-toplevel 2>/dev/null) || step_verified=false
+fi
+if [ "$step_verified" = true ]; then
+  actual_root=$(cd "$git_root" && pwd -P) || step_verified=false
+  if [ "$step_verified" = true ] && { [ "$actual_root" != "$expected_repo" ] || [ "$(basename "$actual_root")" != "A1-T27-43-rsha3333" ]; }; then
+    echo "STOP: The current Git repository is not the expected A1-T27-43-rsha3333 repository."
+    step_verified=false
+  fi
+fi
+
+if [ "$step_verified" = true ]; then
+  origin_url=$(git remote get-url origin 2>/dev/null) || step_verified=false
+  if [ "$step_verified" = true ] && [ "$origin_url" != "git@github.sydney.edu.au:SOFT2412-COMP9412-2026s2/A1-T27-43-rsha3333.git" ]; then
+    echo "STOP: origin does not match the expected personal repository URL."
+    step_verified=false
+  fi
+fi
+if [ "$step_verified" = true ]; then
+  upstream_url=$(git remote get-url upstream 2>/dev/null) || step_verified=false
+  if [ "$step_verified" = true ] && [ "$upstream_url" != "git@github.sydney.edu.au:SOFT2412-COMP9412-2026s2/A1-T27-43-IM-DUMMY.git" ]; then
+    echo "STOP: upstream does not match the expected personal repository URL."
+    step_verified=false
+  fi
+fi
+
+if [ "$step_verified" = true ]; then
+sync_ready=true
+if ! git checkout master; then sync_ready=false; fi
+if [ "$sync_ready" = true ] && ! git fetch upstream; then sync_ready=false; fi
+if [ "$sync_ready" = true ] && ! git merge --no-edit upstream/master; then sync_ready=false; fi
+if [ "$sync_ready" = true ] && ! git push origin master --tags; then sync_ready=false; fi
+if [ "$sync_ready" != true ]; then echo "STOP: Personal repository sync did not complete."; fi
+fi
+
+if ! cd "$member_root"; then
+  echo "STOP: Could not return to the member root: $member_root"
+else
+  echo ""
+  echo "Current working folder:"
+  pwd
+  if [ "$step_verified" = true ] && [ "$sync_ready" = true ]; then
+    echo "=================================="
+    echo "STEP COMPLETE"
+    echo "=================================="
+    echo "READY FOR STEP 02 OF THE NEXT ROUND"
+  fi
+fi
+Already on 'master'
+Your branch is up to date with 'origin/master'.
+** WARNING: connection is not using a post-quantum key exchange algorithm.
+** This session may be vulnerable to "store now, decrypt later" attacks.
+** The server may need to be upgraded. See https://openssh.com/pq.html
+Already up to date.
+** WARNING: connection is not using a post-quantum key exchange algorithm.
+** This session may be vulnerable to "store now, decrypt later" attacks.
+** The server may need to be upgraded. See https://openssh.com/pq.html
+Everything up-to-date
+
+Current working folder:
+/Users/rajdipshah/UNI/Y3S1 - 2026 sem 2/SOFT2412/A1 test/rsha3333
+==================================
+STEP COMPLETE
+==================================
+READY FOR STEP 02 OF THE NEXT ROUND
+rajdipshah@Rajdips-MacBook-Air ~/UNI/Y3S1 - 2026 sem 2/SOFT2412/A1 test/rsha3333 % >....                 
+  step_verified=false
+fi
+
+if [ "$step_verified" = true ]; then
+  git_root=$(git rev-parse --show-toplevel 2>/dev/null) || step_verified=false
+fi
+if [ "$step_verified" = true ]; then
+  actual_root=$(cd "$git_root" && pwd -P) || step_verified=false
+  if [ "$step_verified" = true ] && { [ "$actual_root" != "$expected_repo" ] || [ "$(basename "$actual_root")" != "A1-T27-43-rsha3333" ]; }; then
+    echo "STOP: The current Git repository is not the expected A1-T27-43-rsha3333 repository."
+    step_verified=false
+  fi
+fi
+
+if [ "$step_verified" = true ]; then
+  origin_url=$(git remote get-url origin 2>/dev/null) || step_verified=false
+  if [ "$step_verified" = true ] && [ "$origin_url" != "git@github.sydney.edu.au:SOFT2412-COMP9412-2026s2/A1-T27-43-rsha3333.git" ]; then
+    echo "STOP: origin does not match the expected personal repository URL."
+    step_verified=false
+  fi
+fi
+if [ "$step_verified" = true ]; then
+  upstream_url=$(git remote get-url upstream 2>/dev/null) || step_verified=false
+  if [ "$step_verified" = true ] && [ "$upstream_url" != "git@github.sydney.edu.au:SOFT2412-COMP9412-2026s2/A1-T27-43-IM-DUMMY.git" ]; then
+    echo "STOP: upstream does not match the expected personal repository URL."
+    step_verified=false
+  fi
+fi
+
+if [ "$step_verified" = true ]; then
+step_succeeded=false
+if git checkout master && git fetch upstream && git merge --no-edit upstream/master; then
+  if git show-ref --verify --quiet refs/heads/feature/is-valid-currency; then
+    git checkout feature/is-valid-currency
+  else
+    git checkout -b feature/is-valid-currency
+  fi
+  if [ "$(git branch --show-current)" = "feature/is-valid-currency" ] && git status; then
+    step_succeeded=true
+  else
+    echo "STOP: Expected feature branch feature/is-valid-currency is not checked out."
+  fi
+fi
+fi
+
+if ! cd "$member_root"; then
+  echo "STOP: Could not return to the member root: $member_root"
+else
+  echo ""
+  echo "Current working folder:"
+  pwd
+  if [ "$step_verified" = true ] && [ "$step_succeeded" = true ]; then
+    echo "=================================="
+    echo "STEP COMPLETE"
+    echo "=================================="
+    echo "READY FOR STEP 03"
+  fi
+fi
+Already on 'master'
+Your branch is up to date with 'origin/master'.
+** WARNING: connection is not using a post-quantum key exchange algorithm.
+** This session may be vulnerable to "store now, decrypt later" attacks.
+** The server may need to be upgraded. See https://openssh.com/pq.html
+Already up to date.
+Switched to a new branch 'feature/is-valid-currency'
+On branch feature/is-valid-currency
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+	bin/
+	src/main/java/.LCKDataValidator.java~
+
+nothing added to commit but untracked files present (use "git add" to track)
+
+Current working folder:
+/Users/rajdipshah/UNI/Y3S1 - 2026 sem 2/SOFT2412/A1 test/rsha3333
+==================================
+STEP COMPLETE
+==================================
+READY FOR STEP 03
+rajdipshah@Rajdips-MacBook-Air ~/UNI/Y3S1 - 2026 sem 2/SOFT2412/A1 test/rsha3333 % >....                 
+  step_verified=false
+fi
+
+if [ "$step_verified" = true ]; then
+  git_root=$(git rev-parse --show-toplevel 2>/dev/null) || step_verified=false
+fi
+if [ "$step_verified" = true ]; then
+  actual_root=$(cd "$git_root" && pwd -P) || step_verified=false
+  if [ "$step_verified" = true ] && { [ "$actual_root" != "$expected_repo" ] || [ "$(basename "$actual_root")" != "A1-T27-43-rsha3333" ]; }; then
+    echo "STOP: The current Git repository is not the expected A1-T27-43-rsha3333 repository."
+    step_verified=false
+  fi
+fi
+
+if [ "$step_verified" = true ]; then
+  origin_url=$(git remote get-url origin 2>/dev/null) || step_verified=false
+  if [ "$step_verified" = true ] && [ "$origin_url" != "git@github.sydney.edu.au:SOFT2412-COMP9412-2026s2/A1-T27-43-rsha3333.git" ]; then
+    echo "STOP: origin does not match the expected personal repository URL."
+    step_verified=false
+  fi
+fi
+if [ "$step_verified" = true ]; then
+  upstream_url=$(git remote get-url upstream 2>/dev/null) || step_verified=false
+  if [ "$step_verified" = true ] && [ "$upstream_url" != "git@github.sydney.edu.au:SOFT2412-COMP9412-2026s2/A1-T27-43-IM-DUMMY.git" ]; then
+    echo "STOP: upstream does not match the expected personal repository URL."
+    step_verified=false
+  fi
+fi
+
+if [ "$step_verified" = true ]; then
+step_succeeded=false
+current_branch=$(git branch --show-current)
+if [ "$current_branch" != "feature/is-valid-currency" ]; then
+  echo "STOP: Step 06 requires branch feature/is-valid-currency; current branch is $current_branch. Nothing was staged or committed."
+else
+  if git status &&       git add src/main/java/DataValidator.java src/test/java/DataValidatorTest.java CHANGELOG.md &&       git commit -m "Validate currency codes" -m "Implement null-safe, case-insensitive supported-currency validation and retain the existing shared tests." &&       git push -u origin feature/is-valid-currency; then
+    step_succeeded=true
+  fi
+fi
+fi
+
+if ! cd "$member_root"; then
+  echo "STOP: Could not return to the member root: $member_root"
+else
+  echo ""
+  echo "Current working folder:"
+  pwd
+  if [ "$step_verified" = true ] && [ "$step_succeeded" = true ]; then
+    echo "=================================="
+    echo "STEP COMPLETE"
+    echo "=================================="
+    echo "READY FOR STEP 07"
+  fi
+fi
+On branch feature/is-valid-currency
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+	modified:   CHANGELOG.md
+	modified:   src/main/java/DataValidator.java
+
+no changes added to commit (use "git add" and/or "git commit -a")
+[feature/is-valid-currency 5a7dffa] Validate currency codes
+ 2 files changed, 12 insertions(+), 4 deletions(-)
+** WARNING: connection is not using a post-quantum key exchange algorithm.
+** This session may be vulnerable to "store now, decrypt later" attacks.
+** The server may need to be upgraded. See https://openssh.com/pq.html
+Enumerating objects: 13, done.
+Counting objects: 100% (13/13), done.
+Delta compression using up to 8 threads
+Compressing objects: 100% (6/6), done.
+Writing objects: 100% (7/7), 824 bytes | 824.00 KiB/s, done.
+Total 7 (delta 4), reused 0 (delta 0), pack-reused 0 (from 0)
+remote: Resolving deltas: 100% (4/4), completed with 4 local objects.
+remote: 
+remote: Create a pull request for 'feature/is-valid-currency' on GitHub by visiting:
+remote:      https://github.sydney.edu.au/SOFT2412-COMP9412-2026s2/A1-T27-43-rsha3333/pull/new/feature/is-valid-currency
+remote: 
+To github.sydney.edu.au:SOFT2412-COMP9412-2026s2/A1-T27-43-rsha3333.git
+ * [new branch]      feature/is-valid-currency -> feature/is-valid-currency
+branch 'feature/is-valid-currency' set up to track 'origin/feature/is-valid-currency'.
+
+Current working folder:
+/Users/rajdipshah/UNI/Y3S1 - 2026 sem 2/SOFT2412/A1 test/rsha3333
+==================================
+STEP COMPLETE
+==================================
+READY FOR STEP 07
+rajdipshah@Rajdips-MacBook-Air ~/UNI/Y3S1 - 2026 sem 2/SOFT2412/A1 test/rsha3333 % >....                 
+      if [ "$changelog_ready" = true ]; then
+        remaining_unresolved=$(git diff --name-only --diff-filter=U)
+        if ! git rev-parse -q --verify MERGE_HEAD >/dev/null 2>&1 || [ -n "$remaining_unresolved" ]; then 
+          echo "STOP: Unresolved files remain or MERGE_HEAD disappeared. Team master was not pushed."
+          printf '%s
+' "$remaining_unresolved"
+          changelog_ready=false
+        fi
+      fi
+      if [ "$changelog_ready" = true ]; then
+        echo "CHANGELOG RESOLVED: preserved existing entries and added - isValidCurrency(): validates supported currency codes case-insensitively -- Natasha Sutanto."
+        if git commit --no-edit; then
+          git status
+if git diff --check && git diff --cached --check && gradle classes && gradle testClasses; then
+  if gradle test --tests DataValidatorTest.testIsValidCurrency; then
+    echo "PASS: The selected feature test passed."
+    if git push origin master; then workflow_succeeded=true; fi
+  else
+    echo "STOP: The selected independent feature test failed. Team master was not pushed."
+  fi
+else
+  echo "STOP: Working-tree, production compilation, or test compilation validation failed. Team master was not pushed."
+fi
+        else
+          echo "STOP: The automatic CHANGELOG merge commit failed. Team master was not pushed."
+        fi
+      fi
+      rm -f "$changelog_base" "$changelog_expected"
+    elif [ "$merge_in_progress" = true ] && [ -n "$unresolved_files" ]; then
+      echo "STOP: Conflicts include Java, test, source, or multiple files. Resolve every file carefully; these conflicts are never handled automatically."
+      printf '%s
+' "$unresolved_files"
+      echo "Team master was not pushed."
+    else
+      echo "STOP: The feature merge failed and no merge is in progress. Review the Git output; no validation or push was run."
+    fi
+  fi
+else
+  echo "STOP: Could not prepare team master or fetch the selected member's feature. No feature merge, tests, or push were run."
+fi
+fi
+
+if ! cd "$member_root"; then
+  echo "STOP: Could not return to the member root: $member_root"
+else
+  echo ""
+  echo "Current working folder:"
+  pwd
+  if [ "$step_verified" = true ] && [ "$workflow_succeeded" = true ]; then
+    echo "=================================="
+    echo "STEP COMPLETE"
+    echo "=================================="
+    echo "READY FOR STEP 08"
+  fi
+fi
+Already on 'master'
+Your branch is up to date with 'origin/master'.
+** WARNING: connection is not using a post-quantum key exchange algorithm.
+** This session may be vulnerable to "store now, decrypt later" attacks.
+** The server may need to be upgraded. See https://openssh.com/pq.html
+remote: Enumerating objects: 73, done.
+remote: Counting objects: 100% (72/72), done.
+remote: Compressing objects: 100% (16/16), done.
+remote: Total 47 (delta 27), reused 43 (delta 23), pack-reused 0 (from 0)
+Unpacking objects: 100% (47/47), 4.57 KiB | 137.00 KiB/s, done.
+From github.sydney.edu.au:SOFT2412-COMP9412-2026s2/A1-T27-43-IM-DUMMY
+   60fbc5d..20edd4c  master     -> origin/master
+ * [new tag]         v0.2.0     -> v0.2.0
+Updating 60fbc5d..20edd4c
+Fast-forward
+ CHANGELOG.md                             |  8 +++++++-
+ build.gradle                             |  2 +-
+ src/main/java/CurrencyConverter.java     | 29 +++++++++++++++++++++++++++--
+ src/main/java/DataValidator.java         | 13 ++++++++++---
+ src/main/java/UserInterface.java         |  7 +++----
+ src/test/java/CurrencyConverterTest.java | 16 ++++++++++++----
+ src/test/java/UserInterfaceTest.java     | 18 +++++++++++++++---
+ 7 files changed, 75 insertions(+), 18 deletions(-)
+** WARNING: connection is not using a post-quantum key exchange algorithm.
+** This session may be vulnerable to "store now, decrypt later" attacks.
+** The server may need to be upgraded. See https://openssh.com/pq.html
+remote: Enumerating objects: 13, done.
+remote: Counting objects: 100% (13/13), done.
+remote: Compressing objects: 100% (2/2), done.
+remote: Total 7 (delta 4), reused 7 (delta 4), pack-reused 0 (from 0)
+Unpacking objects: 100% (7/7), 804 bytes | 114.00 KiB/s, done.
+From github.sydney.edu.au:SOFT2412-COMP9412-2026s2/A1-T27-43-rsha3333
+ * [new branch]      feature/is-valid-currency -> me/feature/is-valid-currency
+   ae89aab..7e56f97  master                    -> me/master
+Auto-merging CHANGELOG.md
+CONFLICT (content): Merge conflict in CHANGELOG.md
+Automatic merge failed; fix conflicts and then commit the result.
+CHANGELOG-ONLY CONFLICT: resolving automatically...
+Updated 1 path from the index
+CHANGELOG RESOLVED: preserved existing entries and added - isValidCurrency(): validates supported currency codes case-insensitively -- Natasha Sutanto.
+[master ae6a326] Merge remote-tracking branch 'me/feature/is-valid-currency'
+On branch master
+Your branch is ahead of 'origin/master' by 2 commits.
+  (use "git push" to publish your local commits)
+
+nothing to commit, working tree clean
+
+BUILD SUCCESSFUL in 1s
+1 actionable task: 1 executed
+Consider enabling configuration cache to speed up this build: https://docs.gradle.org/9.7.1/userguide/configuration_cache_enabling.html
+
+BUILD SUCCESSFUL in 697ms
+2 actionable tasks: 1 executed, 1 up-to-date
+Consider enabling configuration cache to speed up this build: https://docs.gradle.org/9.7.1/userguide/configuration_cache_enabling.html
+> Task :test FAILED
+
+FAILURE: Build failed with an exception.
+
+* What went wrong:
+Execution failed for task ':test'.
+> No tests found for given includes: [DataValidatorTest.testIsValidCurrency](--tests filter)
+
+* Try:
+> Run with --scan to get full insights from a Build Scan (powered by Develocity).
+
+BUILD FAILED in 2s
+4 actionable tasks: 2 executed, 2 up-to-date
+STOP: The selected independent feature test failed. Team master was not pushed.
+
+Current working folder:
+/Users/rajdipshah/UNI/Y3S1 - 2026 sem 2/SOFT2412/A1 test/rsha3333
+rajdipshah@Rajdips-MacBook-Air ~/UNI/Y3S1 - 2026 sem 2/SOFT2412/A1 test/rsha3333 % cd "im-A1-T27-43-DUMMY"
+
+gradle test \
+  --tests DataValidatorTest.testValidCurrencies \
+  --tests DataValidatorTest.testInvalidCurrencies \
+  --tests DataValidatorTest.testCaseInsensitiveCurrency
+
+> Task :test
+
+DataValidatorTest > testInvalidCurrencies() PASSED
+
+DataValidatorTest > testCaseInsensitiveCurrency() PASSED
+
+DataValidatorTest > testValidCurrencies() PASSED
+
+BUILD SUCCESSFUL in 2s
+4 actionable tasks: 2 executed, 2 up-to-date
+Consider enabling configuration cache to speed up this build: https://docs.gradle.org/9.7.1/userguide/configuration_cache_enabling.html
+rajdipshah@Rajdips-MacBook-Air ~/UNI/Y3S1 - 2026 sem 2/SOFT2412/A1 test/rsha3333/im-A1-T27-43-DUMMY % git push origin master
+** WARNING: connection is not using a post-quantum key exchange algorithm.
+** This session may be vulnerable to "store now, decrypt later" attacks.
+** The server may need to be upgraded. See https://openssh.com/pq.html
+Enumerating objects: 25, done.
+Counting objects: 100% (24/24), done.
+Delta compression using up to 8 threads
+Compressing objects: 100% (11/11), done.
+Writing objects: 100% (13/13), 1.33 KiB | 1.33 MiB/s, done.
+Total 13 (delta 7), reused 0 (delta 0), pack-reused 0 (from 0)
+remote: Resolving deltas: 100% (7/7), completed with 4 local objects.
+To github.sydney.edu.au:SOFT2412-COMP9412-2026s2/A1-T27-43-IM-DUMMY.git
+   20edd4c..ae6a326  master -> master
+rajdipshah@Rajdips-MacBook-Air ~/UNI/Y3S1 - 2026 sem 2/SOFT2412/A1 test/rsha3333/im-A1-T27-43-DUMMY % >....
+
+if [ ! -d "$expected_repo/.git" ]; then
+  echo "STOP: Expected personal repository A1-T27-43-rsha3333 was not found in the current member root."
+  echo "No Git commands were run."
+  step_verified=false
+elif ! cd "$expected_repo"; then
+  echo "STOP: Could not enter A1-T27-43-rsha3333."
+  step_verified=false
+fi
+
+if [ "$step_verified" = true ]; then
+  git_root=$(git rev-parse --show-toplevel 2>/dev/null) || step_verified=false
+fi
+if [ "$step_verified" = true ]; then
+  actual_root=$(cd "$git_root" && pwd -P) || step_verified=false
+  if [ "$step_verified" = true ] && { [ "$actual_root" != "$expected_repo" ] || [ "$(basename "$actual_root")" != "A1-T27-43-rsha3333" ]; }; then
+    echo "STOP: The current Git repository is not the expected A1-T27-43-rsha3333 repository."
+    step_verified=false
+  fi
+fi
+
+if [ "$step_verified" = true ]; then
+  origin_url=$(git remote get-url origin 2>/dev/null) || step_verified=false
+  if [ "$step_verified" = true ] && [ "$origin_url" != "git@github.sydney.edu.au:SOFT2412-COMP9412-2026s2/A1-T27-43-rsha3333.git" ]; then
+    echo "STOP: origin does not match the expected personal repository URL."
+    step_verified=false
+  fi
+fi
+if [ "$step_verified" = true ]; then
+  upstream_url=$(git remote get-url upstream 2>/dev/null) || step_verified=false
+  if [ "$step_verified" = true ] && [ "$upstream_url" != "git@github.sydney.edu.au:SOFT2412-COMP9412-2026s2/A1-T27-43-IM-DUMMY.git" ]; then
+    echo "STOP: upstream does not match the expected personal repository URL."
+    step_verified=false
+  fi
+fi
+
+if [ "$step_verified" = true ]; then
+sync_ready=true
+if ! git checkout master; then sync_ready=false; fi
+if [ "$sync_ready" = true ] && ! git fetch upstream; then sync_ready=false; fi
+if [ "$sync_ready" = true ] && ! git merge --no-edit upstream/master; then sync_ready=false; fi
+if [ "$sync_ready" = true ] && ! git push origin master --tags; then sync_ready=false; fi
+if [ "$sync_ready" != true ]; then echo "STOP: Personal repository sync did not complete."; fi
+fi
+
+if ! cd "$member_root"; then
+  echo "STOP: Could not return to the member root: $member_root"
+else
+  echo ""
+  echo "Current working folder:"
+  pwd
+  if [ "$step_verified" = true ] && [ "$sync_ready" = true ]; then
+    echo "=================================="
+    echo "STEP COMPLETE"
+    echo "=================================="
+    echo "READY FOR STEP 02 OF THE NEXT ROUND"
+  fi
+fi
+STOP: Expected personal repository A1-T27-43-rsha3333 was not found in the current member root.
+No Git commands were run.
+
+Current working folder:
+/Users/rajdipshah/UNI/Y3S1 - 2026 sem 2/SOFT2412/A1 test/rsha3333/im-A1-T27-43-DUMMY
+rajdipshah@Rajdips-MacBook-Air ~/UNI/Y3S1 - 2026 sem 2/SOFT2412/A1 test/rsha3333/im-A1-T27-43-DUMMY % cd ..
+rajdipshah@Rajdips-MacBook-Air ~/UNI/Y3S1 - 2026 sem 2/SOFT2412/A1 test/rsha3333 % >....                   
+
+if [ ! -d "$expected_repo/.git" ]; then
+  echo "STOP: Expected personal repository A1-T27-43-rsha3333 was not found in the current member root."
+  echo "No Git commands were run."
+  step_verified=false
+elif ! cd "$expected_repo"; then
+  echo "STOP: Could not enter A1-T27-43-rsha3333."
+  step_verified=false
+fi
+
+if [ "$step_verified" = true ]; then
+  git_root=$(git rev-parse --show-toplevel 2>/dev/null) || step_verified=false
+fi
+if [ "$step_verified" = true ]; then
+  actual_root=$(cd "$git_root" && pwd -P) || step_verified=false
+  if [ "$step_verified" = true ] && { [ "$actual_root" != "$expected_repo" ] || [ "$(basename "$actual_root")" != "A1-T27-43-rsha3333" ]; }; then
+    echo "STOP: The current Git repository is not the expected A1-T27-43-rsha3333 repository."
+    step_verified=false
+  fi
+fi
+
+if [ "$step_verified" = true ]; then
+  origin_url=$(git remote get-url origin 2>/dev/null) || step_verified=false
+  if [ "$step_verified" = true ] && [ "$origin_url" != "git@github.sydney.edu.au:SOFT2412-COMP9412-2026s2/A1-T27-43-rsha3333.git" ]; then
+    echo "STOP: origin does not match the expected personal repository URL."
+    step_verified=false
+  fi
+fi
+if [ "$step_verified" = true ]; then
+  upstream_url=$(git remote get-url upstream 2>/dev/null) || step_verified=false
+  if [ "$step_verified" = true ] && [ "$upstream_url" != "git@github.sydney.edu.au:SOFT2412-COMP9412-2026s2/A1-T27-43-IM-DUMMY.git" ]; then
+    echo "STOP: upstream does not match the expected personal repository URL."
+    step_verified=false
+  fi
+fi
+
+if [ "$step_verified" = true ]; then
+sync_ready=true
+if ! git checkout master; then sync_ready=false; fi
+if [ "$sync_ready" = true ] && ! git fetch upstream; then sync_ready=false; fi
+if [ "$sync_ready" = true ] && ! git merge --no-edit upstream/master; then sync_ready=false; fi
+if [ "$sync_ready" = true ] && ! git push origin master --tags; then sync_ready=false; fi
+if [ "$sync_ready" != true ]; then echo "STOP: Personal repository sync did not complete."; fi
+fi
+
+if ! cd "$member_root"; then
+  echo "STOP: Could not return to the member root: $member_root"
+else
+  echo ""
+  echo "Current working folder:"
+  pwd
+  if [ "$step_verified" = true ] && [ "$sync_ready" = true ]; then
+    echo "=================================="
+    echo "STEP COMPLETE"
+    echo "=================================="
+    echo "READY FOR STEP 02 OF THE NEXT ROUND"
+  fi
+fi
+Switched to branch 'master'
+Your branch is up to date with 'origin/master'.
+** WARNING: connection is not using a post-quantum key exchange algorithm.
+** This session may be vulnerable to "store now, decrypt later" attacks.
+** The server may need to be upgraded. See https://openssh.com/pq.html
+remote: Enumerating objects: 105, done.
+remote: Counting objects: 100% (98/98), done.
+remote: Compressing objects: 100% (30/30), done.
+remote: Total 79 (delta 45), reused 69 (delta 35), pack-reused 0 (from 0)
+Unpacking objects: 100% (79/79), 7.14 KiB | 128.00 KiB/s, done.
+From github.sydney.edu.au:SOFT2412-COMP9412-2026s2/A1-T27-43-IM-DUMMY
+   7e56f97..a96dcb6  master     -> upstream/master
+ * [new tag]         v0.3.0     -> v0.3.0
+Updating 7e56f97..a96dcb6
+Fast-forward
+ CHANGELOG.md                             | 12 ++++++++++--
+ build.gradle                             |  2 +-
+ src/main/java/CurrencyConverter.java     | 36 ++++++++++++++++++++++++++++++------
+ src/main/java/DataValidator.java         | 27 +++++++++++++++++++++------
+ src/main/java/UserInterface.java         |  7 +++----
+ src/test/java/CurrencyConverterTest.java | 25 +++++++++++++++++--------
+ src/test/java/UserInterfaceTest.java     | 18 +++++++++++++++---
+ 7 files changed, 97 insertions(+), 30 deletions(-)
+** WARNING: connection is not using a post-quantum key exchange algorithm.
+** This session may be vulnerable to "store now, decrypt later" attacks.
+** The server may need to be upgraded. See https://openssh.com/pq.html
+Enumerating objects: 105, done.
+Counting objects: 100% (98/98), done.
+Delta compression using up to 8 threads
+Compressing objects: 100% (65/65), done.
+Writing objects: 100% (79/79), 7.52 KiB | 855.00 KiB/s, done.
+Total 79 (delta 44), reused 0 (delta 0), pack-reused 0 (from 0)
+remote: Resolving deltas: 100% (44/44), completed with 10 local objects.
+To github.sydney.edu.au:SOFT2412-COMP9412-2026s2/A1-T27-43-rsha3333.git
+   7e56f97..a96dcb6  master -> master
+ * [new tag]         v0.3.0 -> v0.3.0
+
+Current working folder:
+/Users/rajdipshah/UNI/Y3S1 - 2026 sem 2/SOFT2412/A1 test/rsha3333
+==================================
+STEP COMPLETE
+==================================
+READY FOR STEP 02 OF THE NEXT ROUND
+rajdipshah@Rajdips-MacBook-Air ~/UNI/Y3S1 - 2026 sem 2/SOFT2412/A1 test/rsha3333 % >....                   
+
+if [ ! -d "$expected_repo/.git" ]; then
+  echo "STOP: Expected personal repository A1-T27-43-rsha3333 was not found in the current member root."
+  echo "No Git commands were run."
+  step_verified=false
+elif ! cd "$expected_repo"; then
+  echo "STOP: Could not enter A1-T27-43-rsha3333."
+  step_verified=false
+fi
+
+if [ "$step_verified" = true ]; then
+  git_root=$(git rev-parse --show-toplevel 2>/dev/null) || step_verified=false
+fi
+if [ "$step_verified" = true ]; then
+  actual_root=$(cd "$git_root" && pwd -P) || step_verified=false
+  if [ "$step_verified" = true ] && { [ "$actual_root" != "$expected_repo" ] || [ "$(basename "$actual_root")" != "A1-T27-43-rsha3333" ]; }; then
+    echo "STOP: The current Git repository is not the expected A1-T27-43-rsha3333 repository."
+    step_verified=false
+  fi
+fi
+
+if [ "$step_verified" = true ]; then
+  origin_url=$(git remote get-url origin 2>/dev/null) || step_verified=false
+  if [ "$step_verified" = true ] && [ "$origin_url" != "git@github.sydney.edu.au:SOFT2412-COMP9412-2026s2/A1-T27-43-rsha3333.git" ]; then
+    echo "STOP: origin does not match the expected personal repository URL."
+    step_verified=false
+  fi
+fi
+if [ "$step_verified" = true ]; then
+  upstream_url=$(git remote get-url upstream 2>/dev/null) || step_verified=false
+  if [ "$step_verified" = true ] && [ "$upstream_url" != "git@github.sydney.edu.au:SOFT2412-COMP9412-2026s2/A1-T27-43-IM-DUMMY.git" ]; then
+    echo "STOP: upstream does not match the expected personal repository URL."
+    step_verified=false
+  fi
+fi
+
+if [ "$step_verified" = true ]; then
+sync_ready=true
+if ! git checkout master; then sync_ready=false; fi
+if [ "$sync_ready" = true ] && ! git fetch upstream; then sync_ready=false; fi
+if [ "$sync_ready" = true ] && ! git merge --no-edit upstream/master; then sync_ready=false; fi
+if [ "$sync_ready" = true ] && ! git push origin master --tags; then sync_ready=false; fi
+if [ "$sync_ready" != true ]; then echo "STOP: Personal repository sync did not complete."; fi
+fi
+
+if ! cd "$member_root"; then
+  echo "STOP: Could not return to the member root: $member_root"
+else
+  echo ""
+  echo "Current working folder:"
+  pwd
+  if [ "$step_verified" = true ] && [ "$sync_ready" = true ]; then
+    echo "=================================="
+    echo "STEP COMPLETE"
+    echo "=================================="
+    echo "READY FOR STEP 02 OF THE NEXT ROUND"
+  fi
+fi
+Already on 'master'
+Your branch is up to date with 'origin/master'.
+** WARNING: connection is not using a post-quantum key exchange algorithm.
+** This session may be vulnerable to "store now, decrypt later" attacks.
+** The server may need to be upgraded. See https://openssh.com/pq.html
+remote: Enumerating objects: 45, done.
+remote: Counting objects: 100% (45/45), done.
+remote: Compressing objects: 100% (9/9), done.
+remote: Total 33 (delta 19), reused 32 (delta 18), pack-reused 0 (from 0)
+Unpacking objects: 100% (33/33), 3.38 KiB | 138.00 KiB/s, done.
+From github.sydney.edu.au:SOFT2412-COMP9412-2026s2/A1-T27-43-IM-DUMMY
+   a96dcb6..a43c4cc  master     -> upstream/master
+ * [new tag]         v0.4.0     -> v0.4.0
+Updating a96dcb6..a43c4cc
+Fast-forward
+ CHANGELOG.md                             |  4 +++-
+ build.gradle                             |  2 +-
+ src/main/java/CurrencyConverter.java     | 14 +++-----------
+ src/main/java/UserInterface.java         | 26 ++++++++++++++++++--------
+ src/test/java/CurrencyConverterTest.java | 54 +++++++++++++++++++++++++++++++++---------------------
+ src/test/java/UserInterfaceTest.java     | 25 +++++++++++++++++++++----
+ 6 files changed, 79 insertions(+), 46 deletions(-)
+** WARNING: connection is not using a post-quantum key exchange algorithm.
+** This session may be vulnerable to "store now, decrypt later" attacks.
+** The server may need to be upgraded. See https://openssh.com/pq.html
+Enumerating objects: 45, done.
+Counting objects: 100% (45/45), done.
+Delta compression using up to 8 threads
+Compressing objects: 100% (27/27), done.
+Writing objects: 100% (33/33), 3.50 KiB | 447.00 KiB/s, done.
+Total 33 (delta 19), reused 0 (delta 0), pack-reused 0 (from 0)
+remote: Resolving deltas: 100% (19/19), completed with 9 local objects.
+To github.sydney.edu.au:SOFT2412-COMP9412-2026s2/A1-T27-43-rsha3333.git
+   a96dcb6..a43c4cc  master -> master
+ * [new tag]         v0.4.0 -> v0.4.0
+
+Current working folder:
+/Users/rajdipshah/UNI/Y3S1 - 2026 sem 2/SOFT2412/A1 test/rsha3333
+==================================
+STEP COMPLETE
+==================================
+READY FOR STEP 02 OF THE NEXT ROUND
+rajdipshah@Rajdips-MacBook-Air ~/UNI/Y3S1 - 2026 sem 2/SOFT2412/A1 test/rsha3333 % 
+
+rajdipshah@Rajdips-MacBook-Air ~/UNI/Y3S1 - 2026 sem 2/SOFT2412/A1 test/rsha2222 % clear
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+rajdipshah@Rajdips-MacBook-Air ~/UNI/Y3S1 - 2026 sem 2/SOFT2412/A1 test/rsha2222 % echo "round 2"
+
+round 2
+rajdipshah@Rajdips-MacBook-Air ~/UNI/Y3S1 - 2026 sem 2/SOFT2412/A1 test/rsha2222 % >....                 
+  step_verified=false
+fi
+
+if [ "$step_verified" = true ]; then
+  git_root=$(git rev-parse --show-toplevel 2>/dev/null) || step_verified=false
+fi
+if [ "$step_verified" = true ]; then
+  actual_root=$(cd "$git_root" && pwd -P) || step_verified=false
+  if [ "$step_verified" = true ] && { [ "$actual_root" != "$expected_repo" ] || [ "$(basename "$actual_root")" != "A1-T27-43-rsha2222" ]; }; then
+    echo "STOP: The current Git repository is not the expected A1-T27-43-rsha2222 repository."
+    step_verified=false
+  fi
+fi
+
+if [ "$step_verified" = true ]; then
+  origin_url=$(git remote get-url origin 2>/dev/null) || step_verified=false
+  if [ "$step_verified" = true ] && [ "$origin_url" != "git@github.sydney.edu.au:SOFT2412-COMP9412-2026s2/A1-T27-43-rsha2222.git" ]; then
+    echo "STOP: origin does not match the expected personal repository URL."
+    step_verified=false
+  fi
+fi
+if [ "$step_verified" = true ]; then
+  upstream_url=$(git remote get-url upstream 2>/dev/null) || step_verified=false
+  if [ "$step_verified" = true ] && [ "$upstream_url" != "git@github.sydney.edu.au:SOFT2412-COMP9412-2026s2/A1-T27-43-IM-DUMMY.git" ]; then
+    echo "STOP: upstream does not match the expected personal repository URL."
+    step_verified=false
+  fi
+fi
+
+if [ "$step_verified" = true ]; then
+step_succeeded=false
+if git checkout master && git fetch upstream && git merge --no-edit upstream/master; then
+  if git show-ref --verify --quiet refs/heads/feature/get-supported-currencies; then
+    git checkout feature/get-supported-currencies
+  else
+    git checkout -b feature/get-supported-currencies
+  fi
+  if [ "$(git branch --show-current)" = "feature/get-supported-currencies" ] && git status; then
+    step_succeeded=true
+  else
+    echo "STOP: Expected feature branch feature/get-supported-currencies is not checked out."
+  fi
+fi
+fi
+
+if ! cd "$member_root"; then
+  echo "STOP: Could not return to the member root: $member_root"
+else
+  echo ""
+  echo "Current working folder:"
+  pwd
+  if [ "$step_verified" = true ] && [ "$step_succeeded" = true ]; then
+    echo "=================================="
+    echo "STEP COMPLETE"
+    echo "=================================="
+    echo "READY FOR STEP 03"
+  fi
+fi
+Already on 'master'
+Your branch is up to date with 'origin/master'.
+** WARNING: connection is not using a post-quantum key exchange algorithm.
+** This session may be vulnerable to "store now, decrypt later" attacks.
+** The server may need to be upgraded. See https://openssh.com/pq.html
+Already up to date.
+Switched to a new branch 'feature/get-supported-currencies'
+On branch feature/get-supported-currencies
+nothing to commit, working tree clean
+
+Current working folder:
+/Users/rajdipshah/UNI/Y3S1 - 2026 sem 2/SOFT2412/A1 test/rsha2222
+==================================
+STEP COMPLETE
+==================================
+READY FOR STEP 03
+rajdipshah@Rajdips-MacBook-Air ~/UNI/Y3S1 - 2026 sem 2/SOFT2412/A1 test/rsha2222 % >....                 
+  step_verified=false
+fi
+
+if [ "$step_verified" = true ]; then
+  git_root=$(git rev-parse --show-toplevel 2>/dev/null) || step_verified=false
+fi
+if [ "$step_verified" = true ]; then
+  actual_root=$(cd "$git_root" && pwd -P) || step_verified=false
+  if [ "$step_verified" = true ] && { [ "$actual_root" != "$expected_repo" ] || [ "$(basename "$actual_root")" != "A1-T27-43-rsha2222" ]; }; then
+    echo "STOP: The current Git repository is not the expected A1-T27-43-rsha2222 repository."
+    step_verified=false
+  fi
+fi
+
+if [ "$step_verified" = true ]; then
+  origin_url=$(git remote get-url origin 2>/dev/null) || step_verified=false
+  if [ "$step_verified" = true ] && [ "$origin_url" != "git@github.sydney.edu.au:SOFT2412-COMP9412-2026s2/A1-T27-43-rsha2222.git" ]; then
+    echo "STOP: origin does not match the expected personal repository URL."
+    step_verified=false
+  fi
+fi
+if [ "$step_verified" = true ]; then
+  upstream_url=$(git remote get-url upstream 2>/dev/null) || step_verified=false
+  if [ "$step_verified" = true ] && [ "$upstream_url" != "git@github.sydney.edu.au:SOFT2412-COMP9412-2026s2/A1-T27-43-IM-DUMMY.git" ]; then
+    echo "STOP: upstream does not match the expected personal repository URL."
+    step_verified=false
+  fi
+fi
+
+if [ "$step_verified" = true ]; then
+step_succeeded=false
+current_branch=$(git branch --show-current)
+if [ "$current_branch" != "feature/get-supported-currencies" ]; then
+  echo "STOP: Step 06 requires branch feature/get-supported-currencies; current branch is $current_branch. Nothing was staged or committed."
+else
+  if git status &&       git add src/main/java/CurrencyConverter.java src/test/java/CurrencyConverterTest.java CHANGELOG.md &&       git commit -m "Return supported currencies" -m "Implement getSupportedCurrencies with the required USD, EUR, GBP, and AUD order and replace its test." &&       git push -u origin feature/get-supported-currencies; then
+    step_succeeded=true
+  fi
+fi
+fi
+
+if ! cd "$member_root"; then
+  echo "STOP: Could not return to the member root: $member_root"
+else
+  echo ""
+  echo "Current working folder:"
+  pwd
+  if [ "$step_verified" = true ] && [ "$step_succeeded" = true ]; then
+    echo "=================================="
+    echo "STEP COMPLETE"
+    echo "=================================="
+    echo "READY FOR STEP 07"
+  fi
+fi
+On branch feature/get-supported-currencies
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+	modified:   CHANGELOG.md
+	modified:   src/main/java/CurrencyConverter.java
+	modified:   src/test/java/CurrencyConverterTest.java
+
+no changes added to commit (use "git add" and/or "git commit -a")
+[feature/get-supported-currencies 532b9a9] Return supported currencies
+ 3 files changed, 14 insertions(+), 12 deletions(-)
+** WARNING: connection is not using a post-quantum key exchange algorithm.
+** This session may be vulnerable to "store now, decrypt later" attacks.
+** The server may need to be upgraded. See https://openssh.com/pq.html
+Enumerating objects: 19, done.
+Counting objects: 100% (19/19), done.
+Delta compression using up to 8 threads
+Compressing objects: 100% (8/8), done.
+Writing objects: 100% (10/10), 1014 bytes | 1014.00 KiB/s, done.
+Total 10 (delta 6), reused 0 (delta 0), pack-reused 0 (from 0)
+remote: Resolving deltas: 100% (6/6), completed with 6 local objects.
+remote: 
+remote: Create a pull request for 'feature/get-supported-currencies' on GitHub by visiting:
+remote:      https://github.sydney.edu.au/SOFT2412-COMP9412-2026s2/A1-T27-43-rsha2222/pull/new/feature/get-supported-currencies
+remote: 
+To github.sydney.edu.au:SOFT2412-COMP9412-2026s2/A1-T27-43-rsha2222.git
+ * [new branch]      feature/get-supported-currencies -> feature/get-supported-currencies
+branch 'feature/get-supported-currencies' set up to track 'origin/feature/get-supported-currencies'.
+
+Current working folder:
+/Users/rajdipshah/UNI/Y3S1 - 2026 sem 2/SOFT2412/A1 test/rsha2222
+==================================
+STEP COMPLETE
+==================================
+READY FOR STEP 07
+rajdipshah@Rajdips-MacBook-Air ~/UNI/Y3S1 - 2026 sem 2/SOFT2412/A1 test/rsha2222 % >....                 
+      if [ "$changelog_ready" = true ]; then
+        remaining_unresolved=$(git diff --name-only --diff-filter=U)
+        if ! git rev-parse -q --verify MERGE_HEAD >/dev/null 2>&1 || [ -n "$remaining_unresolved" ]; then 
+          echo "STOP: Unresolved files remain or MERGE_HEAD disappeared. Team master was not pushed."
+          printf '%s
+' "$remaining_unresolved"
+          changelog_ready=false
+        fi
+      fi
+      if [ "$changelog_ready" = true ]; then
+        echo "CHANGELOG RESOLVED: preserved existing entries and added - getSupportedCurrencies(): returns the four supported currency codes -- Tiya Agrawal."
+        if git commit --no-edit; then
+          git status
+if git diff --check && git diff --cached --check && gradle classes && gradle testClasses; then
+  if gradle test --tests CurrencyConverterTest.testGetSupportedCurrencies; then
+    echo "PASS: The selected feature test passed."
+    if git push origin master; then workflow_succeeded=true; fi
+  else
+    echo "STOP: The selected independent feature test failed. Team master was not pushed."
+  fi
+else
+  echo "STOP: Working-tree, production compilation, or test compilation validation failed. Team master was not pushed."
+fi
+        else
+          echo "STOP: The automatic CHANGELOG merge commit failed. Team master was not pushed."
+        fi
+      fi
+      rm -f "$changelog_base" "$changelog_expected"
+    elif [ "$merge_in_progress" = true ] && [ -n "$unresolved_files" ]; then
+      echo "STOP: Conflicts include Java, test, source, or multiple files. Resolve every file carefully; these conflicts are never handled automatically."
+      printf '%s
+' "$unresolved_files"
+      echo "Team master was not pushed."
+    else
+      echo "STOP: The feature merge failed and no merge is in progress. Review the Git output; no validation or push was run."
+    fi
+  fi
+else
+  echo "STOP: Could not prepare team master or fetch the selected member's feature. No feature merge, tests, or push were run."
+fi
+fi
+
+if ! cd "$member_root"; then
+  echo "STOP: Could not return to the member root: $member_root"
+else
+  echo ""
+  echo "Current working folder:"
+  pwd
+  if [ "$step_verified" = true ] && [ "$workflow_succeeded" = true ]; then
+    echo "=================================="
+    echo "STEP COMPLETE"
+    echo "=================================="
+    echo "READY FOR STEP 08"
+  fi
+fi
+Already on 'master'
+Your branch is up to date with 'origin/master'.
+** WARNING: connection is not using a post-quantum key exchange algorithm.
+** This session may be vulnerable to "store now, decrypt later" attacks.
+** The server may need to be upgraded. See https://openssh.com/pq.html
+remote: Enumerating objects: 86, done.
+remote: Counting objects: 100% (84/84), done.
+remote: Compressing objects: 100% (22/22), done.
+remote: Total 60 (delta 34), reused 54 (delta 28), pack-reused 0 (from 0)
+Unpacking objects: 100% (60/60), 5.65 KiB | 131.00 KiB/s, done.
+From github.sydney.edu.au:SOFT2412-COMP9412-2026s2/A1-T27-43-IM-DUMMY
+   36d6e0f..20edd4c  master     -> origin/master
+ * [new tag]         v0.2.0     -> v0.2.0
+Updating 36d6e0f..20edd4c
+Fast-forward
+ CHANGELOG.md                             |  6 ++++++
+ build.gradle                             |  2 +-
+ src/main/java/CurrencyConverter.java     | 29 +++++++++++++++++++++++++++--
+ src/main/java/DataValidator.java         | 21 +++++++++++++++------
+ src/main/java/UserInterface.java         |  7 +++----
+ src/test/java/CurrencyConverterTest.java | 16 ++++++++++++----
+ src/test/java/UserInterfaceTest.java     | 18 +++++++++++++++---
+ 7 files changed, 79 insertions(+), 20 deletions(-)
+** WARNING: connection is not using a post-quantum key exchange algorithm.
+** This session may be vulnerable to "store now, decrypt later" attacks.
+** The server may need to be upgraded. See https://openssh.com/pq.html
+remote: Enumerating objects: 19, done.
+remote: Counting objects: 100% (19/19), done.
+remote: Compressing objects: 100% (2/2), done.
+remote: Total 10 (delta 6), reused 10 (delta 6), pack-reused 0 (from 0)
+Unpacking objects: 100% (10/10), 994 bytes | 110.00 KiB/s, done.
+From github.sydney.edu.au:SOFT2412-COMP9412-2026s2/A1-T27-43-rsha2222
+ * [new branch]      feature/get-supported-currencies -> me/feature/get-supported-currencies
+   ae89aab..7e56f97  master                           -> me/master
+Auto-merging CHANGELOG.md
+CONFLICT (content): Merge conflict in CHANGELOG.md
+Auto-merging src/main/java/CurrencyConverter.java
+Auto-merging src/test/java/CurrencyConverterTest.java
+CONFLICT (content): Merge conflict in src/test/java/CurrencyConverterTest.java
+Automatic merge failed; fix conflicts and then commit the result.
+STOP: Conflicts include Java, test, source, or multiple files. Resolve every file carefully; these conflicts are never handled automatically.
+CHANGELOG.md
+src/test/java/CurrencyConverterTest.java
+Team master was not pushed.
+
+Current working folder:
+/Users/rajdipshah/UNI/Y3S1 - 2026 sem 2/SOFT2412/A1 test/rsha2222
+rajdipshah@Rajdips-MacBook-Air ~/UNI/Y3S1 - 2026 sem 2/SOFT2412/A1 test/rsha2222 % git log --all --oneline --decorate --graph -- src/main/java/CurrencyConverter.java
+fatal: not a git repository (or any of the parent directories): .git
+rajdipshah@Rajdips-MacBook-Air ~/UNI/Y3S1 - 2026 sem 2/SOFT2412/A1 test/rsha2222 % ls 
+A1-T27-43-rsha2222	im-A1-T27-43-DUMMY
+rajdipshah@Rajdips-MacBook-Air ~/UNI/Y3S1 - 2026 sem 2/SOFT2412/A1 test/rsha2222 % cd  A1-T27-43-rsha2222 
+rajdipshah@Rajdips-MacBook-Air ~/UNI/Y3S1 - 2026 sem 2/SOFT2412/A1 test/rsha2222/A1-T27-43-rsha2222 % git log --all --oneline --decorate --graph -- src/main/java/CurrencyConverter.java
+* 532b9a9 (HEAD -> feature/get-supported-currencies, origin/feature/get-supported-currencies) Return supported currencies
+* eaa6ca2 Implement two-decimal rounding
+* ae89aab (tag: v0.1.0) Initial scaffolding for Assignment 1
+rajdipshah@Rajdips-MacBook-Air ~/UNI/Y3S1 - 2026 sem 2/SOFT2412/A1 test/rsha2222/A1-T27-43-rsha2222 % cd ../im-A1-T27-43-DUMMY
+
+git status
+On branch master
+Your branch is up to date with 'origin/master'.
+
+You have unmerged paths.
+  (fix conflicts and run "git commit")
+  (use "git merge --abort" to abort the merge)
+
+Changes to be committed:
+	modified:   src/main/java/CurrencyConverter.java
+
+Unmerged paths:
+  (use "git add <file>..." to mark resolution)
+	both modified:   CHANGELOG.md
+	both modified:   src/test/java/CurrencyConverterTest.java
+
+rajdipshah@Rajdips-MacBook-Air ~/UNI/Y3S1 - 2026 sem 2/SOFT2412/A1 test/rsha2222/im-A1-T27-43-DUMMY % git checkout --conflict=merge CHANGELOG.md src/test/java/CurrencyConverterTest.java
+
+cat CHANGELOG.md
+
+sed -n '1,120p' src/test/java/CurrencyConverterTest.java
+Recreated 2 merge conflicts
+# Changelog
+<<<<<<< ours
+
+=======
+>>>>>>> theirs
+## Unreleased
+- showMenu(): displays the three application menu options -- Raj Shah
+
+- parseAmount(): parses valid amounts and returns zero for invalid input -- Mohammad
+- normalizeCurrency(): trims and uppercases currency codes -- Natasha Sutanto
+- handleConversion(): validates input and performs an interactive conversion -- Tiya Agrawal
+- showExchangeRates(): displays all supported exchange-rate pairs -- Raj Shah
+- roundToTwoDecimals(): rounds a value to two decimal places -- Daniel Kostandy
+<<<<<<< ours
+- getExchangeRate(): derives exchange rates from fixed USD base rates -- Daniel Kostandy
+=======
+- getSupportedCurrencies(): returns the four supported currency codes -- Tiya Agrawal
+>>>>>>> theirs
+<!--
+Add one line here for each feature branch, newest at the top, like:
+
+
+- convert(): converts an amount between two currencies -- <your name>
+
+Everyone adds lines to the same place, so merges here will sometimes
+conflict. Keep both lines, delete the <<<<<<< / ======= / >>>>>>> markers,
+then `git add CHANGELOG.md` and commit the merge.
+-->
+
+// src/test/java/CurrencyConverterTest.java
+import static org.junit.jupiter.api.Assertions.fail;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
+/**
+ * Tests for CurrencyConverter
+ */
+public class CurrencyConverterTest {
+
+    private CurrencyConverter converter;
+
+    @BeforeEach
+    public void setUp() {
+        converter = new CurrencyConverter();
+    }
+
+    @Test
+    public void testConvertUSDToEUR() {
+        // TODO: Test converting 100 USD to EUR
+        // Should return approximately 85.0 if rate is 0.85
+        fail("Test not implemented yet");
+    }
+
+    @Test
+    public void testConvertSameCurrency() {
+        // TODO: Test converting USD to USD should return same amount
+        fail("Test not implemented yet");
+    }
+
+    @Test
+    public void testConvertZeroAmount() {
+        // TODO: Test converting 0 amount
+        fail("Test not implemented yet");
+    }
+
+<<<<<<< ours
+    @Test
+    public void testGetSupportedCurrencies() {
+        // TODO: Test that getSupportedCurrencies returns correct array
+        // Should contain ["USD", "EUR", "GBP", "AUD"]
+        fail("Test not implemented yet");
+    }
+    
+=======
+@Test
+public void testGetSupportedCurrencies() {
+    CurrencyConverter converter = new CurrencyConverter();
+
+    org.junit.jupiter.api.Assertions.assertArrayEquals(
+            new String[]{"USD", "EUR", "GBP", "AUD"},
+            converter.getSupportedCurrencies());
+}
+
+>>>>>>> theirs
+    @Test
+    public void testGetExchangeRate() {
+        CurrencyConverter converter = new CurrencyConverter();
+
+        org.junit.jupiter.api.Assertions.assertEquals(0.85,
+                converter.getExchangeRate("USD", "EUR"), 0.000001);
+        org.junit.jupiter.api.Assertions.assertEquals(1.0,
+                converter.getExchangeRate("GBP", "GBP"), 0.000001);
+        org.junit.jupiter.api.Assertions.assertEquals(0.75 / 0.85,
+                converter.getExchangeRate("EUR", "GBP"), 0.000001);
+        org.junit.jupiter.api.Assertions.assertEquals(1.30 / 0.75,
+                converter.getExchangeRate("GBP", "AUD"), 0.000001);
+    }
+
+    @Test
+    public void testConvertAllCurrencyPairs() {
+        // TODO: Test conversion between all supported currency pairs
+        fail("Test not implemented yet");
+    }
+
+    @Test
+    public void testRoundToTwoDecimals() {
+        CurrencyConverter converter = new CurrencyConverter();
+
+        org.junit.jupiter.api.Assertions.assertEquals(1.18,
+                converter.roundToTwoDecimals(1.1764705), 0.000001);
+        org.junit.jupiter.api.Assertions.assertEquals(0.88,
+                converter.roundToTwoDecimals(0.8823529), 0.000001);
+        org.junit.jupiter.api.Assertions.assertEquals(85.0,
+                converter.roundToTwoDecimals(85.0), 0.000001);
+    }
+}
+rajdipshah@Rajdips-MacBook-Air ~/UNI/Y3S1 - 2026 sem 2/SOFT2412/A1 test/rsha2222/im-A1-T27-43-DUMMY % cd ..
+rajdipshah@Rajdips-MacBook-Air ~/UNI/Y3S1 - 2026 sem 2/SOFT2412/A1 test/rsha2222 % ls 
+A1-T27-43-rsha2222	im-A1-T27-43-DUMMY
+rajdipshah@Rajdips-MacBook-Air ~/UNI/Y3S1 - 2026 sem 2/SOFT2412/A1 test/rsha2222 % cd A1-T27-43-rsha2222
+rajdipshah@Rajdips-MacBook-Air ~/UNI/Y3S1 - 2026 sem 2/SOFT2412/A1 test/rsha2222/A1-T27-43-rsha2222 % git add CHANGELOG.md src/test/java/CurrencyConverterTest.java
+git status
+On branch feature/get-supported-currencies
+Your branch is up to date with 'origin/feature/get-supported-currencies'.
+
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+	modified:   CHANGELOG.md
+	modified:   src/test/java/CurrencyConverterTest.java
+
+rajdipshah@Rajdips-MacBook-Air ~/UNI/Y3S1 - 2026 sem 2/SOFT2412/A1 test/rsha2222/A1-T27-43-rsha2222 % git restore --staged CHANGELOG.md src/test/java/CurrencyConverterTest.java
+git restore CHANGELOG.md src/test/java/CurrencyConverterTest.java
+
+cd ../im-A1-T27-43-DUMMY
+git status
+On branch master
+Your branch is up to date with 'origin/master'.
+
+You have unmerged paths.
+  (fix conflicts and run "git commit")
+  (use "git merge --abort" to abort the merge)
+
+Changes to be committed:
+	modified:   src/main/java/CurrencyConverter.java
+
+Unmerged paths:
+  (use "git add <file>..." to mark resolution)
+	both modified:   CHANGELOG.md
+	both modified:   src/test/java/CurrencyConverterTest.java
+
+rajdipshah@Rajdips-MacBook-Air ~/UNI/Y3S1 - 2026 sem 2/SOFT2412/A1 test/rsha2222/im-A1-T27-43-DUMMY % git add CHANGELOG.md src/test/java/CurrencyConverterTest.java
+git status
+On branch master
+Your branch is up to date with 'origin/master'.
+
+All conflicts fixed but you are still merging.
+  (use "git commit" to conclude merge)
+
+Changes to be committed:
+	modified:   CHANGELOG.md
+	modified:   src/main/java/CurrencyConverter.java
+	modified:   src/test/java/CurrencyConverterTest.java
+
+rajdipshah@Rajdips-MacBook-Air ~/UNI/Y3S1 - 2026 sem 2/SOFT2412/A1 test/rsha2222/im-A1-T27-43-DUMMY % git commit --no-edit
+[master b0e0a85] Merge remote-tracking branch 'me/feature/get-supported-currencies'
+rajdipshah@Rajdips-MacBook-Air ~/UNI/Y3S1 - 2026 sem 2/SOFT2412/A1 test/rsha2222/im-A1-T27-43-DUMMY % gradle test --tests CurrencyConverterTest.testGetSupportedCurrencies
+
+> Task :test
+
+CurrencyConverterTest > testGetSupportedCurrencies() PASSED
+
+BUILD SUCCESSFUL in 2s
+4 actionable tasks: 4 executed
+Consider enabling configuration cache to speed up this build: https://docs.gradle.org/9.7.1/userguide/configuration_cache_enabling.html
+rajdipshah@Rajdips-MacBook-Air ~/UNI/Y3S1 - 2026 sem 2/SOFT2412/A1 test/rsha2222/im-A1-T27-43-DUMMY % git push origin master
+** WARNING: connection is not using a post-quantum key exchange algorithm.
+** This session may be vulnerable to "store now, decrypt later" attacks.
+** The server may need to be upgraded. See https://openssh.com/pq.html
+To github.sydney.edu.au:SOFT2412-COMP9412-2026s2/A1-T27-43-IM-DUMMY.git
+ ! [rejected]        master -> master (fetch first)
+error: failed to push some refs to 'github.sydney.edu.au:SOFT2412-COMP9412-2026s2/A1-T27-43-IM-DUMMY.git'
+hint: Updates were rejected because the remote contains work that you do not
+hint: have locally. This is usually caused by another repository pushing to
+hint: the same ref. If you want to integrate the remote changes, use
+hint: 'git pull' before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+rajdipshah@Rajdips-MacBook-Air ~/UNI/Y3S1 - 2026 sem 2/SOFT2412/A1 test/rsha2222/im-A1-T27-43-DUMMY % git fetch origin
+git status
+git log --oneline --graph --decorate --all -12
+** WARNING: connection is not using a post-quantum key exchange algorithm.
+** This session may be vulnerable to "store now, decrypt later" attacks.
+** The server may need to be upgraded. See https://openssh.com/pq.html
+remote: Enumerating objects: 39, done.
+remote: Counting objects: 100% (38/38), done.
+remote: Compressing objects: 100% (10/10), done.
+remote: Total 27 (delta 15), reused 25 (delta 13), pack-reused 0 (from 0)
+Unpacking objects: 100% (27/27), 2.62 KiB | 121.00 KiB/s, done.
+From github.sydney.edu.au:SOFT2412-COMP9412-2026s2/A1-T27-43-IM-DUMMY
+   20edd4c..469bd48  master     -> origin/master
+On branch master
+Your branch and 'origin/master' have diverged,
+and have 2 and 4 different commits each, respectively.
+  (use "git pull" if you want to integrate the remote branch with yours)
+
+nothing to commit, working tree clean
+*   b0e0a85 (HEAD -> master) Merge remote-tracking branch 'me/feature/get-supported-currencies'
+|\  
+| * 532b9a9 (me/feature/get-supported-currencies) Return supported currencies
+| | *   469bd48 (origin/master, origin/HEAD) Merge remote-tracking branch 'me/feature/is-valid-amount'
+| | |\  
+| | | * 05108bc Validate positive amounts
+| | |/  
+| |/|   
+| | * ae6a326 Merge remote-tracking branch 'me/feature/is-valid-currency'
+| |/| 
+|/| | 
+| | * 5a7dffa Validate currency codes
+| |/  
+* |   20edd4c Merge remote-tracking branch 'me/feature/show-menu'
+|\ \  
+| * | 8c69409 Display application menu
+| |/  
+* |   8c3f10c Merge remote-tracking branch 'me/feature/get-exchange-rate'
+|\ \  
+| |/  
+|/|   
+| * d17cca7 Derive currency exchange rates
+|/  
+* 7e56f97 (tag: v0.2.0, me/master, me/HEAD) Release v0.2.0
+*   f230e9c Merge remote-tracking branch 'me/feature/parse-amount'
+|\  
+rajdipshah@Rajdips-MacBook-Air ~/UNI/Y3S1 - 2026 sem 2/SOFT2412/A1 test/rsha2222/im-A1-T27-43-DUMMY % git merge --no-edit origin/master
+Auto-merging CHANGELOG.md
+Merge made by the 'ort' strategy.
+ CHANGELOG.md                     |  2 ++
+ src/main/java/DataValidator.java | 27 +++++++++++++++++++++------
+ 2 files changed, 23 insertions(+), 6 deletions(-)
+rajdipshah@Rajdips-MacBook-Air ~/UNI/Y3S1 - 2026 sem 2/SOFT2412/A1 test/rsha2222/im-A1-T27-43-DUMMY % gradle test --tests CurrencyConverterTest.testGetSupportedCurrencies
+
+> Task :test
+
+CurrencyConverterTest > testGetSupportedCurrencies() PASSED
+
+BUILD SUCCESSFUL in 2s
+4 actionable tasks: 3 executed, 1 up-to-date
+Consider enabling configuration cache to speed up this build: https://docs.gradle.org/9.7.1/userguide/configuration_cache_enabling.html
+rajdipshah@Rajdips-MacBook-Air ~/UNI/Y3S1 - 2026 sem 2/SOFT2412/A1 test/rsha2222/im-A1-T27-43-DUMMY % gradle test --tests UserInterfaceTest.testShowExchangeRates
+
+> Task :test
+
+UserInterfaceTest > testShowExchangeRates() PASSED
+
+BUILD SUCCESSFUL in 1s
+4 actionable tasks: 2 executed, 2 up-to-date
+Consider enabling configuration cache to speed up this build: https://docs.gradle.org/9.7.1/userguide/configuration_cache_enabling.html
+rajdipshah@Rajdips-MacBook-Air ~/UNI/Y3S1 - 2026 sem 2/SOFT2412/A1 test/rsha2222/im-A1-T27-43-DUMMY % git push origin master
+** WARNING: connection is not using a post-quantum key exchange algorithm.
+** This session may be vulnerable to "store now, decrypt later" attacks.
+** The server may need to be upgraded. See https://openssh.com/pq.html
+Enumerating objects: 53, done.
+Counting objects: 100% (49/49), done.
+Delta compression using up to 8 threads
+Compressing objects: 100% (21/21), done.
+Writing objects: 100% (26/26), 2.30 KiB | 2.30 MiB/s, done.
+Total 26 (delta 15), reused 0 (delta 0), pack-reused 0 (from 0)
+remote: Resolving deltas: 100% (15/15), completed with 8 local objects.
+To github.sydney.edu.au:SOFT2412-COMP9412-2026s2/A1-T27-43-IM-DUMMY.git
+   469bd48..3f559a0  master -> master
+rajdipshah@Rajdips-MacBook-Air ~/UNI/Y3S1 - 2026 sem 2/SOFT2412/A1 test/rsha2222/im-A1-T27-43-DUMMY % >....
+
+if [ ! -d "$expected_repo/.git" ]; then
+  echo "STOP: Expected personal repository A1-T27-43-rsha2222 was not found in the current member root."
+  echo "No Git commands were run."
+  step_verified=false
+elif ! cd "$expected_repo"; then
+  echo "STOP: Could not enter A1-T27-43-rsha2222."
+  step_verified=false
+fi
+
+if [ "$step_verified" = true ]; then
+  git_root=$(git rev-parse --show-toplevel 2>/dev/null) || step_verified=false
+fi
+if [ "$step_verified" = true ]; then
+  actual_root=$(cd "$git_root" && pwd -P) || step_verified=false
+  if [ "$step_verified" = true ] && { [ "$actual_root" != "$expected_repo" ] || [ "$(basename "$actual_root")" != "A1-T27-43-rsha2222" ]; }; then
+    echo "STOP: The current Git repository is not the expected A1-T27-43-rsha2222 repository."
+    step_verified=false
+  fi
+fi
+
+if [ "$step_verified" = true ]; then
+  origin_url=$(git remote get-url origin 2>/dev/null) || step_verified=false
+  if [ "$step_verified" = true ] && [ "$origin_url" != "git@github.sydney.edu.au:SOFT2412-COMP9412-2026s2/A1-T27-43-rsha2222.git" ]; then
+    echo "STOP: origin does not match the expected personal repository URL."
+    step_verified=false
+  fi
+fi
+if [ "$step_verified" = true ]; then
+  upstream_url=$(git remote get-url upstream 2>/dev/null) || step_verified=false
+  if [ "$step_verified" = true ] && [ "$upstream_url" != "git@github.sydney.edu.au:SOFT2412-COMP9412-2026s2/A1-T27-43-IM-DUMMY.git" ]; then
+    echo "STOP: upstream does not match the expected personal repository URL."
+    step_verified=false
+  fi
+fi
+
+if [ "$step_verified" = true ]; then
+sync_ready=true
+if ! git checkout master; then sync_ready=false; fi
+if [ "$sync_ready" = true ] && ! git fetch upstream; then sync_ready=false; fi
+if [ "$sync_ready" = true ] && ! git merge --no-edit upstream/master; then sync_ready=false; fi
+if [ "$sync_ready" = true ] && ! git push origin master --tags; then sync_ready=false; fi
+if [ "$sync_ready" != true ]; then echo "STOP: Personal repository sync did not complete."; fi
+fi
+
+if ! cd "$member_root"; then
+  echo "STOP: Could not return to the member root: $member_root"
+else
+  echo ""
+  echo "Current working folder:"
+  pwd
+  if [ "$step_verified" = true ] && [ "$sync_ready" = true ]; then
+    echo "=================================="
+    echo "STEP COMPLETE"
+    echo "=================================="
+    echo "READY FOR STEP 02 OF THE NEXT ROUND"
+  fi
+fi
+STOP: Expected personal repository A1-T27-43-rsha2222 was not found in the current member root.
+No Git commands were run.
+
+Current working folder:
+/Users/rajdipshah/UNI/Y3S1 - 2026 sem 2/SOFT2412/A1 test/rsha2222/im-A1-T27-43-DUMMY
+rajdipshah@Rajdips-MacBook-Air ~/UNI/Y3S1 - 2026 sem 2/SOFT2412/A1 test/rsha2222/im-A1-T27-43-DUMMY % cd ..
+rajdipshah@Rajdips-MacBook-Air ~/UNI/Y3S1 - 2026 sem 2/SOFT2412/A1 test/rsha2222 % >....                   
+
+if [ ! -d "$expected_repo/.git" ]; then
+  echo "STOP: Expected personal repository A1-T27-43-rsha2222 was not found in the current member root."
+  echo "No Git commands were run."
+  step_verified=false
+elif ! cd "$expected_repo"; then
+  echo "STOP: Could not enter A1-T27-43-rsha2222."
+  step_verified=false
+fi
+
+if [ "$step_verified" = true ]; then
+  git_root=$(git rev-parse --show-toplevel 2>/dev/null) || step_verified=false
+fi
+if [ "$step_verified" = true ]; then
+  actual_root=$(cd "$git_root" && pwd -P) || step_verified=false
+  if [ "$step_verified" = true ] && { [ "$actual_root" != "$expected_repo" ] || [ "$(basename "$actual_root")" != "A1-T27-43-rsha2222" ]; }; then
+    echo "STOP: The current Git repository is not the expected A1-T27-43-rsha2222 repository."
+    step_verified=false
+  fi
+fi
+
+if [ "$step_verified" = true ]; then
+  origin_url=$(git remote get-url origin 2>/dev/null) || step_verified=false
+  if [ "$step_verified" = true ] && [ "$origin_url" != "git@github.sydney.edu.au:SOFT2412-COMP9412-2026s2/A1-T27-43-rsha2222.git" ]; then
+    echo "STOP: origin does not match the expected personal repository URL."
+    step_verified=false
+  fi
+fi
+if [ "$step_verified" = true ]; then
+  upstream_url=$(git remote get-url upstream 2>/dev/null) || step_verified=false
+  if [ "$step_verified" = true ] && [ "$upstream_url" != "git@github.sydney.edu.au:SOFT2412-COMP9412-2026s2/A1-T27-43-IM-DUMMY.git" ]; then
+    echo "STOP: upstream does not match the expected personal repository URL."
+    step_verified=false
+  fi
+fi
+
+if [ "$step_verified" = true ]; then
+sync_ready=true
+if ! git checkout master; then sync_ready=false; fi
+if [ "$sync_ready" = true ] && ! git fetch upstream; then sync_ready=false; fi
+if [ "$sync_ready" = true ] && ! git merge --no-edit upstream/master; then sync_ready=false; fi
+if [ "$sync_ready" = true ] && ! git push origin master --tags; then sync_ready=false; fi
+if [ "$sync_ready" != true ]; then echo "STOP: Personal repository sync did not complete."; fi
+fi
+
+if ! cd "$member_root"; then
+  echo "STOP: Could not return to the member root: $member_root"
+else
+  echo ""
+  echo "Current working folder:"
+  pwd
+  if [ "$step_verified" = true ] && [ "$sync_ready" = true ]; then
+    echo "=================================="
+    echo "STEP COMPLETE"
+    echo "=================================="
+    echo "READY FOR STEP 02 OF THE NEXT ROUND"
+  fi
+fi
+Switched to branch 'master'
+Your branch is up to date with 'origin/master'.
+** WARNING: connection is not using a post-quantum key exchange algorithm.
+** This session may be vulnerable to "store now, decrypt later" attacks.
+** The server may need to be upgraded. See https://openssh.com/pq.html
+remote: Enumerating objects: 102, done.
+remote: Counting objects: 100% (98/98), done.
+remote: Compressing objects: 100% (30/30), done.
+remote: Total 76 (delta 43), reused 66 (delta 33), pack-reused 0 (from 0)
+Unpacking objects: 100% (76/76), 7.00 KiB | 146.00 KiB/s, done.
+From github.sydney.edu.au:SOFT2412-COMP9412-2026s2/A1-T27-43-IM-DUMMY
+   7e56f97..a96dcb6  master     -> upstream/master
+ * [new tag]         v0.3.0     -> v0.3.0
+Updating 7e56f97..a96dcb6
+Fast-forward
+ CHANGELOG.md                             | 12 ++++++++++--
+ build.gradle                             |  2 +-
+ src/main/java/CurrencyConverter.java     | 36 ++++++++++++++++++++++++++++++------
+ src/main/java/DataValidator.java         | 27 +++++++++++++++++++++------
+ src/main/java/UserInterface.java         |  7 +++----
+ src/test/java/CurrencyConverterTest.java | 25 +++++++++++++++++--------
+ src/test/java/UserInterfaceTest.java     | 18 +++++++++++++++---
+ 7 files changed, 97 insertions(+), 30 deletions(-)
+** WARNING: connection is not using a post-quantum key exchange algorithm.
+** This session may be vulnerable to "store now, decrypt later" attacks.
+** The server may need to be upgraded. See https://openssh.com/pq.html
+Enumerating objects: 102, done.
+Counting objects: 100% (98/98), done.
+Delta compression using up to 8 threads
+Compressing objects: 100% (63/63), done.
+Writing objects: 100% (76/76), 7.40 KiB | 1.48 MiB/s, done.
+Total 76 (delta 42), reused 0 (delta 0), pack-reused 0 (from 0)
+remote: Resolving deltas: 100% (42/42), completed with 11 local objects.
+To github.sydney.edu.au:SOFT2412-COMP9412-2026s2/A1-T27-43-rsha2222.git
+   7e56f97..a96dcb6  master -> master
+ * [new tag]         v0.3.0 -> v0.3.0
+
+Current working folder:
+/Users/rajdipshah/UNI/Y3S1 - 2026 sem 2/SOFT2412/A1 test/rsha2222
+==================================
+STEP COMPLETE
+==================================
+READY FOR STEP 02 OF THE NEXT ROUND
+rajdipshah@Rajdips-MacBook-Air ~/UNI/Y3S1 - 2026 sem 2/SOFT2412/A1 test/rsha2222 % >....                   
+
+if [ ! -d "$expected_repo/.git" ]; then
+  echo "STOP: Expected personal repository A1-T27-43-rsha2222 was not found in the current member root."
+  echo "No Git commands were run."
+  step_verified=false
+elif ! cd "$expected_repo"; then
+  echo "STOP: Could not enter A1-T27-43-rsha2222."
+  step_verified=false
+fi
+
+if [ "$step_verified" = true ]; then
+  git_root=$(git rev-parse --show-toplevel 2>/dev/null) || step_verified=false
+fi
+if [ "$step_verified" = true ]; then
+  actual_root=$(cd "$git_root" && pwd -P) || step_verified=false
+  if [ "$step_verified" = true ] && { [ "$actual_root" != "$expected_repo" ] || [ "$(basename "$actual_root")" != "A1-T27-43-rsha2222" ]; }; then
+    echo "STOP: The current Git repository is not the expected A1-T27-43-rsha2222 repository."
+    step_verified=false
+  fi
+fi
+
+if [ "$step_verified" = true ]; then
+  origin_url=$(git remote get-url origin 2>/dev/null) || step_verified=false
+  if [ "$step_verified" = true ] && [ "$origin_url" != "git@github.sydney.edu.au:SOFT2412-COMP9412-2026s2/A1-T27-43-rsha2222.git" ]; then
+    echo "STOP: origin does not match the expected personal repository URL."
+    step_verified=false
+  fi
+fi
+if [ "$step_verified" = true ]; then
+  upstream_url=$(git remote get-url upstream 2>/dev/null) || step_verified=false
+  if [ "$step_verified" = true ] && [ "$upstream_url" != "git@github.sydney.edu.au:SOFT2412-COMP9412-2026s2/A1-T27-43-IM-DUMMY.git" ]; then
+    echo "STOP: upstream does not match the expected personal repository URL."
+    step_verified=false
+  fi
+fi
+
+if [ "$step_verified" = true ]; then
+sync_ready=true
+if ! git checkout master; then sync_ready=false; fi
+if [ "$sync_ready" = true ] && ! git fetch upstream; then sync_ready=false; fi
+if [ "$sync_ready" = true ] && ! git merge --no-edit upstream/master; then sync_ready=false; fi
+if [ "$sync_ready" = true ] && ! git push origin master --tags; then sync_ready=false; fi
+if [ "$sync_ready" != true ]; then echo "STOP: Personal repository sync did not complete."; fi
+fi
+
+if ! cd "$member_root"; then
+  echo "STOP: Could not return to the member root: $member_root"
+else
+  echo ""
+  echo "Current working folder:"
+  pwd
+  if [ "$step_verified" = true ] && [ "$sync_ready" = true ]; then
+    echo "=================================="
+    echo "STEP COMPLETE"
+    echo "=================================="
+    echo "READY FOR STEP 02 OF THE NEXT ROUND"
+  fi
+fi
+Already on 'master'
+Your branch is up to date with 'origin/master'.
+** WARNING: connection is not using a post-quantum key exchange algorithm.
+** This session may be vulnerable to "store now, decrypt later" attacks.
+** The server may need to be upgraded. See https://openssh.com/pq.html
+remote: Enumerating objects: 45, done.
+remote: Counting objects: 100% (45/45), done.
+remote: Compressing objects: 100% (9/9), done.
+remote: Total 33 (delta 19), reused 32 (delta 18), pack-reused 0 (from 0)
+Unpacking objects: 100% (33/33), 3.38 KiB | 123.00 KiB/s, done.
+From github.sydney.edu.au:SOFT2412-COMP9412-2026s2/A1-T27-43-IM-DUMMY
+   a96dcb6..a43c4cc  master     -> upstream/master
+ * [new tag]         v0.4.0     -> v0.4.0
+Updating a96dcb6..a43c4cc
+Fast-forward
+ CHANGELOG.md                             |  4 +++-
+ build.gradle                             |  2 +-
+ src/main/java/CurrencyConverter.java     | 14 +++-----------
+ src/main/java/UserInterface.java         | 26 ++++++++++++++++++--------
+ src/test/java/CurrencyConverterTest.java | 54 +++++++++++++++++++++++++++++++++---------------------
+ src/test/java/UserInterfaceTest.java     | 25 +++++++++++++++++++++----
+ 6 files changed, 79 insertions(+), 46 deletions(-)
+** WARNING: connection is not using a post-quantum key exchange algorithm.
+** This session may be vulnerable to "store now, decrypt later" attacks.
+** The server may need to be upgraded. See https://openssh.com/pq.html
+Enumerating objects: 45, done.
+Counting objects: 100% (45/45), done.
+Delta compression using up to 8 threads
+Compressing objects: 100% (27/27), done.
+Writing objects: 100% (33/33), 3.50 KiB | 716.00 KiB/s, done.
+Total 33 (delta 19), reused 0 (delta 0), pack-reused 0 (from 0)
+remote: Resolving deltas: 100% (19/19), completed with 9 local objects.
+To github.sydney.edu.au:SOFT2412-COMP9412-2026s2/A1-T27-43-rsha2222.git
+   a96dcb6..a43c4cc  master -> master
+ * [new tag]         v0.4.0 -> v0.4.0
+
+Current working folder:
+/Users/rajdipshah/UNI/Y3S1 - 2026 sem 2/SOFT2412/A1 test/rsha2222
+==================================
+STEP COMPLETE
+==================================
+READY FOR STEP 02 OF THE NEXT ROUND
+rajdipshah@Rajdips-MacBook-Air ~/UNI/Y3S1 - 2026 sem 2/SOFT2412/A1 test/rsha2222 % >....                   
+
+if [ ! -d "$expected_repo/.git" ]; then
+  echo "STOP: Expected personal repository A1-T27-43-rsha3333 was not found in the current member root."
+  echo "No Git commands were run."
+  step_verified=false
+elif ! cd "$expected_repo"; then
+  echo "STOP: Could not enter A1-T27-43-rsha3333."
+  step_verified=false
+fi
+
+if [ "$step_verified" = true ]; then
+  git_root=$(git rev-parse --show-toplevel 2>/dev/null) || step_verified=false
+fi
+if [ "$step_verified" = true ]; then
+  actual_root=$(cd "$git_root" && pwd -P) || step_verified=false
+  if [ "$step_verified" = true ] && { [ "$actual_root" != "$expected_repo" ] || [ "$(basename "$actual_root")" != "A1-T27-43-rsha3333" ]; }; then
+    echo "STOP: The current Git repository is not the expected A1-T27-43-rsha3333 repository."
+    step_verified=false
+  fi
+fi
+
+if [ "$step_verified" = true ]; then
+  origin_url=$(git remote get-url origin 2>/dev/null) || step_verified=false
+  if [ "$step_verified" = true ] && [ "$origin_url" != "git@github.sydney.edu.au:SOFT2412-COMP9412-2026s2/A1-T27-43-rsha3333.git" ]; then
+    echo "STOP: origin does not match the expected personal repository URL."
+    step_verified=false
+  fi
+fi
+if [ "$step_verified" = true ]; then
+  upstream_url=$(git remote get-url upstream 2>/dev/null) || step_verified=false
+  if [ "$step_verified" = true ] && [ "$upstream_url" != "git@github.sydney.edu.au:SOFT2412-COMP9412-2026s2/A1-T27-43-IM-DUMMY.git" ]; then
+    echo "STOP: upstream does not match the expected personal repository URL."
+    step_verified=false
+  fi
+fi
+
+if [ "$step_verified" = true ]; then
+sync_ready=true
+if ! git checkout master; then sync_ready=false; fi
+if [ "$sync_ready" = true ] && ! git fetch upstream; then sync_ready=false; fi
+if [ "$sync_ready" = true ] && ! git merge --no-edit upstream/master; then sync_ready=false; fi
+if [ "$sync_ready" = true ] && ! git push origin master --tags; then sync_ready=false; fi
+if [ "$sync_ready" != true ]; then echo "STOP: Personal repository sync did not complete."; fi
+fi
+
+if ! cd "$member_root"; then
+  echo "STOP: Could not return to the member root: $member_root"
+else
+  echo ""
+  echo "Current working folder:"
+  pwd
+  if [ "$step_verified" = true ] && [ "$sync_ready" = true ]; then
+    echo "=================================="
+    echo "STEP COMPLETE"
+    echo "=================================="
+    echo "READY FOR STEP 02 OF THE NEXT ROUND"
+  fi
+fi
+STOP: Expected personal repository A1-T27-43-rsha3333 was not found in the current member root.
+No Git commands were run.
+
+Current working folder:
+/Users/rajdipshah/UNI/Y3S1 - 2026 sem 2/SOFT2412/A1 test/rsha2222
+rajdipshah@Rajdips-MacBook-Air ~/UNI/Y3S1 - 2026 sem 2/SOFT2412/A1 test/rsha2222 % 
+
+rajdipshah@Rajdips-MacBook-Air ~/UNI/Y3S1 - 2026 sem 2/SOFT2412/A1 test/rsha1111 % clear
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+rajdipshah@Rajdips-MacBook-Air ~/UNI/Y3S1 - 2026 sem 2/SOFT2412/A1 test/rsha1111 % echo round3
+round3
+rajdipshah@Rajdips-MacBook-Air ~/UNI/Y3S1 - 2026 sem 2/SOFT2412/A1 test/rsha1111 % >....                   
+  step_verified=false
+fi
+
+if [ "$step_verified" = true ]; then
+  git_root=$(git rev-parse --show-toplevel 2>/dev/null) || step_verified=false
+fi
+if [ "$step_verified" = true ]; then
+  actual_root=$(cd "$git_root" && pwd -P) || step_verified=false
+  if [ "$step_verified" = true ] && { [ "$actual_root" != "$expected_repo" ] || [ "$(basename "$actual_root")" != "A1-T27-43-rsha1111" ]; }; then
+    echo "STOP: The current Git repository is not the expected A1-T27-43-rsha1111 repository."
+    step_verified=false
+  fi
+fi
+
+if [ "$step_verified" = true ]; then
+  origin_url=$(git remote get-url origin 2>/dev/null) || step_verified=false
+  if [ "$step_verified" = true ] && [ "$origin_url" != "git@github.sydney.edu.au:SOFT2412-COMP9412-2026s2/A1-T27-43-rsha1111.git" ]; then
+    echo "STOP: origin does not match the expected personal repository URL."
+    step_verified=false
+  fi
+fi
+if [ "$step_verified" = true ]; then
+  upstream_url=$(git remote get-url upstream 2>/dev/null) || step_verified=false
+  if [ "$step_verified" = true ] && [ "$upstream_url" != "git@github.sydney.edu.au:SOFT2412-COMP9412-2026s2/A1-T27-43-IM-DUMMY.git" ]; then
+    echo "STOP: upstream does not match the expected personal repository URL."
+    step_verified=false
+  fi
+fi
+
+if [ "$step_verified" = true ]; then
+step_succeeded=false
+if git checkout master && git fetch upstream && git merge --no-edit upstream/master; then
+  if git show-ref --verify --quiet refs/heads/feature/start; then
+    git checkout feature/start
+  else
+    git checkout -b feature/start
+  fi
+  if [ "$(git branch --show-current)" = "feature/start" ] && git status; then
+    step_succeeded=true
+  else
+    echo "STOP: Expected feature branch feature/start is not checked out."
+  fi
+fi
+fi
+
+if ! cd "$member_root"; then
+  echo "STOP: Could not return to the member root: $member_root"
+else
+  echo ""
+  echo "Current working folder:"
+  pwd
+  if [ "$step_verified" = true ] && [ "$step_succeeded" = true ]; then
+    echo "=================================="
+    echo "STEP COMPLETE"
+    echo "=================================="
+    echo "READY FOR STEP 03"
+  fi
+fi
+Already on 'master'
+Your branch is up to date with 'origin/master'.
+** WARNING: connection is not using a post-quantum key exchange algorithm.
+** This session may be vulnerable to "store now, decrypt later" attacks.
+** The server may need to be upgraded. See https://openssh.com/pq.html
+Already up to date.
+Switched to a new branch 'feature/start'
+On branch feature/start
+nothing to commit, working tree clean
+
+Current working folder:
+/Users/rajdipshah/UNI/Y3S1 - 2026 sem 2/SOFT2412/A1 test/rsha1111
+==================================
+STEP COMPLETE
+==================================
+READY FOR STEP 03
+rajdipshah@Rajdips-MacBook-Air ~/UNI/Y3S1 - 2026 sem 2/SOFT2412/A1 test/rsha1111 % >....                   
+  step_verified=false
+fi
+
+if [ "$step_verified" = true ]; then
+  git_root=$(git rev-parse --show-toplevel 2>/dev/null) || step_verified=false
+fi
+if [ "$step_verified" = true ]; then
+  actual_root=$(cd "$git_root" && pwd -P) || step_verified=false
+  if [ "$step_verified" = true ] && { [ "$actual_root" != "$expected_repo" ] || [ "$(basename "$actual_root")" != "A1-T27-43-rsha1111" ]; }; then
+    echo "STOP: The current Git repository is not the expected A1-T27-43-rsha1111 repository."
+    step_verified=false
+  fi
+fi
+
+if [ "$step_verified" = true ]; then
+  origin_url=$(git remote get-url origin 2>/dev/null) || step_verified=false
+  if [ "$step_verified" = true ] && [ "$origin_url" != "git@github.sydney.edu.au:SOFT2412-COMP9412-2026s2/A1-T27-43-rsha1111.git" ]; then
+    echo "STOP: origin does not match the expected personal repository URL."
+    step_verified=false
+  fi
+fi
+if [ "$step_verified" = true ]; then
+  upstream_url=$(git remote get-url upstream 2>/dev/null) || step_verified=false
+  if [ "$step_verified" = true ] && [ "$upstream_url" != "git@github.sydney.edu.au:SOFT2412-COMP9412-2026s2/A1-T27-43-IM-DUMMY.git" ]; then
+    echo "STOP: upstream does not match the expected personal repository URL."
+    step_verified=false
+  fi
+fi
+
+if [ "$step_verified" = true ]; then
+step_succeeded=false
+current_branch=$(git branch --show-current)
+if [ "$current_branch" != "feature/start" ]; then
+  echo "STOP: Step 06 requires branch feature/start; current branch is $current_branch. Nothing was staged or committed."
+else
+  if git status &&       git add src/main/java/UserInterface.java src/test/java/UserInterfaceTest.java CHANGELOG.md &&       git commit -m "Implement application menu loop" -m "Implement start with menu dispatch, invalid-choice handling, and exit behaviour and replace its controlled-input test." &&       git push -u origin feature/start; then
+    step_succeeded=true
+  fi
+fi
+fi
+
+if ! cd "$member_root"; then
+  echo "STOP: Could not return to the member root: $member_root"
+else
+  echo ""
+  echo "Current working folder:"
+  pwd
+  if [ "$step_verified" = true ] && [ "$step_succeeded" = true ]; then
+    echo "=================================="
+    echo "STEP COMPLETE"
+    echo "=================================="
+    echo "READY FOR STEP 07"
+  fi
+fi
+On branch feature/start
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+	modified:   CHANGELOG.md
+	modified:   src/main/java/UserInterface.java
+	modified:   src/test/java/UserInterfaceTest.java
+
+no changes added to commit (use "git add" and/or "git commit -a")
+[feature/start f38c5e1] Implement application menu loop
+ 3 files changed, 40 insertions(+), 13 deletions(-)
+** WARNING: connection is not using a post-quantum key exchange algorithm.
+** This session may be vulnerable to "store now, decrypt later" attacks.
+** The server may need to be upgraded. See https://openssh.com/pq.html
+Enumerating objects: 19, done.
+Counting objects: 100% (19/19), done.
+Delta compression using up to 8 threads
+Compressing objects: 100% (8/8), done.
+Writing objects: 100% (10/10), 1.17 KiB | 1.17 MiB/s, done.
+Total 10 (delta 6), reused 0 (delta 0), pack-reused 0 (from 0)
+remote: Resolving deltas: 100% (6/6), completed with 6 local objects.
+remote: 
+remote: Create a pull request for 'feature/start' on GitHub by visiting:
+remote:      https://github.sydney.edu.au/SOFT2412-COMP9412-2026s2/A1-T27-43-rsha1111/pull/new/feature/start
+remote: 
+To github.sydney.edu.au:SOFT2412-COMP9412-2026s2/A1-T27-43-rsha1111.git
+ * [new branch]      feature/start -> feature/start
+branch 'feature/start' set up to track 'origin/feature/start'.
+
+Current working folder:
+/Users/rajdipshah/UNI/Y3S1 - 2026 sem 2/SOFT2412/A1 test/rsha1111
+==================================
+STEP COMPLETE
+==================================
+READY FOR STEP 07
+rajdipshah@Rajdips-MacBook-Air ~/UNI/Y3S1 - 2026 sem 2/SOFT2412/A1 test/rsha1111 % >....                   
+the user exits -- Raj Shah."
+        if git commit --no-edit; then
+          git status
+if git diff --check && git diff --cached --check && gradle classes && gradle testClasses; then
+  if gradle test --tests UserInterfaceTest.testStartMethod; then
+    echo "PASS: The selected feature test passed."
+    if git fetch origin; then
+      current_team_master=$(git rev-parse origin/master)
+      if [ "$current_team_master" != "$integration_baseline" ]; then
+        echo "STOP: Team master changed during this integration."
+        echo "Another integration was pushed while this step was running."
+        echo "Restart Step 07 from the latest team master."
+        echo "Team master was not pushed."
+      elif git push origin master; then
+        workflow_succeeded=true
+      fi
+    else
+      echo "STOP: Could not refresh origin before the final push. Team master was not pushed."
+    fi
+  else
+    echo "STOP: The selected independent feature test failed. Team master was not pushed."
+  fi
+else
+  echo "STOP: Working-tree, production compilation, or test compilation validation failed. Team master was not pushed."
+fi
+        else
+          echo "STOP: The automatic CHANGELOG merge commit failed. Team master was not pushed."
+        fi
+      fi
+      rm -f "$changelog_base" "$changelog_expected"
+    elif [ "$merge_in_progress" = true ] && [ -n "$unresolved_files" ]; then
+      echo "STOP: Conflicts include Java, test, source, or multiple files. Resolve every file carefully; these conflicts are never handled automatically."
+      printf '%s
+' "$unresolved_files"
+      echo "Team master was not pushed."
+    else
+      echo "STOP: The feature merge failed and no merge is in progress. Review the Git output; no validation or push was run."
+    fi
+  fi
+else
+  echo "STOP: Could not prepare team master or fetch the selected member's feature. No feature merge, tests, or push were run."
+fi
+fi
+
+if ! cd "$member_root"; then
+  echo "STOP: Could not return to the member root: $member_root"
+else
+  echo ""
+  echo "Current working folder:"
+  pwd
+  if [ "$step_verified" = true ] && [ "$workflow_succeeded" = true ]; then
+    echo "=================================="
+    echo "STEP COMPLETE"
+    echo "=================================="
+    echo "READY FOR STEP 08"
+  fi
+fi
+Already on 'master'
+Your branch is up to date with 'origin/master'.
+** WARNING: connection is not using a post-quantum key exchange algorithm.
+** This session may be vulnerable to "store now, decrypt later" attacks.
+** The server may need to be upgraded. See https://openssh.com/pq.html
+remote: Enumerating objects: 20, done.
+remote: Counting objects: 100% (20/20), done.
+remote: Compressing objects: 100% (2/2), done.
+remote: Total 11 (delta 7), reused 11 (delta 7), pack-reused 0 (from 0)
+Unpacking objects: 100% (11/11), 1.27 KiB | 100.00 KiB/s, done.
+From github.sydney.edu.au:SOFT2412-COMP9412-2026s2/A1-T27-43-IM-DUMMY
+   a96dcb6..1d4712a  master     -> origin/master
+Updating a96dcb6..1d4712a
+Fast-forward
+ CHANGELOG.md                             |  1 +
+ src/main/java/CurrencyConverter.java     | 14 +++-----------
+ src/test/java/CurrencyConverterTest.java | 54 +++++++++++++++++++++++++++++++++---------------------
+ 3 files changed, 37 insertions(+), 32 deletions(-)
+** WARNING: connection is not using a post-quantum key exchange algorithm.
+** This session may be vulnerable to "store now, decrypt later" attacks.
+** The server may need to be upgraded. See https://openssh.com/pq.html
+remote: Enumerating objects: 19, done.
+remote: Counting objects: 100% (19/19), done.
+remote: Compressing objects: 100% (2/2), done.
+remote: Total 10 (delta 6), reused 10 (delta 6), pack-reused 0 (from 0)
+Unpacking objects: 100% (10/10), 1.16 KiB | 131.00 KiB/s, done.
+From github.sydney.edu.au:SOFT2412-COMP9412-2026s2/A1-T27-43-rsha1111
+ * [new branch]      feature/start -> me/feature/start
+   7e56f97..a96dcb6  master        -> me/master
+Auto-merging CHANGELOG.md
+CONFLICT (content): Merge conflict in CHANGELOG.md
+Automatic merge failed; fix conflicts and then commit the result.
+CHANGELOG-ONLY CONFLICT: resolving automatically...
+Updated 1 path from the index
+STOP: Existing team CHANGELOG content was not preserved exactly. CHANGELOG.md was not staged.
+
+Current working folder:
+/Users/rajdipshah/UNI/Y3S1 - 2026 sem 2/SOFT2412/A1 test/rsha1111
+rajdipshah@Rajdips-MacBook-Air ~/UNI/Y3S1 - 2026 sem 2/SOFT2412/A1 test/rsha1111 % >....                   
+gradle)
+  new_version_count=$(grep -Ec "^[[:space:]]*version[[:space:]]*=[[:space:]]*'0\.4\.0'[[:space:]]*$" build.gradle)
+  if [ "$new_version_count" -gt 0 ]; then
+    echo "STOP: build.gradle is already version 0.4.0, but tag v0.4.0 does not exist. Review the release state; no empty release commit will be created."
+    release_ready=false
+  elif [ "$old_version_count" -ne 1 ]; then
+    echo "STOP: Expected exactly one build.gradle version line containing 0.3.0. No file was changed."
+    release_ready=false
+  fi
+fi
+if [ "$release_ready" = true ]; then
+  old_version_line=$(grep -E "^[[:space:]]*version[[:space:]]*=[[:space:]]*'0\.3\.0'[[:space:]]*$" build.gradle)
+  version_tmp="build.gradle.release-v0.4.0.tmp"
+  if ! awk -v old_line="$old_version_line" -v new_line="version = '0.4.0'" '{ if ($0 == old_line) print new_line; else print }' build.gradle > "$version_tmp"; then
+    echo "STOP: Could not prepare the build.gradle version update."
+    release_ready=false
+  elif ! mv "$version_tmp" build.gradle; then
+    echo "STOP: Could not replace build.gradle with the updated file."
+    release_ready=false
+  fi
+fi
+if [ "$release_ready" = true ]; then
+  verified_new_count=$(grep -Ec "^[[:space:]]*version[[:space:]]*=[[:space:]]*'0\.4\.0'[[:space:]]*$" build.gradle)
+  verified_old_count=$(grep -Ec "^[[:space:]]*version[[:space:]]*=[[:space:]]*'0\.3\.0'[[:space:]]*$" build.gradle)
+  if [ "$verified_new_count" -ne 1 ] || [ "$verified_old_count" -ne 0 ]; then
+    echo "STOP: Could not verify the build.gradle version update to 0.4.0."
+    release_ready=false
+  fi
+fi
+if [ "$release_ready" = true ]; then git add build.gradle || release_ready=false; fi
+if [ "$release_ready" = true ]; then git commit -m "Release v0.4.0" -m "Update the project version for the Round 3 release." || release_ready=false; fi
+if [ "$release_ready" = true ]; then git tag -a v0.4.0 -m "Round 3 release v0.4.0" || release_ready=false; fi
+if [ "$release_ready" = true ]; then git push origin master || release_ready=false; fi
+if [ "$release_ready" = true ]; then git push origin v0.4.0 || release_ready=false; fi
+if [ "$release_ready" != true ]; then
+  echo "STOP: Round 3 release did not complete. Review the messages above; no further release commands were run."
+fi
+fi
+
+if ! cd "$member_root"; then
+  echo "STOP: Could not return to the member root: $member_root"
+else
+  echo ""
+  echo "Current working folder:"
+  pwd
+  if [ "$step_verified" = true ] && [ "$release_ready" = true ]; then
+    echo "=================================="
+    echo "STEP COMPLETE"
+    echo "=================================="
+    echo "READY FOR STEP 09"
+  fi
+fi
+CHANGELOG.md: needs merge
+error: you need to resolve your current index first
+STOP: Could not check out team master. Release validation was not run.
+STOP: Round 3 release did not complete. Review the messages above; no further release commands were run.
+
+Current working folder:
+/Users/rajdipshah/UNI/Y3S1 - 2026 sem 2/SOFT2412/A1 test/rsha1111
+rajdipshah@Rajdips-MacBook-Air ~/UNI/Y3S1 - 2026 sem 2/SOFT2412/A1 test/rsha1111 % cd im-A1-T27-43-DUMMY
+git status
+git diff --cc CHANGELOG.md
+On branch master
+Your branch is up to date with 'origin/master'.
+
+You have unmerged paths.
+  (fix conflicts and run "git commit")
+  (use "git merge --abort" to abort the merge)
+
+Changes to be committed:
+	modified:   src/main/java/UserInterface.java
+	modified:   src/test/java/UserInterfaceTest.java
+
+Unmerged paths:
+  (use "git add <file>..." to mark resolution)
+	both modified:   CHANGELOG.md
+
+diff --cc CHANGELOG.md
+index 36f05c8,2a96baf..0000000
+--- a/CHANGELOG.md
++++ b/CHANGELOG.md
+@@@ -1,6 -1,6 +1,7 @@@
+  # Changelog
+  
+  ## Unreleased
+++- start(): runs the menu loop until the user exits -- Raj Shah
+  - isValidAmount(): validates positive finite numeric amounts -- Mohammad
+  - isValidCurrency(): validates supported currency codes case-insensitively -- Natasha Sutanto
+  - showMenu(): displays the three application menu options -- Raj Shah
+@@@ -22,4 -21,4 +23,4 @@@ Add one line here for each feature bran
+  Everyone adds lines to the same place, so merges here will sometimes
+  conflict. Keep both lines, delete the <<<<<<< / ======= / >>>>>>> markers,
+  then `git add CHANGELOG.md` and commit the merge.
+---->
+++-->
+rajdipshah@Rajdips-MacBook-Air ~/UNI/Y3S1 - 2026 sem 2/SOFT2412/A1 test/rsha1111/im-A1-T27-43-DUMMY % git merge --abort
+cd ..
+rajdipshah@Rajdips-MacBook-Air ~/UNI/Y3S1 - 2026 sem 2/SOFT2412/A1 test/rsha1111 % >....                   
+the user exits -- Raj Shah."
+        if git commit --no-edit; then
+          git status
+if git diff --check && git diff --cached --check && gradle classes && gradle testClasses; then
+  if gradle test --tests UserInterfaceTest.testStartMethod; then
+    echo "PASS: The selected feature test passed."
+    if git fetch origin; then
+      current_team_master=$(git rev-parse origin/master)
+      if [ "$current_team_master" != "$integration_baseline" ]; then
+        echo "STOP: Team master changed during this integration."
+        echo "Another integration was pushed while this step was running."
+        echo "Restart Step 07 from the latest team master."
+        echo "Team master was not pushed."
+      elif git push origin master; then
+        workflow_succeeded=true
+      fi
+    else
+      echo "STOP: Could not refresh origin before the final push. Team master was not pushed."
+    fi
+  else
+    echo "STOP: The selected independent feature test failed. Team master was not pushed."
+  fi
+else
+  echo "STOP: Working-tree, production compilation, or test compilation validation failed. Team master was not pushed."
+fi
+        else
+          echo "STOP: The automatic CHANGELOG merge commit failed. Team master was not pushed."
+        fi
+      fi
+      rm -f "$changelog_base" "$changelog_expected" "$changelog_base_lines" "$changelog_resolved_lines"
+    elif [ "$merge_in_progress" = true ] && [ -n "$unresolved_files" ]; then
+      echo "STOP: Conflicts include Java, test, source, or multiple files. Resolve every file carefully; these conflicts are never handled automatically."
+      printf '%s
+' "$unresolved_files"
+      echo "Team master was not pushed."
+    else
+      echo "STOP: The feature merge failed and no merge is in progress. Review the Git output; no validation or push was run."
+    fi
+  fi
+else
+  echo "STOP: Could not prepare team master or fetch the selected member's feature. No feature merge, tests, or push were run."
+fi
+fi
+
+if ! cd "$member_root"; then
+  echo "STOP: Could not return to the member root: $member_root"
+else
+  echo ""
+  echo "Current working folder:"
+  pwd
+  if [ "$step_verified" = true ] && [ "$workflow_succeeded" = true ]; then
+    echo "=================================="
+    echo "STEP COMPLETE"
+    echo "=================================="
+    echo "READY FOR STEP 08"
+  fi
+fi
+Already on 'master'
+Your branch is up to date with 'origin/master'.
+** WARNING: connection is not using a post-quantum key exchange algorithm.
+** This session may be vulnerable to "store now, decrypt later" attacks.
+** The server may need to be upgraded. See https://openssh.com/pq.html
+Already up to date.
+** WARNING: connection is not using a post-quantum key exchange algorithm.
+** This session may be vulnerable to "store now, decrypt later" attacks.
+** The server may need to be upgraded. See https://openssh.com/pq.html
+Auto-merging CHANGELOG.md
+CONFLICT (content): Merge conflict in CHANGELOG.md
+Automatic merge failed; fix conflicts and then commit the result.
+CHANGELOG-ONLY CONFLICT: resolving automatically...
+Updated 1 path from the index
+awk: newline in regular expression ... at source line 1
+ context is
+	{ sub(/ >>> 
+ <<< 
+awk: syntax error at source line 1
+awk: illegal statement at source line 1
+STOP: Existing team CHANGELOG lines or their order changed unexpectedly. CHANGELOG.md was not staged.
+
+Current working folder:
+/Users/rajdipshah/UNI/Y3S1 - 2026 sem 2/SOFT2412/A1 test/rsha1111
+rajdipshah@Rajdips-MacBook-Air ~/UNI/Y3S1 - 2026 sem 2/SOFT2412/A1 test/rsha1111 % >....                   
+gradle)
+  new_version_count=$(grep -Ec "^[[:space:]]*version[[:space:]]*=[[:space:]]*'0\.4\.0'[[:space:]]*$" build.gradle)
+  if [ "$new_version_count" -gt 0 ]; then
+    echo "STOP: build.gradle is already version 0.4.0, but tag v0.4.0 does not exist. Review the release state; no empty release commit will be created."
+    release_ready=false
+  elif [ "$old_version_count" -ne 1 ]; then
+    echo "STOP: Expected exactly one build.gradle version line containing 0.3.0. No file was changed."
+    release_ready=false
+  fi
+fi
+if [ "$release_ready" = true ]; then
+  old_version_line=$(grep -E "^[[:space:]]*version[[:space:]]*=[[:space:]]*'0\.3\.0'[[:space:]]*$" build.gradle)
+  version_tmp="build.gradle.release-v0.4.0.tmp"
+  if ! awk -v old_line="$old_version_line" -v new_line="version = '0.4.0'" '{ if ($0 == old_line) print new_line; else print }' build.gradle > "$version_tmp"; then
+    echo "STOP: Could not prepare the build.gradle version update."
+    release_ready=false
+  elif ! mv "$version_tmp" build.gradle; then
+    echo "STOP: Could not replace build.gradle with the updated file."
+    release_ready=false
+  fi
+fi
+if [ "$release_ready" = true ]; then
+  verified_new_count=$(grep -Ec "^[[:space:]]*version[[:space:]]*=[[:space:]]*'0\.4\.0'[[:space:]]*$" build.gradle)
+  verified_old_count=$(grep -Ec "^[[:space:]]*version[[:space:]]*=[[:space:]]*'0\.3\.0'[[:space:]]*$" build.gradle)
+  if [ "$verified_new_count" -ne 1 ] || [ "$verified_old_count" -ne 0 ]; then
+    echo "STOP: Could not verify the build.gradle version update to 0.4.0."
+    release_ready=false
+  fi
+fi
+if [ "$release_ready" = true ]; then git add build.gradle || release_ready=false; fi
+if [ "$release_ready" = true ]; then git commit -m "Release v0.4.0" -m "Update the project version for the Round 3 release." || release_ready=false; fi
+if [ "$release_ready" = true ]; then git tag -a v0.4.0 -m "Round 3 release v0.4.0" || release_ready=false; fi
+if [ "$release_ready" = true ]; then git push origin master || release_ready=false; fi
+if [ "$release_ready" = true ]; then git push origin v0.4.0 || release_ready=false; fi
+if [ "$release_ready" != true ]; then
+  echo "STOP: Round 3 release did not complete. Review the messages above; no further release commands were run."
+fi
+fi
+
+if ! cd "$member_root"; then
+  echo "STOP: Could not return to the member root: $member_root"
+else
+  echo ""
+  echo "Current working folder:"
+  pwd
+  if [ "$step_verified" = true ] && [ "$release_ready" = true ]; then
+    echo "=================================="
+    echo "STEP COMPLETE"
+    echo "=================================="
+    echo "READY FOR STEP 09"
+  fi
+fi
+CHANGELOG.md: needs merge
+error: you need to resolve your current index first
+STOP: Could not check out team master. Release validation was not run.
+STOP: Round 3 release did not complete. Review the messages above; no further release commands were run.
+
+Current working folder:
+/Users/rajdipshah/UNI/Y3S1 - 2026 sem 2/SOFT2412/A1 test/rsha1111
+rajdipshah@Rajdips-MacBook-Air ~/UNI/Y3S1 - 2026 sem 2/SOFT2412/A1 test/rsha1111 % >....                   
+
+if [ ! -d "$expected_repo/.git" ]; then
+  echo "STOP: Expected personal repository A1-T27-43-rsha1111 was not found in the current member root."
+  echo "No Git commands were run."
+  step_verified=false
+elif ! cd "$expected_repo"; then
+  echo "STOP: Could not enter A1-T27-43-rsha1111."
+  step_verified=false
+fi
+
+if [ "$step_verified" = true ]; then
+  git_root=$(git rev-parse --show-toplevel 2>/dev/null) || step_verified=false
+fi
+if [ "$step_verified" = true ]; then
+  actual_root=$(cd "$git_root" && pwd -P) || step_verified=false
+  if [ "$step_verified" = true ] && { [ "$actual_root" != "$expected_repo" ] || [ "$(basename "$actual_root")" != "A1-T27-43-rsha1111" ]; }; then
+    echo "STOP: The current Git repository is not the expected A1-T27-43-rsha1111 repository."
+    step_verified=false
+  fi
+fi
+
+if [ "$step_verified" = true ]; then
+  origin_url=$(git remote get-url origin 2>/dev/null) || step_verified=false
+  if [ "$step_verified" = true ] && [ "$origin_url" != "git@github.sydney.edu.au:SOFT2412-COMP9412-2026s2/A1-T27-43-rsha1111.git" ]; then
+    echo "STOP: origin does not match the expected personal repository URL."
+    step_verified=false
+  fi
+fi
+if [ "$step_verified" = true ]; then
+  upstream_url=$(git remote get-url upstream 2>/dev/null) || step_verified=false
+  if [ "$step_verified" = true ] && [ "$upstream_url" != "git@github.sydney.edu.au:SOFT2412-COMP9412-2026s2/A1-T27-43-IM-DUMMY.git" ]; then
+    echo "STOP: upstream does not match the expected personal repository URL."
+    step_verified=false
+  fi
+fi
+
+if [ "$step_verified" = true ]; then
+sync_ready=true
+if ! git checkout master; then sync_ready=false; fi
+if [ "$sync_ready" = true ] && ! git fetch upstream; then sync_ready=false; fi
+if [ "$sync_ready" = true ] && ! git merge --no-edit upstream/master; then sync_ready=false; fi
+if [ "$sync_ready" = true ] && ! git push origin master --tags; then sync_ready=false; fi
+if [ "$sync_ready" != true ]; then echo "STOP: Personal repository sync did not complete."; fi
+fi
+
+if ! cd "$member_root"; then
+  echo "STOP: Could not return to the member root: $member_root"
+else
+  echo ""
+  echo "Current working folder:"
+  pwd
+  if [ "$step_verified" = true ] && [ "$sync_ready" = true ]; then
+    echo "=================================="
+    echo "STEP COMPLETE"
+    echo "=================================="
+    echo "READY FOR STEP 02 OF THE NEXT ROUND"
+  fi
+fi
+Switched to branch 'master'
+Your branch is up to date with 'origin/master'.
+** WARNING: connection is not using a post-quantum key exchange algorithm.
+** This session may be vulnerable to "store now, decrypt later" attacks.
+** The server may need to be upgraded. See https://openssh.com/pq.html
+remote: Enumerating objects: 20, done.
+remote: Counting objects: 100% (20/20), done.
+remote: Compressing objects: 100% (2/2), done.
+remote: Total 11 (delta 7), reused 11 (delta 7), pack-reused 0 (from 0)
+Unpacking objects: 100% (11/11), 1.27 KiB | 130.00 KiB/s, done.
+From github.sydney.edu.au:SOFT2412-COMP9412-2026s2/A1-T27-43-IM-DUMMY
+   a96dcb6..1d4712a  master     -> upstream/master
+Updating a96dcb6..1d4712a
+Fast-forward
+ CHANGELOG.md                             |  1 +
+ src/main/java/CurrencyConverter.java     | 14 +++-----------
+ src/test/java/CurrencyConverterTest.java | 54 +++++++++++++++++++++++++++++++++---------------------
+ 3 files changed, 37 insertions(+), 32 deletions(-)
+** WARNING: connection is not using a post-quantum key exchange algorithm.
+** This session may be vulnerable to "store now, decrypt later" attacks.
+** The server may need to be upgraded. See https://openssh.com/pq.html
+Enumerating objects: 20, done.
+Counting objects: 100% (20/20), done.
+Delta compression using up to 8 threads
+Compressing objects: 100% (9/9), done.
+Writing objects: 100% (11/11), 1.29 KiB | 146.00 KiB/s, done.
+Total 11 (delta 7), reused 0 (delta 0), pack-reused 0 (from 0)
+remote: Resolving deltas: 100% (7/7), completed with 6 local objects.
+To github.sydney.edu.au:SOFT2412-COMP9412-2026s2/A1-T27-43-rsha1111.git
+   a96dcb6..1d4712a  master -> master
+
+Current working folder:
+/Users/rajdipshah/UNI/Y3S1 - 2026 sem 2/SOFT2412/A1 test/rsha1111
+==================================
+STEP COMPLETE
+==================================
+READY FOR STEP 02 OF THE NEXT ROUND
+rajdipshah@Rajdips-MacBook-Air ~/UNI/Y3S1 - 2026 sem 2/SOFT2412/A1 test/rsha1111 % cd im-A1-T27-43-DUMMY
+git merge --abort
+cd ..
+rajdipshah@Rajdips-MacBook-Air ~/UNI/Y3S1 - 2026 sem 2/SOFT2412/A1 test/rsha1111 % >....                   
+the user exits -- Raj Shah."
+        if git commit --no-edit; then
+          git status
+if git diff --check && git diff --cached --check && gradle classes && gradle testClasses; then
+  if gradle test --tests UserInterfaceTest.testStartMethod; then
+    echo "PASS: The selected feature test passed."
+    if git fetch origin; then
+      current_team_master=$(git rev-parse origin/master)
+      if [ "$current_team_master" != "$integration_baseline" ]; then
+        echo "STOP: Team master changed during this integration."
+        echo "Another integration was pushed while this step was running."
+        echo "Restart Step 07 from the latest team master."
+        echo "Team master was not pushed."
+      elif git push origin master; then
+        workflow_succeeded=true
+      fi
+    else
+      echo "STOP: Could not refresh origin before the final push. Team master was not pushed."
+    fi
+  else
+    echo "STOP: The selected independent feature test failed. Team master was not pushed."
+  fi
+else
+  echo "STOP: Working-tree, production compilation, or test compilation validation failed. Team master was not pushed."
+fi
+        else
+          echo "STOP: The automatic CHANGELOG merge commit failed. Team master was not pushed."
+        fi
+      fi
+      rm -f "$changelog_base" "$changelog_expected" "$changelog_base_lines" "$changelog_resolved_lines"
+    elif [ "$merge_in_progress" = true ] && [ -n "$unresolved_files" ]; then
+      echo "STOP: Conflicts include Java, test, source, or multiple files. Resolve every file carefully; these conflicts are never handled automatically."
+      printf '%s
+' "$unresolved_files"
+      echo "Team master was not pushed."
+    else
+      echo "STOP: The feature merge failed and no merge is in progress. Review the Git output; no validation or push was run."
+    fi
+  fi
+else
+  echo "STOP: Could not prepare team master or fetch the selected member's feature. No feature merge, tests, or push were run."
+fi
+fi
+
+if ! cd "$member_root"; then
+  echo "STOP: Could not return to the member root: $member_root"
+else
+  echo ""
+  echo "Current working folder:"
+  pwd
+  if [ "$step_verified" = true ] && [ "$workflow_succeeded" = true ]; then
+    echo "=================================="
+    echo "STEP COMPLETE"
+    echo "=================================="
+    echo "READY FOR STEP 08"
+  fi
+fi
+Already on 'master'
+Your branch is up to date with 'origin/master'.
+** WARNING: connection is not using a post-quantum key exchange algorithm.
+** This session may be vulnerable to "store now, decrypt later" attacks.
+** The server may need to be upgraded. See https://openssh.com/pq.html
+Already up to date.
+** WARNING: connection is not using a post-quantum key exchange algorithm.
+** This session may be vulnerable to "store now, decrypt later" attacks.
+** The server may need to be upgraded. See https://openssh.com/pq.html
+From github.sydney.edu.au:SOFT2412-COMP9412-2026s2/A1-T27-43-rsha1111
+   a96dcb6..1d4712a  master     -> me/master
+Auto-merging CHANGELOG.md
+CONFLICT (content): Merge conflict in CHANGELOG.md
+Automatic merge failed; fix conflicts and then commit the result.
+CHANGELOG-ONLY CONFLICT: resolving automatically...
+Updated 1 path from the index
+CHANGELOG RESOLVED: preserved existing entries and added - start(): runs the menu loop until the user exits -- Raj Shah.
+[master d6face7] Merge remote-tracking branch 'me/feature/start'
+On branch master
+Your branch is ahead of 'origin/master' by 2 commits.
+  (use "git push" to publish your local commits)
+
+nothing to commit, working tree clean
+
+BUILD SUCCESSFUL in 1s
+1 actionable task: 1 executed
+Consider enabling configuration cache to speed up this build: https://docs.gradle.org/9.7.1/userguide/configuration_cache_enabling.html
+
+BUILD SUCCESSFUL in 637ms
+2 actionable tasks: 1 executed, 1 up-to-date
+Consider enabling configuration cache to speed up this build: https://docs.gradle.org/9.7.1/userguide/configuration_cache_enabling.html
+
+> Task :test
+
+UserInterfaceTest > testStartMethod() PASSED
+
+BUILD SUCCESSFUL in 1s
+4 actionable tasks: 2 executed, 2 up-to-date
+Consider enabling configuration cache to speed up this build: https://docs.gradle.org/9.7.1/userguide/configuration_cache_enabling.html
+PASS: The selected feature test passed.
+** WARNING: connection is not using a post-quantum key exchange algorithm.
+** This session may be vulnerable to "store now, decrypt later" attacks.
+** The server may need to be upgraded. See https://openssh.com/pq.html
+** WARNING: connection is not using a post-quantum key exchange algorithm.
+** This session may be vulnerable to "store now, decrypt later" attacks.
+** The server may need to be upgraded. See https://openssh.com/pq.html
+Enumerating objects: 36, done.
+Counting objects: 100% (34/34), done.
+Delta compression using up to 8 threads
+Compressing objects: 100% (14/14), done.
+Writing objects: 100% (18/18), 1.80 KiB | 1.80 MiB/s, done.
+Total 18 (delta 10), reused 0 (delta 0), pack-reused 0 (from 0)
+remote: Resolving deltas: 100% (10/10), completed with 8 local objects.
+To github.sydney.edu.au:SOFT2412-COMP9412-2026s2/A1-T27-43-IM-DUMMY.git
+   1d4712a..d6face7  master -> master
+
+Current working folder:
+/Users/rajdipshah/UNI/Y3S1 - 2026 sem 2/SOFT2412/A1 test/rsha1111
+==================================
+STEP COMPLETE
+==================================
+READY FOR STEP 08
+rajdipshah@Rajdips-MacBook-Air ~/UNI/Y3S1 - 2026 sem 2/SOFT2412/A1 test/rsha1111 % >....                   
+gradle)
+  new_version_count=$(grep -Ec "^[[:space:]]*version[[:space:]]*=[[:space:]]*'0\.4\.0'[[:space:]]*$" build.gradle)
+  if [ "$new_version_count" -gt 0 ]; then
+    echo "STOP: build.gradle is already version 0.4.0, but tag v0.4.0 does not exist. Review the release state; no empty release commit will be created."
+    release_ready=false
+  elif [ "$old_version_count" -ne 1 ]; then
+    echo "STOP: Expected exactly one build.gradle version line containing 0.3.0. No file was changed."
+    release_ready=false
+  fi
+fi
+if [ "$release_ready" = true ]; then
+  old_version_line=$(grep -E "^[[:space:]]*version[[:space:]]*=[[:space:]]*'0\.3\.0'[[:space:]]*$" build.gradle)
+  version_tmp="build.gradle.release-v0.4.0.tmp"
+  if ! awk -v old_line="$old_version_line" -v new_line="version = '0.4.0'" '{ if ($0 == old_line) print new_line; else print }' build.gradle > "$version_tmp"; then
+    echo "STOP: Could not prepare the build.gradle version update."
+    release_ready=false
+  elif ! mv "$version_tmp" build.gradle; then
+    echo "STOP: Could not replace build.gradle with the updated file."
+    release_ready=false
+  fi
+fi
+if [ "$release_ready" = true ]; then
+  verified_new_count=$(grep -Ec "^[[:space:]]*version[[:space:]]*=[[:space:]]*'0\.4\.0'[[:space:]]*$" build.gradle)
+  verified_old_count=$(grep -Ec "^[[:space:]]*version[[:space:]]*=[[:space:]]*'0\.3\.0'[[:space:]]*$" build.gradle)
+  if [ "$verified_new_count" -ne 1 ] || [ "$verified_old_count" -ne 0 ]; then
+    echo "STOP: Could not verify the build.gradle version update to 0.4.0."
+    release_ready=false
+  fi
+fi
+if [ "$release_ready" = true ]; then git add build.gradle || release_ready=false; fi
+if [ "$release_ready" = true ]; then git commit -m "Release v0.4.0" -m "Update the project version for the Round 3 release." || release_ready=false; fi
+if [ "$release_ready" = true ]; then git tag -a v0.4.0 -m "Round 3 release v0.4.0" || release_ready=false; fi
+if [ "$release_ready" = true ]; then git push origin master || release_ready=false; fi
+if [ "$release_ready" = true ]; then git push origin v0.4.0 || release_ready=false; fi
+if [ "$release_ready" != true ]; then
+  echo "STOP: Round 3 release did not complete. Review the messages above; no further release commands were run."
+fi
+fi
+
+if ! cd "$member_root"; then
+  echo "STOP: Could not return to the member root: $member_root"
+else
+  echo ""
+  echo "Current working folder:"
+  pwd
+  if [ "$step_verified" = true ] && [ "$release_ready" = true ]; then
+    echo "=================================="
+    echo "STEP COMPLETE"
+    echo "=================================="
+    echo "READY FOR STEP 09"
+  fi
+fi
+Already on 'master'
+Your branch is up to date with 'origin/master'.
+** WARNING: connection is not using a post-quantum key exchange algorithm.
+** This session may be vulnerable to "store now, decrypt later" attacks.
+** The server may need to be upgraded. See https://openssh.com/pq.html
+Already up to date.
+On branch master
+Your branch is up to date with 'origin/master'.
+
+nothing to commit, working tree clean
+
+BUILD SUCCESSFUL in 643ms
+1 actionable task: 1 up-to-date
+Consider enabling configuration cache to speed up this build: https://docs.gradle.org/9.7.1/userguide/configuration_cache_enabling.html
+
+BUILD SUCCESSFUL in 451ms
+2 actionable tasks: 2 up-to-date
+Consider enabling configuration cache to speed up this build: https://docs.gradle.org/9.7.1/userguide/configuration_cache_enabling.html
+
+> Task :test
+
+UserInterfaceTest > testHandleConversion() PASSED
+
+BUILD SUCCESSFUL in 1s
+4 actionable tasks: 2 executed, 2 up-to-date
+Consider enabling configuration cache to speed up this build: https://docs.gradle.org/9.7.1/userguide/configuration_cache_enabling.html
+
+> Task :test
+
+CurrencyConverterTest > testConvertUSDToEUR() PASSED
+
+CurrencyConverterTest > testGetSupportedCurrencies() PASSED
+
+CurrencyConverterTest > testGetExchangeRate() PASSED
+
+CurrencyConverterTest > testConvertSameCurrency() PASSED
+
+CurrencyConverterTest > testConvertZeroAmount() PASSED
+
+CurrencyConverterTest > testConvertAllCurrencyPairs() PASSED
+
+CurrencyConverterTest > testRoundToTwoDecimals() PASSED
+
+DataValidatorTest > testParseAmount() PASSED
+
+DataValidatorTest > testInvalidCurrencies() PASSED
+
+DataValidatorTest > testCaseInsensitiveCurrency() PASSED
+
+DataValidatorTest > testValidAmounts() PASSED
+
+DataValidatorTest > testNormalizeCurrency() PASSED
+
+DataValidatorTest > testValidCurrencies() PASSED
+
+DataValidatorTest > testInvalidAmounts() PASSED
+
+UserInterfaceTest > testShowExchangeRates() PASSED
+
+UserInterfaceTest > testShowMenu() PASSED
+
+UserInterfaceTest > testStartMethod() PASSED
+
+BUILD SUCCESSFUL in 1s
+4 actionable tasks: 2 executed, 2 up-to-date
+Consider enabling configuration cache to speed up this build: https://docs.gradle.org/9.7.1/userguide/configuration_cache_enabling.html
+
+> Task :test
+
+AppTest > testAppRunsAndExits() PASSED
+
+CurrencyConverterTest > testConvertUSDToEUR() PASSED
+
+CurrencyConverterTest > testGetSupportedCurrencies() PASSED
+
+CurrencyConverterTest > testGetExchangeRate() PASSED
+
+CurrencyConverterTest > testConvertSameCurrency() PASSED
+
+CurrencyConverterTest > testConvertZeroAmount() PASSED
+
+CurrencyConverterTest > testConvertAllCurrencyPairs() PASSED
+
+CurrencyConverterTest > testRoundToTwoDecimals() PASSED
+
+DataValidatorTest > testParseAmount() PASSED
+
+DataValidatorTest > testInvalidCurrencies() PASSED
+
+DataValidatorTest > testCaseInsensitiveCurrency() PASSED
+
+DataValidatorTest > testValidAmounts() PASSED
+
+DataValidatorTest > testNormalizeCurrency() PASSED
+
+DataValidatorTest > testValidCurrencies() PASSED
+
+DataValidatorTest > testInvalidAmounts() PASSED
+
+UserInterfaceTest > testHandleConversion() PASSED
+
+UserInterfaceTest > testShowExchangeRates() PASSED
+
+UserInterfaceTest > testShowMenu() PASSED
+
+UserInterfaceTest > testStartMethod() PASSED
+
+UserInterfaceTest > testUserInterfaceCreation() PASSED
+
+BUILD SUCCESSFUL in 1s
+4 actionable tasks: 2 executed, 2 up-to-date
+Consider enabling configuration cache to speed up this build: https://docs.gradle.org/9.7.1/userguide/configuration_cache_enabling.html
+[master a43c4cc] Release v0.4.0
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+** WARNING: connection is not using a post-quantum key exchange algorithm.
+** This session may be vulnerable to "store now, decrypt later" attacks.
+** The server may need to be upgraded. See https://openssh.com/pq.html
+Enumerating objects: 5, done.
+Counting objects: 100% (5/5), done.
+Delta compression using up to 8 threads
+Compressing objects: 100% (3/3), done.
+Writing objects: 100% (3/3), 330 bytes | 330.00 KiB/s, done.
+Total 3 (delta 2), reused 0 (delta 0), pack-reused 0 (from 0)
+remote: Resolving deltas: 100% (2/2), completed with 2 local objects.
+To github.sydney.edu.au:SOFT2412-COMP9412-2026s2/A1-T27-43-IM-DUMMY.git
+   d6face7..a43c4cc  master -> master
+** WARNING: connection is not using a post-quantum key exchange algorithm.
+** This session may be vulnerable to "store now, decrypt later" attacks.
+** The server may need to be upgraded. See https://openssh.com/pq.html
+Enumerating objects: 1, done.
+Counting objects: 100% (1/1), done.
+Writing objects: 100% (1/1), 173 bytes | 173.00 KiB/s, done.
+Total 1 (delta 0), reused 0 (delta 0), pack-reused 0 (from 0)
+To github.sydney.edu.au:SOFT2412-COMP9412-2026s2/A1-T27-43-IM-DUMMY.git
+ * [new tag]         v0.4.0 -> v0.4.0
+
+Current working folder:
+/Users/rajdipshah/UNI/Y3S1 - 2026 sem 2/SOFT2412/A1 test/rsha1111
+==================================
+STEP COMPLETE
+==================================
+READY FOR STEP 09
+rajdipshah@Rajdips-MacBook-Air ~/UNI/Y3S1 - 2026 sem 2/SOFT2412/A1 test/rsha1111 % >....                   
+
+if [ ! -d "$expected_repo/.git" ]; then
+  echo "STOP: Expected personal repository A1-T27-43-rsha1111 was not found in the current member root."
+  echo "No Git commands were run."
+  step_verified=false
+elif ! cd "$expected_repo"; then
+  echo "STOP: Could not enter A1-T27-43-rsha1111."
+  step_verified=false
+fi
+
+if [ "$step_verified" = true ]; then
+  git_root=$(git rev-parse --show-toplevel 2>/dev/null) || step_verified=false
+fi
+if [ "$step_verified" = true ]; then
+  actual_root=$(cd "$git_root" && pwd -P) || step_verified=false
+  if [ "$step_verified" = true ] && { [ "$actual_root" != "$expected_repo" ] || [ "$(basename "$actual_root")" != "A1-T27-43-rsha1111" ]; }; then
+    echo "STOP: The current Git repository is not the expected A1-T27-43-rsha1111 repository."
+    step_verified=false
+  fi
+fi
+
+if [ "$step_verified" = true ]; then
+  origin_url=$(git remote get-url origin 2>/dev/null) || step_verified=false
+  if [ "$step_verified" = true ] && [ "$origin_url" != "git@github.sydney.edu.au:SOFT2412-COMP9412-2026s2/A1-T27-43-rsha1111.git" ]; then
+    echo "STOP: origin does not match the expected personal repository URL."
+    step_verified=false
+  fi
+fi
+if [ "$step_verified" = true ]; then
+  upstream_url=$(git remote get-url upstream 2>/dev/null) || step_verified=false
+  if [ "$step_verified" = true ] && [ "$upstream_url" != "git@github.sydney.edu.au:SOFT2412-COMP9412-2026s2/A1-T27-43-IM-DUMMY.git" ]; then
+    echo "STOP: upstream does not match the expected personal repository URL."
+    step_verified=false
+  fi
+fi
+
+if [ "$step_verified" = true ]; then
+sync_ready=true
+if ! git checkout master; then sync_ready=false; fi
+if [ "$sync_ready" = true ] && ! git fetch upstream; then sync_ready=false; fi
+if [ "$sync_ready" = true ] && ! git merge --no-edit upstream/master; then sync_ready=false; fi
+if [ "$sync_ready" = true ] && ! git push origin master --tags; then sync_ready=false; fi
+if [ "$sync_ready" != true ]; then echo "STOP: Personal repository sync did not complete."; fi
+fi
+
+if ! cd "$member_root"; then
+  echo "STOP: Could not return to the member root: $member_root"
+else
+  echo ""
+  echo "Current working folder:"
+  pwd
+  if [ "$step_verified" = true ] && [ "$sync_ready" = true ]; then
+    echo "=================================="
+    echo "STEP COMPLETE"
+    echo "=================================="
+    echo "READY FOR STEP 02 OF THE NEXT ROUND"
+  fi
+fi
+Already on 'master'
+Your branch is up to date with 'origin/master'.
+** WARNING: connection is not using a post-quantum key exchange algorithm.
+** This session may be vulnerable to "store now, decrypt later" attacks.
+** The server may need to be upgraded. See https://openssh.com/pq.html
+remote: Enumerating objects: 28, done.
+remote: Counting objects: 100% (27/27), done.
+remote: Compressing objects: 100% (5/5), done.
+remote: Total 12 (delta 6), reused 11 (delta 5), pack-reused 0 (from 0)
+Unpacking objects: 100% (12/12), 1.06 KiB | 83.00 KiB/s, done.
+From github.sydney.edu.au:SOFT2412-COMP9412-2026s2/A1-T27-43-IM-DUMMY
+   1d4712a..a43c4cc  master     -> upstream/master
+ * [new tag]         v0.4.0     -> v0.4.0
+Updating 1d4712a..a43c4cc
+Fast-forward
+ CHANGELOG.md                         |  3 ++-
+ build.gradle                         |  2 +-
+ src/main/java/UserInterface.java     | 26 ++++++++++++++++++--------
+ src/test/java/UserInterfaceTest.java | 25 +++++++++++++++++++++----
+ 4 files changed, 42 insertions(+), 14 deletions(-)
+** WARNING: connection is not using a post-quantum key exchange algorithm.
+** This session may be vulnerable to "store now, decrypt later" attacks.
+** The server may need to be upgraded. See https://openssh.com/pq.html
+Enumerating objects: 28, done.
+Counting objects: 100% (27/27), done.
+Delta compression using up to 8 threads
+Compressing objects: 100% (10/10), done.
+Writing objects: 100% (12/12), 1.11 KiB | 1.11 MiB/s, done.
+Total 12 (delta 6), reused 0 (delta 0), pack-reused 0 (from 0)
+remote: Resolving deltas: 100% (6/6), completed with 5 local objects.
+To github.sydney.edu.au:SOFT2412-COMP9412-2026s2/A1-T27-43-rsha1111.git
+   1d4712a..a43c4cc  master -> master
+ * [new tag]         v0.4.0 -> v0.4.0
+
+Current working folder:
+/Users/rajdipshah/UNI/Y3S1 - 2026 sem 2/SOFT2412/A1 test/rsha1111
+==================================
+STEP COMPLETE
+==================================
+READY FOR STEP 02 OF THE NEXT ROUND
+rajdipshah@Rajdips-MacBook-Air ~/UNI/Y3S1 - 2026 sem 2/SOFT2412/A1 test/rsha1111 % 
+
+rajdipshah@Rajdips-MacBook-Air ~/UNI/Y3S1 - 2026 sem 2/SOFT2412/A1 test/rsha0000 % clear
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+rajdipshah@Rajdips-MacBook-Air ~/UNI/Y3S1 - 2026 sem 2/SOFT2412/A1 test/rsha0000 % echo round3
+round3
+rajdipshah@Rajdips-MacBook-Air ~/UNI/Y3S1 - 2026 sem 2/SOFT2412/A1 test/rsha0000 % >....                   
+  step_verified=false
+fi
+
+if [ "$step_verified" = true ]; then
+  git_root=$(git rev-parse --show-toplevel 2>/dev/null) || step_verified=false
+fi
+if [ "$step_verified" = true ]; then
+  actual_root=$(cd "$git_root" && pwd -P) || step_verified=false
+  if [ "$step_verified" = true ] && { [ "$actual_root" != "$expected_repo" ] || [ "$(basename "$actual_root")" != "A1-T27-43-rsha0000" ]; }; then
+    echo "STOP: The current Git repository is not the expected A1-T27-43-rsha0000 repository."
+    step_verified=false
+  fi
+fi
+
+if [ "$step_verified" = true ]; then
+  origin_url=$(git remote get-url origin 2>/dev/null) || step_verified=false
+  if [ "$step_verified" = true ] && [ "$origin_url" != "git@github.sydney.edu.au:SOFT2412-COMP9412-2026s2/A1-T27-43-rsha0000.git" ]; then
+    echo "STOP: origin does not match the expected personal repository URL."
+    step_verified=false
+  fi
+fi
+if [ "$step_verified" = true ]; then
+  upstream_url=$(git remote get-url upstream 2>/dev/null) || step_verified=false
+  if [ "$step_verified" = true ] && [ "$upstream_url" != "git@github.sydney.edu.au:SOFT2412-COMP9412-2026s2/A1-T27-43-IM-DUMMY.git" ]; then
+    echo "STOP: upstream does not match the expected personal repository URL."
+    step_verified=false
+  fi
+fi
+
+if [ "$step_verified" = true ]; then
+step_succeeded=false
+if git checkout master && git fetch upstream && git merge --no-edit upstream/master; then
+  if git show-ref --verify --quiet refs/heads/feature/convert; then
+    git checkout feature/convert
+  else
+    git checkout -b feature/convert
+  fi
+  if [ "$(git branch --show-current)" = "feature/convert" ] && git status; then
+    step_succeeded=true
+  else
+    echo "STOP: Expected feature branch feature/convert is not checked out."
+  fi
+fi
+fi
+
+if ! cd "$member_root"; then
+  echo "STOP: Could not return to the member root: $member_root"
+else
+  echo ""
+  echo "Current working folder:"
+  pwd
+  if [ "$step_verified" = true ] && [ "$step_succeeded" = true ]; then
+    echo "=================================="
+    echo "STEP COMPLETE"
+    echo "=================================="
+    echo "READY FOR STEP 03"
+  fi
+fi
+Switched to branch 'master'
+Your branch is up to date with 'origin/master'.
+** WARNING: connection is not using a post-quantum key exchange algorithm.
+** This session may be vulnerable to "store now, decrypt later" attacks.
+** The server may need to be upgraded. See https://openssh.com/pq.html
+remote: Enumerating objects: 102, done.
+remote: Counting objects: 100% (98/98), done.
+remote: Compressing objects: 100% (27/27), done.
+remote: Total 76 (delta 42), reused 69 (delta 36), pack-reused 0 (from 0)
+Unpacking objects: 100% (76/76), 6.88 KiB | 135.00 KiB/s, done.
+From github.sydney.edu.au:SOFT2412-COMP9412-2026s2/A1-T27-43-IM-DUMMY
+   7e56f97..a96dcb6  master     -> upstream/master
+ * [new tag]         v0.3.0     -> v0.3.0
+Updating 7e56f97..a96dcb6
+Fast-forward
+ CHANGELOG.md                             | 12 ++++++++++--
+ build.gradle                             |  2 +-
+ src/main/java/CurrencyConverter.java     | 36 ++++++++++++++++++++++++++++++------
+ src/main/java/DataValidator.java         | 27 +++++++++++++++++++++------
+ src/main/java/UserInterface.java         |  7 +++----
+ src/test/java/CurrencyConverterTest.java | 25 +++++++++++++++++--------
+ src/test/java/UserInterfaceTest.java     | 18 +++++++++++++++---
+ 7 files changed, 97 insertions(+), 30 deletions(-)
+Switched to a new branch 'feature/convert'
+On branch feature/convert
+nothing to commit, working tree clean
+
+Current working folder:
+/Users/rajdipshah/UNI/Y3S1 - 2026 sem 2/SOFT2412/A1 test/rsha0000
+==================================
+STEP COMPLETE
+==================================
+READY FOR STEP 03
+rajdipshah@Rajdips-MacBook-Air ~/UNI/Y3S1 - 2026 sem 2/SOFT2412/A1 test/rsha0000 % >....                   
+  step_verified=false
+fi
+
+if [ "$step_verified" = true ]; then
+  git_root=$(git rev-parse --show-toplevel 2>/dev/null) || step_verified=false
+fi
+if [ "$step_verified" = true ]; then
+  actual_root=$(cd "$git_root" && pwd -P) || step_verified=false
+  if [ "$step_verified" = true ] && { [ "$actual_root" != "$expected_repo" ] || [ "$(basename "$actual_root")" != "A1-T27-43-rsha0000" ]; }; then
+    echo "STOP: The current Git repository is not the expected A1-T27-43-rsha0000 repository."
+    step_verified=false
+  fi
+fi
+
+if [ "$step_verified" = true ]; then
+  origin_url=$(git remote get-url origin 2>/dev/null) || step_verified=false
+  if [ "$step_verified" = true ] && [ "$origin_url" != "git@github.sydney.edu.au:SOFT2412-COMP9412-2026s2/A1-T27-43-rsha0000.git" ]; then
+    echo "STOP: origin does not match the expected personal repository URL."
+    step_verified=false
+  fi
+fi
+if [ "$step_verified" = true ]; then
+  upstream_url=$(git remote get-url upstream 2>/dev/null) || step_verified=false
+  if [ "$step_verified" = true ] && [ "$upstream_url" != "git@github.sydney.edu.au:SOFT2412-COMP9412-2026s2/A1-T27-43-IM-DUMMY.git" ]; then
+    echo "STOP: upstream does not match the expected personal repository URL."
+    step_verified=false
+  fi
+fi
+
+if [ "$step_verified" = true ]; then
+step_succeeded=false
+current_branch=$(git branch --show-current)
+if [ "$current_branch" != "feature/convert" ]; then
+  echo "STOP: Step 06 requires branch feature/convert; current branch is $current_branch. Nothing was staged or committed."
+else
+  if git status &&       git add src/main/java/CurrencyConverter.java src/test/java/CurrencyConverterTest.java CHANGELOG.md &&       git commit -m "Implement currency conversion" -m "Implement convert using unrounded derived exchange rates and replace the four conversion test methods." &&       git push -u origin feature/convert; then
+    step_succeeded=true
+  fi
+fi
+fi
+
+if ! cd "$member_root"; then
+  echo "STOP: Could not return to the member root: $member_root"
+else
+  echo ""
+  echo "Current working folder:"
+  pwd
+  if [ "$step_verified" = true ] && [ "$step_succeeded" = true ]; then
+    echo "=================================="
+    echo "STEP COMPLETE"
+    echo "=================================="
+    echo "READY FOR STEP 07"
+  fi
+fi
+On branch feature/convert
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+	modified:   CHANGELOG.md
+	modified:   src/main/java/CurrencyConverter.java
+	modified:   src/test/java/CurrencyConverterTest.java
+
+no changes added to commit (use "git add" and/or "git commit -a")
+[feature/convert a16dd3d] Implement currency conversion
+ 3 files changed, 37 insertions(+), 32 deletions(-)
+** WARNING: connection is not using a post-quantum key exchange algorithm.
+** This session may be vulnerable to "store now, decrypt later" attacks.
+** The server may need to be upgraded. See https://openssh.com/pq.html
+Enumerating objects: 111, done.
+Counting objects: 100% (107/107), done.
+Delta compression using up to 8 threads
+Compressing objects: 100% (70/70), done.
+Writing objects: 100% (85/85), 8.22 KiB | 1.64 MiB/s, done.
+Total 85 (delta 47), reused 0 (delta 0), pack-reused 0 (from 0)
+remote: Resolving deltas: 100% (47/47), completed with 12 local objects.
+remote: 
+remote: Create a pull request for 'feature/convert' on GitHub by visiting:
+remote:      https://github.sydney.edu.au/SOFT2412-COMP9412-2026s2/A1-T27-43-rsha0000/pull/new/feature/convert
+remote: 
+To github.sydney.edu.au:SOFT2412-COMP9412-2026s2/A1-T27-43-rsha0000.git
+ * [new branch]      feature/convert -> feature/convert
+branch 'feature/convert' set up to track 'origin/feature/convert'.
+
+Current working folder:
+/Users/rajdipshah/UNI/Y3S1 - 2026 sem 2/SOFT2412/A1 test/rsha0000
+==================================
+STEP COMPLETE
+==================================
+READY FOR STEP 07
+rajdipshah@Rajdips-MacBook-Air ~/UNI/Y3S1 - 2026 sem 2/SOFT2412/A1 test/rsha0000 % >....                   
+          git status
+if git diff --check && git diff --cached --check && gradle classes && gradle testClasses; then
+  if gradle test --tests CurrencyConverterTest.testConvertUSDToEUR --tests CurrencyConverterTest.testConvertSameCurrency --tests CurrencyConverterTest.testConvertZeroAmount --tests CurrencyConverterTest.testConvertAllCurrencyPairs; then
+    echo "PASS: The selected feature test passed."
+    if git fetch origin; then
+      current_team_master=$(git rev-parse origin/master)
+      if [ "$current_team_master" != "$integration_baseline" ]; then
+        echo "STOP: Team master changed during this integration."
+        echo "Another integration was pushed while this step was running."
+        echo "Restart Step 07 from the latest team master."
+        echo "Team master was not pushed."
+      elif git push origin master; then
+        workflow_succeeded=true
+      fi
+    else
+      echo "STOP: Could not refresh origin before the final push. Team master was not pushed."
+    fi
+  else
+    echo "STOP: The selected independent feature test failed. Team master was not pushed."
+  fi
+else
+  echo "STOP: Working-tree, production compilation, or test compilation validation failed. Team master was not pushed."
+fi
+        else
+          echo "STOP: The automatic CHANGELOG merge commit failed. Team master was not pushed."
+        fi
+      fi
+      rm -f "$changelog_base" "$changelog_expected"
+    elif [ "$merge_in_progress" = true ] && [ -n "$unresolved_files" ]; then
+      echo "STOP: Conflicts include Java, test, source, or multiple files. Resolve every file carefully; these conflicts are never handled automatically."
+      printf '%s
+' "$unresolved_files"
+      echo "Team master was not pushed."
+    else
+      echo "STOP: The feature merge failed and no merge is in progress. Review the Git output; no validation or push was run."
+    fi
+  fi
+else
+  echo "STOP: Could not prepare team master or fetch the selected member's feature. No feature merge, tests, or push were run."
+fi
+fi
+
+if ! cd "$member_root"; then
+  echo "STOP: Could not return to the member root: $member_root"
+else
+  echo ""
+  echo "Current working folder:"
+  pwd
+  if [ "$step_verified" = true ] && [ "$workflow_succeeded" = true ]; then
+    echo "=================================="
+    echo "STEP COMPLETE"
+    echo "=================================="
+    echo "READY FOR STEP 08"
+  fi
+fi
+Already on 'master'
+Your branch is up to date with 'origin/master'.
+** WARNING: connection is not using a post-quantum key exchange algorithm.
+** This session may be vulnerable to "store now, decrypt later" attacks.
+** The server may need to be upgraded. See https://openssh.com/pq.html
+Already up to date.
+** WARNING: connection is not using a post-quantum key exchange algorithm.
+** This session may be vulnerable to "store now, decrypt later" attacks.
+** The server may need to be upgraded. See https://openssh.com/pq.html
+remote: Enumerating objects: 19, done.
+remote: Counting objects: 100% (19/19), done.
+remote: Compressing objects: 100% (7/7), done.
+remote: Total 10 (delta 6), reused 5 (delta 1), pack-reused 0 (from 0)
+Unpacking objects: 100% (10/10), 1.14 KiB | 116.00 KiB/s, done.
+From github.sydney.edu.au:SOFT2412-COMP9412-2026s2/A1-T27-43-rsha0000
+ * [new branch]      feature/convert -> me/feature/convert
+Merge made by the 'ort' strategy.
+ CHANGELOG.md                             |  1 +
+ src/main/java/CurrencyConverter.java     | 14 +++-----------
+ src/test/java/CurrencyConverterTest.java | 54 +++++++++++++++++++++++++++++++++---------------------
+ 3 files changed, 37 insertions(+), 32 deletions(-)
+On branch master
+Your branch is ahead of 'origin/master' by 2 commits.
+  (use "git push" to publish your local commits)
+
+nothing to commit, working tree clean
+
+BUILD SUCCESSFUL in 896ms
+1 actionable task: 1 executed
+Consider enabling configuration cache to speed up this build: https://docs.gradle.org/9.7.1/userguide/configuration_cache_enabling.html
+│···············│ 0% WAITING
+> IDLE
+
+BUILD SUCCESSFUL in 570ms
+2 actionable tasks: 1 executed, 1 up-to-date
+Consider enabling configuration cache to speed up this build: https://docs.gradle.org/9.7.1/userguide/configuration_cache_enabling.html
+
+> Task :test
+
+CurrencyConverterTest > testConvertUSDToEUR() PASSED
+
+CurrencyConverterTest > testConvertSameCurrency() PASSED
+
+CurrencyConverterTest > testConvertZeroAmount() PASSED
+
+CurrencyConverterTest > testConvertAllCurrencyPairs() PASSED
+
+BUILD SUCCESSFUL in 1s
+4 actionable tasks: 2 executed, 2 up-to-date
+Consider enabling configuration cache to speed up this build: https://docs.gradle.org/9.7.1/userguide/configuration_cache_enabling.html
+PASS: The selected feature test passed.
+** WARNING: connection is not using a post-quantum key exchange algorithm.
+** This session may be vulnerable to "store now, decrypt later" attacks.
+** The server may need to be upgraded. See https://openssh.com/pq.html
+** WARNING: connection is not using a post-quantum key exchange algorithm.
+** This session may be vulnerable to "store now, decrypt later" attacks.
+** The server may need to be upgraded. See https://openssh.com/pq.html
+Enumerating objects: 20, done.
+Counting objects: 100% (20/20), done.
+Delta compression using up to 8 threads
+Compressing objects: 100% (9/9), done.
+Writing objects: 100% (11/11), 1.29 KiB | 1.29 MiB/s, done.
+Total 11 (delta 7), reused 0 (delta 0), pack-reused 0 (from 0)
+remote: Resolving deltas: 100% (7/7), completed with 6 local objects.
+To github.sydney.edu.au:SOFT2412-COMP9412-2026s2/A1-T27-43-IM-DUMMY.git
+   a96dcb6..1d4712a  master -> master
+
+Current working folder:
+/Users/rajdipshah/UNI/Y3S1 - 2026 sem 2/SOFT2412/A1 test/rsha0000
+==================================
+STEP COMPLETE
+==================================
+READY FOR STEP 08
+rajdipshah@Rajdips-MacBook-Air ~/UNI/Y3S1 - 2026 sem 2/SOFT2412/A1 test/rsha0000 % >....                   
+
+if [ ! -d "$expected_repo/.git" ]; then
+  echo "STOP: Expected personal repository A1-T27-43-rsha0000 was not found in the current member root."
+  echo "No Git commands were run."
+  step_verified=false
+elif ! cd "$expected_repo"; then
+  echo "STOP: Could not enter A1-T27-43-rsha0000."
+  step_verified=false
+fi
+
+if [ "$step_verified" = true ]; then
+  git_root=$(git rev-parse --show-toplevel 2>/dev/null) || step_verified=false
+fi
+if [ "$step_verified" = true ]; then
+  actual_root=$(cd "$git_root" && pwd -P) || step_verified=false
+  if [ "$step_verified" = true ] && { [ "$actual_root" != "$expected_repo" ] || [ "$(basename "$actual_root")" != "A1-T27-43-rsha0000" ]; }; then
+    echo "STOP: The current Git repository is not the expected A1-T27-43-rsha0000 repository."
+    step_verified=false
+  fi
+fi
+
+if [ "$step_verified" = true ]; then
+  origin_url=$(git remote get-url origin 2>/dev/null) || step_verified=false
+  if [ "$step_verified" = true ] && [ "$origin_url" != "git@github.sydney.edu.au:SOFT2412-COMP9412-2026s2/A1-T27-43-rsha0000.git" ]; then
+    echo "STOP: origin does not match the expected personal repository URL."
+    step_verified=false
+  fi
+fi
+if [ "$step_verified" = true ]; then
+  upstream_url=$(git remote get-url upstream 2>/dev/null) || step_verified=false
+  if [ "$step_verified" = true ] && [ "$upstream_url" != "git@github.sydney.edu.au:SOFT2412-COMP9412-2026s2/A1-T27-43-IM.git" ]; then
+    echo "STOP: upstream does not match the expected personal repository URL."
+    step_verified=false
+  fi
+fi
+
+if [ "$step_verified" = true ]; then
+sync_ready=true
+if ! git checkout master; then sync_ready=false; fi
+if [ "$sync_ready" = true ] && ! git fetch upstream; then sync_ready=false; fi
+if [ "$sync_ready" = true ] && ! git merge --no-edit upstream/master; then sync_ready=false; fi
+if [ "$sync_ready" = true ] && ! git push origin master --tags; then sync_ready=false; fi
+if [ "$sync_ready" != true ]; then echo "STOP: Personal repository sync did not complete."; fi
+fi
+
+if ! cd "$member_root"; then
+  echo "STOP: Could not return to the member root: $member_root"
+else
+  echo ""
+  echo "Current working folder:"
+  pwd
+  if [ "$step_verified" = true ] && [ "$sync_ready" = true ]; then
+    echo "=================================="
+    echo "STEP COMPLETE"
+    echo "=================================="
+    echo "READY FOR STEP 02 OF THE NEXT ROUND"
+  fi
+fi
+STOP: upstream does not match the expected personal repository URL.
+
+Current working folder:
+/Users/rajdipshah/UNI/Y3S1 - 2026 sem 2/SOFT2412/A1 test/rsha0000
+rajdipshah@Rajdips-MacBook-Air ~/UNI/Y3S1 - 2026 sem 2/SOFT2412/A1 test/rsha0000 % >....                   
+
+if [ ! -d "$expected_repo/.git" ]; then
+  echo "STOP: Expected personal repository A1-T27-43-rsha0000 was not found in the current member root."
+  echo "No Git commands were run."
+  step_verified=false
+elif ! cd "$expected_repo"; then
+  echo "STOP: Could not enter A1-T27-43-rsha0000."
+  step_verified=false
+fi
+
+if [ "$step_verified" = true ]; then
+  git_root=$(git rev-parse --show-toplevel 2>/dev/null) || step_verified=false
+fi
+if [ "$step_verified" = true ]; then
+  actual_root=$(cd "$git_root" && pwd -P) || step_verified=false
+  if [ "$step_verified" = true ] && { [ "$actual_root" != "$expected_repo" ] || [ "$(basename "$actual_root")" != "A1-T27-43-rsha0000" ]; }; then
+    echo "STOP: The current Git repository is not the expected A1-T27-43-rsha0000 repository."
+    step_verified=false
+  fi
+fi
+
+if [ "$step_verified" = true ]; then
+  origin_url=$(git remote get-url origin 2>/dev/null) || step_verified=false
+  if [ "$step_verified" = true ] && [ "$origin_url" != "git@github.sydney.edu.au:SOFT2412-COMP9412-2026s2/A1-T27-43-rsha0000.git" ]; then
+    echo "STOP: origin does not match the expected personal repository URL."
+    step_verified=false
+  fi
+fi
+if [ "$step_verified" = true ]; then
+  upstream_url=$(git remote get-url upstream 2>/dev/null) || step_verified=false
+  if [ "$step_verified" = true ] && [ "$upstream_url" != "git@github.sydney.edu.au:SOFT2412-COMP9412-2026s2/A1-T27-43-IM-DUMMY.git" ]; then
+    echo "STOP: upstream does not match the expected personal repository URL."
+    step_verified=false
+  fi
+fi
+
+if [ "$step_verified" = true ]; then
+sync_ready=true
+if ! git checkout master; then sync_ready=false; fi
+if [ "$sync_ready" = true ] && ! git fetch upstream; then sync_ready=false; fi
+if [ "$sync_ready" = true ] && ! git merge --no-edit upstream/master; then sync_ready=false; fi
+if [ "$sync_ready" = true ] && ! git push origin master --tags; then sync_ready=false; fi
+if [ "$sync_ready" != true ]; then echo "STOP: Personal repository sync did not complete."; fi
+fi
+
+if ! cd "$member_root"; then
+  echo "STOP: Could not return to the member root: $member_root"
+else
+  echo ""
+  echo "Current working folder:"
+  pwd
+  if [ "$step_verified" = true ] && [ "$sync_ready" = true ]; then
+    echo "=================================="
+    echo "STEP COMPLETE"
+    echo "=================================="
+    echo "READY FOR STEP 02 OF THE NEXT ROUND"
+  fi
+fi
+Switched to branch 'master'
+Your branch is ahead of 'origin/master' by 12 commits.
+  (use "git push" to publish your local commits)
+** WARNING: connection is not using a post-quantum key exchange algorithm.
+** This session may be vulnerable to "store now, decrypt later" attacks.
+** The server may need to be upgraded. See https://openssh.com/pq.html
+remote: Enumerating objects: 43, done.
+remote: Counting objects: 100% (40/40), done.
+remote: Compressing objects: 100% (7/7), done.
+remote: Total 23 (delta 12), reused 22 (delta 12), pack-reused 0 (from 0)
+Unpacking objects: 100% (23/23), 2.40 KiB | 117.00 KiB/s, done.
+From github.sydney.edu.au:SOFT2412-COMP9412-2026s2/A1-T27-43-IM-DUMMY
+   a96dcb6..a43c4cc  master     -> upstream/master
+ * [new tag]         v0.4.0     -> v0.4.0
+Updating a96dcb6..a43c4cc
+Fast-forward
+ CHANGELOG.md                             |  4 +++-
+ build.gradle                             |  2 +-
+ src/main/java/CurrencyConverter.java     | 14 +++-----------
+ src/main/java/UserInterface.java         | 26 ++++++++++++++++++--------
+ src/test/java/CurrencyConverterTest.java | 54 +++++++++++++++++++++++++++++++++---------------------
+ src/test/java/UserInterfaceTest.java     | 25 +++++++++++++++++++++----
+ 6 files changed, 79 insertions(+), 46 deletions(-)
+** WARNING: connection is not using a post-quantum key exchange algorithm.
+** This session may be vulnerable to "store now, decrypt later" attacks.
+** The server may need to be upgraded. See https://openssh.com/pq.html
+Enumerating objects: 44, done.
+Counting objects: 100% (41/41), done.
+Delta compression using up to 8 threads
+Compressing objects: 100% (20/20), done.
+Writing objects: 100% (24/24), 2.58 KiB | 1.29 MiB/s, done.
+Total 24 (delta 12), reused 0 (delta 0), pack-reused 0 (from 0)
+remote: Resolving deltas: 100% (12/12), completed with 9 local objects.
+To github.sydney.edu.au:SOFT2412-COMP9412-2026s2/A1-T27-43-rsha0000.git
+   7e56f97..a43c4cc  master -> master
+ * [new tag]         v0.3.0 -> v0.3.0
+ * [new tag]         v0.4.0 -> v0.4.0
+
+Current working folder:
+/Users/rajdipshah/UNI/Y3S1 - 2026 sem 2/SOFT2412/A1 test/rsha0000
+==================================
+STEP COMPLETE
+==================================
+READY FOR STEP 02 OF THE NEXT ROUND
+rajdipshah@Rajdips-MacBook-Air ~/UNI/Y3S1 - 2026 sem 2/SOFT2412/A1 test/rsha0000 % 
