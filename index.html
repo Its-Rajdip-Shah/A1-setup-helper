@@ -424,6 +424,28 @@
             </div>
           </div>
         </details>
+        <details class="workflow-step" id="finalReleaseStep">
+          <summary><span class="step-number">11</span><span>Final Release</span></summary>
+          <div class="workflow-content">
+            <p id="finalReleaseMessage" class="workflow-note">The configured finalisation owner performs the final v1.0.0 release after Step 10.</p>
+            <div id="finalReleaseContent">
+              <p class="release-notice">Run this once from the finalisation owner's member root after Step 10 reports READY FOR FINAL RELEASE.</p>
+              <div class="code-header"><span>Final Release · v1.0.0</span><button type="button" class="copy-code-button" data-copy-target="finalReleaseCommands">Copy</button></div>
+              <pre class="workflow-code"><code id="finalReleaseCommands"></code></pre>
+            </div>
+          </div>
+        </details>
+        <details class="workflow-step" id="finalPersonalSyncStep">
+          <summary><span class="step-number">12</span><span>Final Personal Sync</span></summary>
+          <div class="workflow-content">
+            <p id="finalPersonalSyncMessage" class="workflow-note">After the team releases v1.0.0, each member syncs and submits their own personal repository.</p>
+            <div id="finalPersonalSyncContent">
+              <p class="release-notice">This creates no code or commits. It fast-forwards your personal master to the verified team release and pushes only master and v1.0.0.</p>
+              <div class="code-header"><span>Final Personal Sync · v1.0.0</span><button type="button" class="copy-code-button" data-copy-target="finalPersonalSyncCommands">Copy</button></div>
+              <pre class="workflow-code"><code id="finalPersonalSyncCommands"></code></pre>
+            </div>
+          </div>
+        </details>
         </section>
       </div>
     </section>

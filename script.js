@@ -112,6 +112,22 @@ const finalisationContent = document.getElementById("finalisationContent");
 
 const finalisationCommands = document.getElementById("finalisationCommands");
 
+const finalReleaseStep = document.getElementById("finalReleaseStep");
+
+const finalReleaseMessage = document.getElementById("finalReleaseMessage");
+
+const finalReleaseContent = document.getElementById("finalReleaseContent");
+
+const finalReleaseCommands = document.getElementById("finalReleaseCommands");
+
+const finalPersonalSyncStep = document.getElementById("finalPersonalSyncStep");
+
+const finalPersonalSyncMessage = document.getElementById("finalPersonalSyncMessage");
+
+const finalPersonalSyncContent = document.getElementById("finalPersonalSyncContent");
+
+const finalPersonalSyncCommands = document.getElementById("finalPersonalSyncCommands");
+
 let selectedMember = "";
 
 let currentRound = 1;
@@ -155,8 +171,8 @@ const TEAM_MEMBERS = [
   {
     name: "Raj Shah",
     roles: ["finalisationOwner"],
-    unikeys: { test: "rsha1111", production: "" },
-    contribution: "Implemented the application start loop, menu display, and exchange-rate display.",
+    unikeys: { test: "rsha1111", production: "rsha0537" },
+    contribution: "Implemented the allocated application start loop, menu display, and exchange-rate display. Also completed the shared App.main() application bootstrap required to launch the console interface.",
   },
   {
     name: "Tiya Agrawal",
@@ -181,23 +197,78 @@ const TEAM_MEMBERS = [
 const FINAL_MAKEFILE = `JUNIT_JAR := ${FINALISATION_CONFIG.junitJar}
 MAIN_OUT := build/make/classes
 TEST_OUT := build/make/test-classes
-MAIN_SOURCES := $(wildcard src/main/java/*.java)
+APP_CLASS := $(MAIN_OUT)/App.class
+UI_CLASS := $(MAIN_OUT)/UserInterface.class
+CONVERTER_CLASS := $(MAIN_OUT)/CurrencyConverter.class
+VALIDATOR_CLASS := $(MAIN_OUT)/DataValidator.class
 TEST_SOURCES := $(wildcard src/test/java/*.java)
+TEST_STAMP := $(TEST_OUT)/.compiled
 
 .PHONY: compile test clean
 
-compile:
-\tmkdir -p $(MAIN_OUT)
-\tjavac --release 17 -d $(MAIN_OUT) $(MAIN_SOURCES)
+compile: $(APP_CLASS)
 
-test: compile
-\ttest -f $(JUNIT_JAR)
+$(MAIN_OUT):
+\tmkdir -p $(MAIN_OUT)
+
+$(TEST_OUT):
 \tmkdir -p $(TEST_OUT)
+
+$(CONVERTER_CLASS): src/main/java/CurrencyConverter.java | $(MAIN_OUT)
+\tjavac --release 17 -cp "$(MAIN_OUT)" -d $(MAIN_OUT) src/main/java/CurrencyConverter.java
+
+$(VALIDATOR_CLASS): src/main/java/DataValidator.java | $(MAIN_OUT)
+\tjavac --release 17 -cp "$(MAIN_OUT)" -d $(MAIN_OUT) src/main/java/DataValidator.java
+
+$(UI_CLASS): src/main/java/UserInterface.java $(CONVERTER_CLASS) $(VALIDATOR_CLASS) | $(MAIN_OUT)
+\tjavac --release 17 -cp "$(MAIN_OUT)" -d $(MAIN_OUT) src/main/java/UserInterface.java
+
+$(APP_CLASS): src/main/java/App.java $(UI_CLASS) | $(MAIN_OUT)
+\tjavac --release 17 -cp "$(MAIN_OUT)" -d $(MAIN_OUT) src/main/java/App.java
+
+$(TEST_STAMP): $(TEST_SOURCES) $(APP_CLASS) $(UI_CLASS) $(CONVERTER_CLASS) $(VALIDATOR_CLASS) | $(TEST_OUT)
+\ttest -f $(JUNIT_JAR)
 \tjavac --release 17 -cp "$(JUNIT_JAR):$(MAIN_OUT)" -d $(TEST_OUT) $(TEST_SOURCES)
+\ttouch $(TEST_STAMP)
+
+test: $(TEST_STAMP)
 \tjava -jar $(JUNIT_JAR) execute --class-path "$(MAIN_OUT):$(TEST_OUT)" --scan-class-path
 
 clean:
 \trm -rf build/make`;
+
+const MAKE_INCREMENTAL_VALIDATION_PYTHON = `import os
+import subprocess
+import time
+
+cases = [
+    ("src/main/java/CurrencyConverter.java", ["CurrencyConverter.class", "UserInterface.class", "App.class"]),
+    ("src/main/java/DataValidator.java", ["DataValidator.class", "UserInterface.class", "App.class"]),
+    ("src/main/java/UserInterface.java", ["UserInterface.class", "App.class"]),
+    ("src/main/java/App.java", ["App.class"]),
+]
+class_dir = "build/make/classes"
+sources = [source for source, _ in cases]
+original_times = {source: os.stat(source) for source in sources}
+try:
+    required = ["CurrencyConverter.class", "DataValidator.class", "UserInterface.class", "App.class"]
+    missing = [name for name in required if not os.path.isfile(os.path.join(class_dir, name))]
+    if missing:
+        raise RuntimeError("make compile did not create: " + ", ".join(missing))
+    for source, expected_classes in cases:
+        before = {name: os.stat(os.path.join(class_dir, name)).st_mtime_ns for name in expected_classes}
+        source_stat = os.stat(source)
+        future = max(time.time_ns(), source_stat.st_mtime_ns) + 2_000_000_000
+        os.utime(source, ns=(source_stat.st_atime_ns, future))
+        subprocess.run(["make", "compile"], check=True)
+        not_rebuilt = [name for name in expected_classes
+                       if os.stat(os.path.join(class_dir, name)).st_mtime_ns <= before[name]]
+        if not_rebuilt:
+            raise RuntimeError(source + " did not rebuild: " + ", ".join(not_rebuilt))
+finally:
+    for source, stat in original_times.items():
+        os.utime(source, ns=(stat.st_atime_ns, stat.st_mtime_ns))
+print("Makefile incremental dependency graph validated.")`;
 
 function resolveRepositoryTargets(unikeyValue = "") {
   const unikey = cleanUnikey(unikeyValue);
@@ -270,22 +341,30 @@ public void testRoundToTwoDecimals() {
       },
       "Raj Shah": {
         member: "Raj", className: "UserInterface", method: "showExchangeRates", branch: "feature/show-exchange-rates",
-        productionInstruction: "Replace showExchangeRates() in UserInterface.java.",
+        productionInstruction: "ALLOCATED FEATURE: Replace UserInterface.showExchangeRates(). SHARED BOOTSTRAP: Also complete App.main() as shown below so the console interface can launch. App.main() is shared team work in this branch, not part of the formal 12-method allocation.",
         productionSnippet: `public void showExchangeRates() {
-    System.out.println("=== Exchange Rates ===");
+    System.out.println("Exchange Rates (base = 1 unit)");
     String[] currencies = converter.getSupportedCurrencies();
-
+    System.out.printf("%-8s", "");
+    for (String currency : currencies) {
+        System.out.printf("%8s", currency);
+    }
+    System.out.println();
     for (String fromCurrency : currencies) {
+        System.out.printf("%-8s", fromCurrency);
         for (String toCurrency : currencies) {
             double rate = converter.getExchangeRate(fromCurrency, toCurrency);
-            double displayRate = converter.roundToTwoDecimals(rate);
-            System.out.printf("%s -> %s: %.2f%n",
-                    fromCurrency, toCurrency, displayRate);
+            System.out.printf("%8.2f", converter.roundToTwoDecimals(rate));
         }
+        System.out.println();
     }
 }`,
-        testInstruction: "Replace testShowExchangeRates() in UserInterfaceTest.java. No additional imports are required because the snippet uses fully qualified java.io and JUnit class names.",
-        testMethods: ["testShowExchangeRates"],
+        additionalProductionFiles: [{ file: "src/main/java/App.java", method: "main", snippet: `public static void main(String[] args) {
+    UserInterface ui = new UserInterface();
+    ui.start();
+}` }],
+        testInstruction: "Replace testShowExchangeRates() in UserInterfaceTest.java and testMain() in the existing AppTest.java. AppTest supplies input 3 so App.main starts the real UI and exits. No additional imports are required.",
+        testMethods: ["testShowExchangeRates", "AppTest.testMain"],
         testSnippet: `@Test
 public void testShowExchangeRates() {
     java.io.PrintStream originalOut = System.out;
@@ -299,16 +378,42 @@ public void testShowExchangeRates() {
         System.setOut(originalOut);
     }
 
-    String text = output.toString();
-    org.junit.jupiter.api.Assertions.assertTrue(text.contains("=== Exchange Rates ==="));
-    org.junit.jupiter.api.Assertions.assertTrue(text.contains("USD -> EUR: 0.85"));
-    org.junit.jupiter.api.Assertions.assertTrue(text.contains("EUR -> USD: 1.18"));
-    org.junit.jupiter.api.Assertions.assertTrue(text.contains("AUD -> AUD: 1.00"));
+    String expected = String.join(System.lineSeparator(),
+            "Exchange Rates (base = 1 unit)",
+            "             USD     EUR     GBP     AUD",
+            "USD         1.00    0.85    0.75    1.30",
+            "EUR         1.18    1.00    0.88    1.53",
+            "GBP         1.33    1.13    1.00    1.73",
+            "AUD         0.77    0.65    0.58    1.00") + System.lineSeparator();
+    org.junit.jupiter.api.Assertions.assertEquals(expected, output.toString());
 }`,
+        additionalTestFiles: [{ file: "src/test/java/AppTest.java", methods: ["testMain"], snippet: `@Test
+public void testMain() {
+    java.io.InputStream originalIn = System.in;
+    java.io.PrintStream originalOut = System.out;
+    java.io.ByteArrayOutputStream output = new java.io.ByteArrayOutputStream();
+    try {
+        System.setIn(new java.io.ByteArrayInputStream(
+                "3\\n".getBytes(java.nio.charset.StandardCharsets.UTF_8)));
+        System.setOut(new java.io.PrintStream(output));
+        App.main(new String[0]);
+    } finally {
+        System.setIn(originalIn);
+        System.setOut(originalOut);
+    }
+    String text = output.toString();
+    org.junit.jupiter.api.Assertions.assertTrue(text.startsWith("=== Currency Converter ==="));
+    org.junit.jupiter.api.Assertions.assertTrue(text.contains("Enter choice: "));
+    org.junit.jupiter.api.Assertions.assertTrue(text.endsWith("Goodbye." + System.lineSeparator()));
+}` }],
         shortDescription: "displays all supported exchange-rate pairs",
-        changelog: "- showExchangeRates(): displays all supported exchange-rate pairs -- Raj Shah",
-        commitSubject: "Display exchange-rate table",
-        commitBody: "Implement showExchangeRates with deterministic two-decimal output and replace its console-output test.",
+        changelog: "- showExchangeRates(): displays the required exchange-rate table -- Raj Shah",
+        changelogEntries: [
+          "- showExchangeRates(): displays the required exchange-rate table -- Raj Shah",
+          "- App.main(): launches the console interface as shared application bootstrap -- Raj Shah",
+        ],
+        commitSubject: "Display exchange-rate table and bootstrap app",
+        commitBody: "Implement showExchangeRates with the required derived-rate table and complete the shared App.main application bootstrap.",
       },
       "Tiya Agrawal": {
         member: "Tiya", className: "UserInterface", method: "handleConversion", branch: "feature/handle-conversion",
@@ -317,28 +422,23 @@ public void testShowExchangeRates() {
     System.out.print("Enter amount: ");
     String amountInput = scanner.nextLine();
     if (!validator.isValidAmount(amountInput)) {
-        System.out.println("Invalid amount.");
+        System.out.println("Invalid amount. Enter a positive number.");
         return;
     }
 
-    System.out.print("Enter source currency: ");
+    System.out.print("From currency (USD/EUR/GBP/AUD): ");
     String fromCurrency = validator.normalizeCurrency(scanner.nextLine());
-    if (!validator.isValidCurrency(fromCurrency)) {
-        System.out.println("Invalid source currency.");
-        return;
-    }
-
-    System.out.print("Enter target currency: ");
+    System.out.print("To currency (USD/EUR/GBP/AUD): ");
     String toCurrency = validator.normalizeCurrency(scanner.nextLine());
-    if (!validator.isValidCurrency(toCurrency)) {
-        System.out.println("Invalid target currency.");
+    if (!validator.isValidCurrency(fromCurrency) || !validator.isValidCurrency(toCurrency)) {
+        System.out.println("Invalid currency. Use USD, EUR, GBP or AUD.");
         return;
     }
 
     double amount = validator.parseAmount(amountInput);
     double converted = converter.convert(amount, fromCurrency, toCurrency);
     double displayAmount = converter.roundToTwoDecimals(converted);
-    System.out.printf("%.2f %s = %.2f %s%n",
+    System.out.printf("Result: %.2f %s = %.2f %s%n",
             amount, fromCurrency, displayAmount, toCurrency);
 }`,
         testInstruction: "Replace testHandleConversion() and add the three focused invalid-input tests in UserInterfaceTest.java. Every test replaces System.in before UserInterface construction and restores System.in/System.out in a finally block. No additional imports are required.",
@@ -362,7 +462,7 @@ public void testHandleConversion() {
     }
 
     org.junit.jupiter.api.Assertions.assertTrue(
-            output.toString().contains("100.00 USD = 85.00 EUR"));
+            output.toString().contains("Result: 100.00 USD = 85.00 EUR"));
 }
 
 @Test
@@ -379,7 +479,9 @@ public void testHandleConversionRejectsInvalidAmount() {
         System.setIn(originalIn);
         System.setOut(originalOut);
     }
-    org.junit.jupiter.api.Assertions.assertTrue(output.toString().contains("Invalid amount."));
+    String text = output.toString();
+    org.junit.jupiter.api.Assertions.assertTrue(text.contains("Invalid amount. Enter a positive number."));
+    org.junit.jupiter.api.Assertions.assertFalse(text.contains("From currency (USD/EUR/GBP/AUD):"));
 }
 
 @Test
@@ -389,14 +491,17 @@ public void testHandleConversionRejectsInvalidSourceCurrency() {
     java.io.ByteArrayOutputStream output = new java.io.ByteArrayOutputStream();
     try {
         System.setIn(new java.io.ByteArrayInputStream(
-                "100\\nXYZ\\n".getBytes(java.nio.charset.StandardCharsets.UTF_8)));
+                "100\\nXYZ\\nEUR\\n".getBytes(java.nio.charset.StandardCharsets.UTF_8)));
         System.setOut(new java.io.PrintStream(output));
         new UserInterface().handleConversion();
     } finally {
         System.setIn(originalIn);
         System.setOut(originalOut);
     }
-    org.junit.jupiter.api.Assertions.assertTrue(output.toString().contains("Invalid source currency."));
+    String text = output.toString();
+    org.junit.jupiter.api.Assertions.assertTrue(text.contains("From currency (USD/EUR/GBP/AUD): "));
+    org.junit.jupiter.api.Assertions.assertTrue(text.contains("To currency (USD/EUR/GBP/AUD): "));
+    org.junit.jupiter.api.Assertions.assertTrue(text.contains("Invalid currency. Use USD, EUR, GBP or AUD."));
 }
 
 @Test
@@ -413,7 +518,9 @@ public void testHandleConversionRejectsInvalidTargetCurrency() {
         System.setIn(originalIn);
         System.setOut(originalOut);
     }
-    org.junit.jupiter.api.Assertions.assertTrue(output.toString().contains("Invalid target currency."));
+    String text = output.toString();
+    org.junit.jupiter.api.Assertions.assertTrue(text.contains("To currency (USD/EUR/GBP/AUD): "));
+    org.junit.jupiter.api.Assertions.assertTrue(text.contains("Invalid currency. Use USD, EUR, GBP or AUD."));
 }`,
         shortDescription: "validates input and performs an interactive conversion",
         changelog: "- handleConversion(): validates input and performs an interactive conversion -- Tiya Agrawal",
@@ -692,22 +799,21 @@ public void testConvertAllCurrencyPairs() {
         member: "Raj", className: "UserInterface", method: "start", branch: "feature/start",
         productionInstruction: "Replace start() in UserInterface.java.",
         productionSnippet: `public void start() {
-    System.out.println("=== Currency Converter ===");
-
     boolean running = true;
     while (running) {
+        System.out.println("=== Currency Converter ===");
         showMenu();
-        System.out.print("Choose an option: ");
+        System.out.print("Enter choice: ");
         String choice = scanner.nextLine();
 
         switch (choice) {
             case "1" -> handleConversion();
             case "2" -> showExchangeRates();
             case "3" -> {
-                System.out.println("Goodbye!");
+                System.out.println("Goodbye.");
                 running = false;
             }
-            default -> System.out.println("Invalid choice. Please try again.");
+            default -> System.out.println("Invalid choice. Enter 1, 2 or 3.");
         }
     }
 }`,
@@ -733,11 +839,15 @@ public void testStartMethod() {
 
     String text = output.toString();
     org.junit.jupiter.api.Assertions.assertTrue(text.contains("=== Currency Converter ==="));
-    org.junit.jupiter.api.Assertions.assertTrue(text.contains("1. Convert Currency"));
-    org.junit.jupiter.api.Assertions.assertTrue(text.contains("Invalid choice. Please try again."));
-    org.junit.jupiter.api.Assertions.assertTrue(text.contains("=== Exchange Rates ==="));
-    org.junit.jupiter.api.Assertions.assertTrue(text.contains("Invalid amount."));
-    org.junit.jupiter.api.Assertions.assertTrue(text.contains("Goodbye!"));
+    org.junit.jupiter.api.Assertions.assertTrue(text.contains(
+            "1. Convert Currency" + System.lineSeparator()
+            + "2. View Exchange Rates" + System.lineSeparator()
+            + "3. Exit" + System.lineSeparator()
+            + "Enter choice: "));
+    org.junit.jupiter.api.Assertions.assertTrue(text.contains("Invalid choice. Enter 1, 2 or 3."));
+    org.junit.jupiter.api.Assertions.assertTrue(text.contains("Exchange Rates (base = 1 unit)"));
+    org.junit.jupiter.api.Assertions.assertTrue(text.contains("Invalid amount. Enter a positive number."));
+    org.junit.jupiter.api.Assertions.assertTrue(text.endsWith("Goodbye." + System.lineSeparator()));
 }`,
         shortDescription: "runs the menu loop until the user exits",
         changelog: "- start(): runs the menu loop until the user exits -- Raj Shah",
@@ -2071,9 +2181,13 @@ function renderFinalisationGuidance() {
   finalisationStep.classList.toggle("step-disabled", !isAvailable);
   finalisationStep.setAttribute("aria-disabled", String(!isAvailable));
   finalisationContent.classList.toggle("hidden", !isAvailable);
+  finalReleaseStep.classList.toggle("step-disabled", !isAvailable);
+  finalReleaseStep.setAttribute("aria-disabled", String(!isAvailable));
+  finalReleaseContent.classList.toggle("hidden", !isAvailable);
 
   if (!isAvailable) {
     finalisationCommands.textContent = "";
+    finalReleaseCommands.textContent = "";
     if (!isOwner) {
       finalisationMessage.textContent = `${owner?.name || "The configured finalisation owner"} performs the shared finalisation. Wait for the final v1.0.0 release, then complete the final personal sync.`;
     } else if (currentRound !== 3) {
@@ -2083,6 +2197,7 @@ function renderFinalisationGuidance() {
         .map((member) => `STOP: Missing configured unikey for ${member.name}.`)
         .join(" ");
     }
+    finalReleaseMessage.textContent = finalisationMessage.textContent;
     return;
   }
 
@@ -2090,6 +2205,7 @@ function renderFinalisationGuidance() {
   const finalReadme = buildFinalReadme(members, targets.teamRepoUrl);
   finalisationMessage.textContent =
     `${owner.name} only: copy the single command below and run it from the member root containing ${targets.personalFolderName} and ${targets.imFolderName}. It writes README.md and Makefile automatically only after its safety checks pass.`;
+  finalReleaseMessage.textContent = `${owner.name} only: after Step 10 is pushed successfully, run the single command below to validate, commit version 1.0.0, create annotated tag v1.0.0, and publish the final release.`;
 
   const coverageClasses = FINALISATION_CONFIG.coverageClasses.join(",");
   const historicalCoverage = targets.isTestMode
@@ -2205,6 +2321,12 @@ if [ "$finalise_ready" = true ] && ! git diff --check; then finalise_ready=false
 
 if [ "$finalise_ready" = true ] && ! make clean; then echo "STOP: make clean failed."; finalise_ready=false; fi
 if [ "$finalise_ready" = true ] && ! make compile; then echo "STOP: make compile failed."; finalise_ready=false; fi
+if [ "$finalise_ready" = true ]; then
+  if ! python3 - <<'PY'
+${MAKE_INCREMENTAL_VALIDATION_PYTHON}
+PY
+  then echo "STOP: Makefile incremental dependency validation failed."; finalise_ready=false; fi
+fi
 if [ "$finalise_ready" = true ] && ! make test; then echo "STOP: make test failed."; finalise_ready=false; fi
 if [ "$finalise_ready" = true ] && ! gradle clean; then echo "STOP: gradle clean failed."; finalise_ready=false; fi
 if [ "$finalise_ready" = true ] && ! gradle classes; then echo "STOP: gradle classes failed."; finalise_ready=false; fi
@@ -2257,6 +2379,13 @@ PY
   fi
 fi
 if [ "$finalise_ready" = true ] && ! gradle build; then echo "STOP: gradle build failed."; finalise_ready=false; fi
+if [ "$finalise_ready" = true ]; then
+  run_output=$(printf '3\\n' | gradle run --console=plain) || finalise_ready=false
+  if [ "$finalise_ready" = true ] && { ! printf '%s' "$run_output" | grep -Fq "=== Currency Converter ===" || ! printf '%s' "$run_output" | grep -Fq "Enter choice:" || ! printf '%s' "$run_output" | grep -Fq "Goodbye."; }; then
+    echo "STOP: gradle run did not launch the required interactive application."
+    finalise_ready=false
+  fi
+fi
 
 if [ "$finalise_ready" = true ] && ! git diff --check; then finalise_ready=false; fi
 if [ "$finalise_ready" = true ] && ! git fetch origin; then finalise_ready=false; fi
@@ -2391,7 +2520,17 @@ if ($finaliseReady) {
 }
 if ($finaliseReady) { git diff --check }
 if ($finaliseReady -and $LASTEXITCODE -ne 0) { $finaliseReady = $false }
-foreach ($command in @("make clean", "make compile", "make test", "gradle clean", "gradle classes", "gradle testClasses", "gradle test", "gradle jacocoTestReport")) {
+foreach ($command in @("make clean", "make compile")) {
+  if ($finaliseReady) { Invoke-Expression $command; if ($LASTEXITCODE -ne 0) { Write-Host "STOP: $command failed."; $finaliseReady = $false } }
+}
+if ($finaliseReady) {
+  $makeValidation = @'
+${MAKE_INCREMENTAL_VALIDATION_PYTHON}
+'@
+  $makeValidation | python3 -
+  if ($LASTEXITCODE -ne 0) { Write-Host "STOP: Makefile incremental dependency validation failed."; $finaliseReady = $false }
+}
+foreach ($command in @("make test", "gradle clean", "gradle classes", "gradle testClasses", "gradle test", "gradle jacocoTestReport")) {
   if ($finaliseReady) { Invoke-Expression $command; if ($LASTEXITCODE -ne 0) { Write-Host "STOP: $command failed."; $finaliseReady = $false } }
 }
 if ($finaliseReady -and (-not (Test-Path "build/reports/jacoco/test/jacocoTestReport.xml"))) { Write-Host "STOP: JaCoCo XML report was not found."; $finaliseReady = $false }
@@ -2423,6 +2562,13 @@ ${coverageDecisionPython}
   if ($LASTEXITCODE -ne 0) { Write-Host "STOP: Production LINE coverage is not 100%."; $finaliseReady = $false }
 }
 if ($finaliseReady) { gradle build; if ($LASTEXITCODE -ne 0) { $finaliseReady = $false } }
+if ($finaliseReady) {
+  $runOutput = "3" | gradle run --console=plain | Out-String
+  if ($LASTEXITCODE -ne 0 -or -not $runOutput.Contains("=== Currency Converter ===") -or -not $runOutput.Contains("Enter choice:") -or -not $runOutput.Contains("Goodbye.")) {
+    Write-Host "STOP: gradle run did not launch the required interactive application."
+    $finaliseReady = $false
+  }
+}
 if ($finaliseReady) { git diff --check }
 if ($finaliseReady -and $LASTEXITCODE -ne 0) { $finaliseReady = $false }
 if ($finaliseReady) { git fetch origin }
@@ -2494,6 +2640,162 @@ if (-not $finaliseReady) { Write-Host "STOP: Finalisation did not complete. No f
       successVariable: "$finalisation_succeeded",
       readyMessage: "READY FOR FINAL RELEASE",
     });
+
+  const finalReleaseBashBody = `release_ready=true
+release_succeeded=false
+release_committed=false
+release_tag_created=false
+version_changed=false
+expected_personal_repo="$member_root/${targets.personalFolderName}"
+
+if [ ! -d "$expected_personal_repo/.git" ]; then echo "STOP: This is not the configured finalisation owner's member workspace."; release_ready=false; fi
+if [ "$release_ready" = true ]; then
+  personal_origin=$(git -C "$expected_personal_repo" remote get-url origin 2>/dev/null) || release_ready=false
+  if [ "$release_ready" = true ] && [ "$personal_origin" != "${targets.personalRepoUrl}" ]; then echo "STOP: The sibling personal repository does not match the configured owner."; release_ready=false; fi
+fi
+if [ "$release_ready" = true ] && { ! git diff --quiet || ! git diff --cached --quiet || [ -n "$(git ls-files --others --exclude-standard)" ]; }; then echo "STOP: Step 11 requires a completely clean IM repository."; release_ready=false; fi
+if [ "$release_ready" = true ] && [ "$(git branch --show-current)" != master ]; then echo "STOP: Step 11 must start with the IM repository already on master."; release_ready=false; fi
+if [ "$release_ready" = true ] && ! git fetch origin; then release_ready=false; fi
+if [ "$release_ready" = true ]; then
+  release_baseline=$(git rev-parse HEAD) || release_ready=false
+  origin_head=$(git rev-parse origin/master) || release_ready=false
+  current_branch=$(git branch --show-current)
+  head_subject=$(git log -1 --format=%s)
+  head_files=$(git diff-tree --no-commit-id --name-only -r HEAD | sort)
+  expected_head_files=$(printf '%s\n' Makefile README.md | sort)
+  latest_tag=$(git describe --tags --abbrev=0 2>/dev/null || true)
+  old_version_count=$(grep -Ec "^[[:space:]]*version[[:space:]]*=[[:space:]]*'0\\.4\\.0'[[:space:]]*$" build.gradle || true)
+  if [ "$current_branch" != master ]; then echo "STOP: Step 11 must run on master."; release_ready=false; fi
+  if [ "$release_baseline" != "$origin_head" ]; then echo "STOP: Local master must exactly equal origin/master."; release_ready=false; fi
+  if [ "$head_subject" != "Finalise assignment documentation and build" ] || [ "$head_files" != "$expected_head_files" ]; then echo "STOP: HEAD is not the verified two-file Step 10 finalisation commit."; release_ready=false; fi
+  if [ ! -f README.md ] || [ ! -f Makefile ]; then echo "STOP: README.md and Makefile must exist."; release_ready=false; fi
+  if [ "$latest_tag" != "v0.4.0" ]; then echo "STOP: Latest existing release tag must be v0.4.0."; release_ready=false; fi
+  if git rev-parse -q --verify refs/tags/v1.0.0 >/dev/null || git ls-remote --exit-code --tags origin refs/tags/v1.0.0 >/dev/null 2>&1; then echo "STOP: v1.0.0 already exists locally or on origin."; release_ready=false; fi
+  if [ "$old_version_count" -ne 1 ]; then echo "STOP: build.gradle must contain exactly one active version 0.4.0 declaration."; release_ready=false; fi
+fi
+
+if [ "$release_ready" = true ]; then
+  version_tmp="build.gradle.step11.tmp"
+  awk '{ if ($0 ~ /^[[:space:]]*version[[:space:]]*=[[:space:]]*'"'"'0\\.4\\.0'"'"'[[:space:]]*$/) print "version = '"'"'1.0.0'"'"'"; else print }' build.gradle > "$version_tmp" && mv "$version_tmp" build.gradle || release_ready=false
+  if [ "$release_ready" = true ]; then version_changed=true; fi
+fi
+if [ "$release_ready" = true ]; then
+  new_count=$(grep -Ec "^[[:space:]]*version[[:space:]]*=[[:space:]]*'1\\.0\\.0'[[:space:]]*$" build.gradle || true)
+  old_count=$(grep -Ec "^[[:space:]]*version[[:space:]]*=[[:space:]]*'0\\.4\\.0'[[:space:]]*$" build.gradle || true)
+  tracked=$(git diff --name-only HEAD); staged=$(git diff --cached --name-only); untracked=$(git ls-files --others --exclude-standard)
+  if [ "$new_count" -ne 1 ] || [ "$old_count" -ne 0 ] || [ "$tracked" != build.gradle ] || [ -n "$staged" ] || [ -n "$untracked" ]; then echo "STOP: Controlled build.gradle version update verification failed."; release_ready=false; fi
+fi
+if [ "$release_ready" = true ] && ! git diff --check; then release_ready=false; fi
+if [ "$release_ready" = true ] && ! make clean; then echo "STOP: make clean failed."; release_ready=false; fi
+if [ "$release_ready" = true ] && ! make compile; then echo "STOP: make compile failed."; release_ready=false; fi
+if [ "$release_ready" = true ] && ! make test; then echo "STOP: make test failed."; release_ready=false; fi
+if [ "$release_ready" = true ] && ! gradle clean; then echo "STOP: gradle clean failed."; release_ready=false; fi
+if [ "$release_ready" = true ] && ! gradle classes; then echo "STOP: gradle classes failed."; release_ready=false; fi
+if [ "$release_ready" = true ] && ! gradle testClasses; then echo "STOP: gradle testClasses failed."; release_ready=false; fi
+if [ "$release_ready" = true ] && ! gradle test; then echo "STOP: gradle test failed."; release_ready=false; fi
+if [ "$release_ready" = true ] && ! gradle jacocoTestReport; then echo "STOP: JaCoCo report generation failed."; release_ready=false; fi
+if [ "$release_ready" = true ]; then
+  if ! COVERAGE_CLASSES="${coverageClasses}" python3 - <<'PY'
+import os, sys, xml.etree.ElementTree as ET
+required = os.environ["COVERAGE_CLASSES"].split(",")
+root = ET.parse("build/reports/jacoco/test/jacocoTestReport.xml").getroot()
+results = {}
+for node in root.findall(".//class"):
+    name = node.get("name", "").split("/")[-1]
+    if name in required:
+        counter = node.find("./counter[@type='LINE']")
+        if counter is not None: results[name] = (int(counter.get("missed", "0")), int(counter.get("covered", "0")))
+print("COVERAGE:")
+for name in required:
+    missed, covered = results.get(name, (-1, 0)); total = missed + covered
+    print(f"{name}: {(0 if missed < 0 else (100 if total == 0 else covered * 100 / total)):.0f}% (missed={missed}, covered={covered})")
+missed = sum(v[0] for v in results.values()); covered = sum(v[1] for v in results.values()); total = missed + covered
+print(f"Overall line coverage: {(100 if total == 0 else covered * 100 / total):.0f}%")
+${coverageDecisionPython}
+PY
+  then echo "STOP: Production LINE coverage is not 100%."; release_ready=false; fi
+fi
+if [ "$release_ready" = true ] && ! gradle build; then echo "STOP: gradle build failed."; release_ready=false; fi
+if [ "$release_ready" = true ] && ! git fetch origin; then release_ready=false; fi
+if [ "$release_ready" = true ]; then
+  current_origin=$(git rev-parse origin/master); current_head=$(git rev-parse HEAD); current_branch=$(git branch --show-current)
+  tracked=$(git diff --name-only HEAD); staged=$(git diff --cached --name-only); untracked=$(git ls-files --others --exclude-standard)
+  if [ "$current_origin" != "$release_baseline" ]; then echo "STOP: Team master changed during final release. Restart Step 11 from the latest team master."; release_ready=false; fi
+  if [ "$current_head" != "$release_baseline" ] || [ "$current_branch" != master ] || [ "$tracked" != build.gradle ] || [ -n "$staged" ] || [ -n "$untracked" ]; then echo "STOP: Repository state changed during final release validation."; release_ready=false; fi
+fi
+if [ "$release_ready" = true ]; then git add build.gradle || release_ready=false; fi
+if [ "$release_ready" = true ]; then git commit -m "Finalise version 1.0.0" -m "Set the project version for the final assignment release." || release_ready=false; fi
+if [ "$release_ready" = true ]; then release_committed=true; release_commit=$(git rev-parse HEAD); commit_files=$(git diff-tree --no-commit-id --name-only -r HEAD); if [ "$commit_files" != build.gradle ]; then echo "STOP: Version commit contains unexpected files."; release_ready=false; fi; fi
+if [ "$release_ready" = true ]; then git tag -a v1.0.0 -m "Release v1.0.0" || release_ready=false; fi
+if [ "$release_ready" = true ]; then release_tag_created=true; tag_type=$(git cat-file -t v1.0.0); tag_commit=$(git rev-list -n 1 v1.0.0); exact_tag=$(git describe --tags --exact-match HEAD 2>/dev/null); if [ "$tag_type" != tag ] || [ "$tag_commit" != "$release_commit" ] || [ "$exact_tag" != v1.0.0 ]; then echo "STOP: Annotated final tag verification failed."; release_ready=false; fi; fi
+if [ "$release_ready" = true ]; then if git push origin master; then master_pushed=true; else echo "STOP: Team master push failed; v1.0.0 was not pushed."; release_ready=false; fi; fi
+if [ "$release_ready" = true ]; then if git push origin v1.0.0; then tag_pushed=true; else echo "STOP: Team master was pushed, but final tag v1.0.0 was NOT pushed."; release_ready=false; fi; fi
+if [ "$release_ready" = true ]; then
+  git fetch origin || release_ready=false
+  local_head=$(git rev-parse HEAD); remote_head=$(git rev-parse origin/master); local_tag=$(git rev-list -n 1 v1.0.0); remote_tag=$(git ls-remote origin refs/tags/v1.0.0^{} | awk '{print $1}')
+  exact_tag=$(git describe --tags --exact-match HEAD 2>/dev/null); clean=$(git status --porcelain); final_version_count=$(grep -Ec "^[[:space:]]*version[[:space:]]*=[[:space:]]*'1\\.0\\.0'[[:space:]]*$" build.gradle || true)
+  if [ "$local_head" != "$remote_head" ] || [ "$local_tag" != "$remote_tag" ] || [ "$exact_tag" != v1.0.0 ] || [ -n "$clean" ] || [ "$final_version_count" -ne 1 ]; then echo "STOP: Post-push final release verification failed."; release_ready=false; fi
+fi
+if [ "$release_ready" = true ]; then
+  echo "FINAL RELEASE:"; echo "Version: 1.0.0"; echo "Tag: v1.0.0"; echo "Release commit: $(git rev-parse --short HEAD)"; echo "Team master: $(git rev-parse --short origin/master)"; release_succeeded=true
+fi
+if [ "$release_ready" != true ] && [ "$version_changed" = true ] && [ "$release_committed" != true ]; then
+  cleanup_head=$(git rev-parse HEAD 2>/dev/null || true); unexpected=$(git diff --name-only HEAD | grep -Ev '^build\\.gradle$' || true); staged_unexpected=$(git diff --cached --name-only | grep -Ev '^build\\.gradle$' || true); untracked=$(git ls-files --others --exclude-standard)
+  if [ "$cleanup_head" = "$release_baseline" ] && [ -z "$unexpected" ] && [ -z "$staged_unexpected" ] && [ -z "$untracked" ]; then git restore --staged -- build.gradle >/dev/null 2>&1 || true; git restore -- build.gradle; echo "Step 11 restored build.gradle to the recorded baseline."; else echo "STOP: State is ambiguous; build.gradle was not cleaned automatically."; fi
+fi
+if [ "$release_ready" != true ] && [ "$release_committed" = true ]; then echo "STOP: A local release commit exists. Local tag created: $release_tag_created. Review push state without rewriting history."; fi`;
+
+  const finalReleasePowerShellBody = `$releaseReady = $true
+$releaseSucceeded = $false; $releaseCommitted = $false; $releaseTagCreated = $false; $versionChanged = $false
+$expectedPersonalRepo = Join-Path $memberRoot "${targets.personalFolderName}"
+if (-not (Test-Path (Join-Path $expectedPersonalRepo ".git"))) { Write-Host "STOP: This is not the configured finalisation owner's member workspace."; $releaseReady = $false }
+if ($releaseReady) { $personalOrigin=(git -C $expectedPersonalRepo remote get-url origin 2>$null).Trim(); if ($LASTEXITCODE -ne 0 -or $personalOrigin -ne "${targets.personalRepoUrl}") { Write-Host "STOP: The sibling personal repository does not match the configured owner."; $releaseReady=$false } }
+if ($releaseReady) { $dirty=@(git status --porcelain); if ($dirty.Count -ne 0) { Write-Host "STOP: Step 11 requires a completely clean IM repository."; $releaseReady=$false } }
+if ($releaseReady) { $startingBranch=(git branch --show-current).Trim(); if ($startingBranch -ne "master") { Write-Host "STOP: Step 11 must start with the IM repository already on master."; $releaseReady=$false } }
+if ($releaseReady) { git fetch origin; if ($LASTEXITCODE -ne 0) {$releaseReady=$false} }
+if ($releaseReady) {
+  $releaseBaseline=(git rev-parse HEAD).Trim(); $originHead=(git rev-parse origin/master).Trim(); $branch=(git branch --show-current).Trim(); $subject=(git log -1 --format=%s).Trim(); $headFiles=@(git diff-tree --no-commit-id --name-only -r HEAD | Sort-Object); $latestTag=(git describe --tags --abbrev=0).Trim()
+  $build=Get-Content -Raw build.gradle; $oldCount=([regex]::Matches($build,"(?m)^\\s*version\\s*=\\s*'0\\.4\\.0'\\s*$")).Count
+  git rev-parse -q --verify refs/tags/v1.0.0 2>$null | Out-Null; $localTagExists=$LASTEXITCODE -eq 0
+  git ls-remote --exit-code --tags origin refs/tags/v1.0.0 2>$null | Out-Null; $remoteTagExists=$LASTEXITCODE -eq 0
+  if ($branch -ne "master" -or $releaseBaseline -ne $originHead -or $subject -ne "Finalise assignment documentation and build" -or $headFiles.Count -ne 2 -or $headFiles[0] -ne "Makefile" -or $headFiles[1] -ne "README.md" -or -not (Test-Path README.md) -or -not (Test-Path Makefile) -or $latestTag -ne "v0.4.0" -or $localTagExists -or $remoteTagExists -or $oldCount -ne 1) { Write-Host "STOP: Step 11 pre-flight validation failed."; $releaseReady = $false }
+}
+if ($releaseReady) { $build=Get-Content -Raw build.gradle; $updated=[regex]::Replace($build,"(?m)^\\s*version\\s*=\\s*'0\\.4\\.0'\\s*$","version = '1.0.0'"); [IO.File]::WriteAllText((Resolve-Path build.gradle),$updated,(New-Object Text.UTF8Encoding($false))); $versionChanged=$true }
+if ($releaseReady) { $tracked = @(git diff --name-only HEAD); $staged = @(git diff --cached --name-only); $untracked = @(git ls-files --others --exclude-standard); $newCount = ([regex]::Matches((Get-Content -Raw build.gradle),"(?m)^\\s*version\\s*=\\s*'1\\.0\\.0'\\s*$")).Count; if ($tracked.Count -ne 1 -or $tracked[0] -ne "build.gradle" -or $staged.Count -ne 0 -or $untracked.Count -ne 0 -or $newCount -ne 1) { Write-Host "STOP: Controlled build.gradle version update verification failed."; $releaseReady = $false } }
+if ($releaseReady) { git diff --check; if ($LASTEXITCODE -ne 0) { $releaseReady = $false } }
+foreach ($command in @("make clean","make compile","make test","gradle clean","gradle classes","gradle testClasses","gradle test","gradle jacocoTestReport")) { if ($releaseReady) { Invoke-Expression $command; if ($LASTEXITCODE -ne 0) { Write-Host "STOP: $command failed."; $releaseReady = $false } } }
+if ($releaseReady) { $coverage=@'
+import os, sys, xml.etree.ElementTree as ET
+required=os.environ["COVERAGE_CLASSES"].split(","); root=ET.parse("build/reports/jacoco/test/jacocoTestReport.xml").getroot(); results={}
+for node in root.findall(".//class"):
+ name=node.get("name","").split("/")[-1]
+ if name in required:
+  counter=node.find("./counter[@type='LINE']")
+  if counter is not None: results[name]=(int(counter.get("missed","0")),int(counter.get("covered","0")))
+print("COVERAGE:")
+for name in required:
+ missed,covered=results.get(name,(-1,0)); total=missed+covered; print(f"{name}: {(0 if missed<0 else (100 if total==0 else covered*100/total)):.0f}% (missed={missed}, covered={covered})")
+missed=sum(v[0] for v in results.values());covered=sum(v[1] for v in results.values());total=missed+covered;print(f"Overall line coverage: {(100 if total==0 else covered*100/total):.0f}%")
+${coverageDecisionPython}
+'@; $env:COVERAGE_CLASSES="${coverageClasses}"; $coverage | python3 -; if ($LASTEXITCODE -ne 0) { Write-Host "STOP: Production LINE coverage is not 100%."; $releaseReady = $false } }
+if ($releaseReady) { gradle build; if ($LASTEXITCODE -ne 0) { $releaseReady = $false } }
+if ($releaseReady) { git fetch origin; if ($LASTEXITCODE -ne 0) { $releaseReady = $false } }
+if ($releaseReady) { $originNow=(git rev-parse origin/master).Trim(); $headNow=(git rev-parse HEAD).Trim(); $tracked=@(git diff --name-only HEAD); $staged=@(git diff --cached --name-only); $untracked=@(git ls-files --others --exclude-standard); if ($originNow -ne $releaseBaseline) { Write-Host "STOP: Team master changed during final release. Restart Step 11 from the latest team master."; $releaseReady=$false } elseif ($headNow -ne $releaseBaseline -or $tracked.Count -ne 1 -or $tracked[0] -ne "build.gradle" -or $staged.Count -ne 0 -or $untracked.Count -ne 0) { Write-Host "STOP: Repository state changed during final release validation."; $releaseReady=$false } }
+if ($releaseReady) { git add build.gradle; if ($LASTEXITCODE -ne 0) { $releaseReady=$false } }
+if ($releaseReady) { git commit -m "Finalise version 1.0.0" -m "Set the project version for the final assignment release."; if ($LASTEXITCODE -ne 0) { $releaseReady=$false } else { $releaseCommitted=$true } }
+if ($releaseReady) { $releaseCommit=(git rev-parse HEAD).Trim(); $files=@(git diff-tree --no-commit-id --name-only -r HEAD); if ($files.Count -ne 1 -or $files[0] -ne "build.gradle") { Write-Host "STOP: Version commit contains unexpected files."; $releaseReady=$false } }
+if ($releaseReady) { git tag -a v1.0.0 -m "Release v1.0.0"; if ($LASTEXITCODE -ne 0) { $releaseReady=$false } else { $releaseTagCreated=$true } }
+if ($releaseReady) { $type=(git cat-file -t v1.0.0).Trim(); $tagCommit=(git rev-list -n 1 v1.0.0).Trim(); $exact=(git describe --tags --exact-match HEAD).Trim(); if ($type -ne "tag" -or $tagCommit -ne $releaseCommit -or $exact -ne "v1.0.0") { Write-Host "STOP: Annotated final tag verification failed."; $releaseReady=$false } }
+if ($releaseReady) { git push origin master; if ($LASTEXITCODE -ne 0) { Write-Host "STOP: Team master push failed; v1.0.0 was not pushed."; $releaseReady=$false } else { $masterPushed=$true } }
+if ($releaseReady) { git push origin v1.0.0; if ($LASTEXITCODE -ne 0) { Write-Host "STOP: Team master was pushed, but final tag v1.0.0 was NOT pushed."; $releaseReady=$false } else { $tagPushed=$true } }
+if ($releaseReady) { git fetch origin; $localHead=(git rev-parse HEAD).Trim(); $remoteHead=(git rev-parse origin/master).Trim(); $localTag=(git rev-list -n 1 v1.0.0).Trim(); $remoteTag=((git ls-remote origin 'refs/tags/v1.0.0^{}') -split '\\s+')[0]; $exact=(git describe --tags --exact-match HEAD).Trim(); $clean=@(git status --porcelain); $finalVersionCount=([regex]::Matches((Get-Content -Raw build.gradle),"(?m)^\\s*version\\s*=\\s*'1\\.0\\.0'\\s*$")).Count; if ($localHead -ne $remoteHead -or $localTag -ne $remoteTag -or $exact -ne "v1.0.0" -or $clean.Count -ne 0 -or $finalVersionCount -ne 1) { Write-Host "STOP: Post-push final release verification failed."; $releaseReady=$false } }
+if ($releaseReady) { Write-Host "FINAL RELEASE:"; Write-Host "Version: 1.0.0"; Write-Host "Tag: v1.0.0"; Write-Host "Release commit: $(git rev-parse --short HEAD)"; Write-Host "Team master: $(git rev-parse --short origin/master)"; $releaseSucceeded=$true }
+if (-not $releaseReady -and $versionChanged -and -not $releaseCommitted) { $cleanupHead=(git rev-parse HEAD 2>$null).Trim(); $unexpected=@(git diff --name-only HEAD | Where-Object { $_ -ne "build.gradle" }); $stagedUnexpected=@(git diff --cached --name-only | Where-Object { $_ -ne "build.gradle" }); $untracked=@(git ls-files --others --exclude-standard); if ($cleanupHead -eq $releaseBaseline -and $unexpected.Count -eq 0 -and $stagedUnexpected.Count -eq 0 -and $untracked.Count -eq 0) { git restore --staged -- build.gradle 2>$null; git restore -- build.gradle; Write-Host "Step 11 restored build.gradle to the recorded baseline." } else { Write-Host "STOP: State is ambiguous; build.gradle was not cleaned automatically." } }
+if (-not $releaseReady -and $releaseCommitted) { Write-Host "STOP: A local release commit exists. Local tag created: $releaseTagCreated. Review push state without rewriting history." }`;
+
+  finalReleaseCommands.textContent = selectedOperatingSystem() === "windows"
+    ? powershellRepositoryStep({ folder: targets.imFolderName, repositoryLabel: "Integration Manager repository", remotes: { origin: targets.teamRepoUrl }, body: finalReleasePowerShellBody, successVariable: "$releaseSucceeded", readyMessage: "READY FOR FINAL PERSONAL SYNC" })
+    : bashRepositoryStep({ folder: targets.imFolderName, repositoryLabel: "Integration Manager repository", remotes: { origin: targets.teamRepoUrl }, body: finalReleaseBashBody, successVariable: "$release_succeeded", readyMessage: "READY FOR FINAL PERSONAL SYNC" });
 }
 
 function clearFeatureGuidance(message) {
@@ -2510,6 +2812,124 @@ function clearFeatureGuidance(message) {
   commitPushCommands.textContent = "";
   integrationCommands.textContent = "";
   integrationTestNote.textContent = message;
+}
+
+function renderFinalPersonalSyncGuidance() {
+  const modeKey = testModeToggle.checked ? "test" : "production";
+  const member = TEAM_MEMBERS.find((candidate) => candidate.name === selectedMember);
+  const unikey = cleanUnikey(member?.unikeys[modeKey] || "");
+  const available = Boolean(member) && currentRound === 3 && validUnikey(unikey);
+
+  finalPersonalSyncStep.classList.toggle("step-disabled", !available);
+  finalPersonalSyncStep.setAttribute("aria-disabled", String(!available));
+  finalPersonalSyncContent.classList.toggle("hidden", !available);
+  if (!available) {
+    finalPersonalSyncCommands.textContent = "";
+    finalPersonalSyncMessage.textContent = !member
+      ? "Select a member to generate their final personal sync."
+      : currentRound !== 3
+        ? "Final Personal Sync is available after the Round 3 final team release."
+        : `STOP: Missing configured unikey for ${member.name}.`;
+    return;
+  }
+
+  const targets = resolveRepositoryTargets(unikey);
+  finalPersonalSyncMessage.textContent = `${member.name}: run this from the member root containing ${targets.personalFolderName}. It verifies the final team v1.0.0 release, fast-forwards personal master, and pushes only master and v1.0.0.`;
+
+  const bashBody = `sync_ready=true
+sync_succeeded=false
+master_pushed=false
+personal_baseline=""
+team_baseline=""
+
+if [ "$(git branch --show-current)" != master ]; then echo "STOP: Step 12 must start with the personal repository already on master."; sync_ready=false; fi
+if [ "$sync_ready" = true ] && [ -n "$(git status --porcelain)" ]; then echo "STOP: Personal repository must be completely clean."; sync_ready=false; fi
+if [ "$sync_ready" = true ] && ! git fetch origin; then echo "STOP: Could not fetch personal origin."; sync_ready=false; fi
+if [ "$sync_ready" = true ] && ! git fetch upstream; then echo "STOP: Could not fetch team upstream."; sync_ready=false; fi
+if [ "$sync_ready" = true ]; then
+  personal_baseline=$(git rev-parse HEAD) || sync_ready=false
+  origin_baseline=$(git rev-parse origin/master) || sync_ready=false
+  team_baseline=$(git rev-parse upstream/master) || sync_ready=false
+  upstream_subject=$(git log -1 --format=%s upstream/master)
+  upstream_files=$(git diff-tree --no-commit-id --name-only -r upstream/master)
+  parent_subject=$(git log -1 --format=%s upstream/master^)
+  parent_files=$(git diff-tree --no-commit-id --name-only -r upstream/master^ | sort)
+  expected_parent_files=$(printf '%s\n' Makefile README.md | sort)
+  upstream_version_count=$(git show upstream/master:build.gradle | grep -Ec "^[[:space:]]*version[[:space:]]*=[[:space:]]*'1\\.0\\.0'[[:space:]]*$" || true)
+  remote_tag_object=$(git ls-remote --tags upstream refs/tags/v1.0.0 | awk '{print $1}')
+  remote_tag_commit=$(git ls-remote --tags upstream 'refs/tags/v1.0.0^{}' | awk '{print $1}')
+  if [ "$personal_baseline" != "$origin_baseline" ]; then echo "STOP: Local personal master does not match personal origin/master."; sync_ready=false; fi
+  if ! git merge-base --is-ancestor "$personal_baseline" "$team_baseline"; then echo "STOP: Personal master contains commits not present in team master. Review before final sync."; sync_ready=false; fi
+  if [ "$upstream_subject" != "Finalise version 1.0.0" ] || [ "$upstream_files" != build.gradle ]; then echo "STOP: Team master is not the expected final version commit."; sync_ready=false; fi
+  if [ "$parent_subject" != "Finalise assignment documentation and build" ] || [ "$parent_files" != "$expected_parent_files" ]; then echo "STOP: Team master does not contain the verified Step 10 parent commit."; sync_ready=false; fi
+  if [ "$upstream_version_count" -ne 1 ] || [ -z "$remote_tag_object" ] || [ "$remote_tag_commit" != "$team_baseline" ]; then echo "STOP: Team v1.0.0 release or annotated tag is incomplete."; sync_ready=false; fi
+fi
+if [ "$sync_ready" = true ] && git rev-parse -q --verify refs/tags/v1.0.0 >/dev/null; then
+  local_tag_object=$(git rev-parse refs/tags/v1.0.0); local_tag_commit=$(git rev-list -n 1 v1.0.0)
+  if [ "$local_tag_object" != "$remote_tag_object" ] || [ "$local_tag_commit" != "$team_baseline" ] || [ "$(git cat-file -t v1.0.0)" != tag ]; then echo "STOP: Local v1.0.0 does not match team v1.0.0."; sync_ready=false; fi
+fi
+if [ "$sync_ready" = true ] && ! git merge --no-edit --ff-only upstream/master; then echo "STOP: Personal master could not fast-forward to team master."; sync_ready=false; fi
+if [ "$sync_ready" = true ]; then
+  if [ "$(git rev-parse HEAD)" != "$team_baseline" ] || [ -n "$(git status --porcelain)" ] || [ ! -f README.md ] || [ ! -f Makefile ]; then echo "STOP: Fast-forward result does not exactly match team master."; sync_ready=false; fi
+  version_count=$(grep -Ec "^[[:space:]]*version[[:space:]]*=[[:space:]]*'1\\.0\\.0'[[:space:]]*$" build.gradle || true)
+  if [ "$version_count" -ne 1 ]; then echo "STOP: Personal build.gradle is not version 1.0.0."; sync_ready=false; fi
+fi
+if [ "$sync_ready" = true ] && ! git rev-parse -q --verify refs/tags/v1.0.0 >/dev/null; then
+  if ! git fetch upstream refs/tags/v1.0.0:refs/tags/v1.0.0; then echo "STOP: Could not obtain v1.0.0 from team upstream."; sync_ready=false; fi
+fi
+if [ "$sync_ready" = true ]; then
+  if [ "$(git cat-file -t v1.0.0)" != tag ] || [ "$(git rev-parse refs/tags/v1.0.0)" != "$remote_tag_object" ] || [ "$(git rev-list -n 1 v1.0.0)" != "$team_baseline" ]; then echo "STOP: Local final tag does not exactly match the annotated team tag."; sync_ready=false; fi
+fi
+if [ "$sync_ready" = true ] && ! git fetch upstream; then sync_ready=false; fi
+if [ "$sync_ready" = true ]; then
+  current_team=$(git rev-parse upstream/master); current_team_tag=$(git ls-remote --tags upstream 'refs/tags/v1.0.0^{}' | awk '{print $1}')
+  if [ "$current_team" != "$team_baseline" ] || [ "$current_team_tag" != "$team_baseline" ]; then echo "STOP: Team final release changed during personal sync. Restart Step 12."; sync_ready=false; fi
+fi
+if [ "$sync_ready" = true ] && ! git fetch origin; then sync_ready=false; fi
+if [ "$sync_ready" = true ] && [ "$(git rev-parse origin/master)" != "$personal_baseline" ]; then echo "STOP: Personal origin/master changed during final sync. Restart Step 12."; sync_ready=false; fi
+if [ "$sync_ready" = true ]; then if git push origin master; then master_pushed=true; else echo "STOP: Personal master push failed; v1.0.0 was not pushed."; sync_ready=false; fi; fi
+if [ "$sync_ready" = true ]; then if git push origin v1.0.0; then tag_pushed=true; else echo "STOP: Personal master was pushed, but v1.0.0 was NOT pushed."; sync_ready=false; fi; fi
+if [ "$sync_ready" = true ]; then
+  git fetch origin || sync_ready=false
+  local_head=$(git rev-parse HEAD); origin_head=$(git rev-parse origin/master); upstream_head=$(git rev-parse upstream/master)
+  local_tag=$(git rev-list -n 1 v1.0.0); origin_tag=$(git ls-remote --tags origin 'refs/tags/v1.0.0^{}' | awk '{print $1}'); upstream_tag=$(git ls-remote --tags upstream 'refs/tags/v1.0.0^{}' | awk '{print $1}')
+  if [ "$local_head" != "$origin_head" ] || [ "$local_head" != "$upstream_head" ] || [ "$local_tag" != "$origin_tag" ] || [ "$local_tag" != "$upstream_tag" ] || [ -n "$(git status --porcelain)" ] || [ ! -f README.md ] || [ ! -f Makefile ]; then echo "STOP: Post-push personal repository verification failed."; sync_ready=false; fi
+fi
+if [ "$sync_ready" = true ]; then echo "FINAL PERSONAL SYNC:"; echo "Member: ${member.name}"; echo "Unikey: ${unikey}"; echo "Version: 1.0.0"; echo "Tag: v1.0.0"; echo "Personal master: $(git rev-parse --short HEAD)"; echo "Team master: $(git rev-parse --short upstream/master)"; sync_succeeded=true; fi
+if [ "$sync_ready" != true ] && [ -n "$personal_baseline" ] && [ "$(git rev-parse HEAD 2>/dev/null)" != "$personal_baseline" ]; then echo "STOP: Personal master was fast-forwarded locally but the sync did not complete. No history was reset; review the reported state."; fi`;
+
+  const powershellBody = `$syncReady=$true; $syncSucceeded=$false; $masterPushed=$false; $personalBaseline=""; $teamBaseline=""
+if ((git branch --show-current).Trim() -ne "master") { Write-Host "STOP: Step 12 must start with the personal repository already on master."; $syncReady=$false }
+if ($syncReady -and @(git status --porcelain).Count -ne 0) { Write-Host "STOP: Personal repository must be completely clean."; $syncReady=$false }
+if ($syncReady) { git fetch origin; if($LASTEXITCODE-ne0){$syncReady=$false} }
+if ($syncReady) { git fetch upstream; if($LASTEXITCODE-ne0){$syncReady=$false} }
+if ($syncReady) {
+ $personalBaseline=(git rev-parse HEAD).Trim();$originBaseline=(git rev-parse origin/master).Trim();$teamBaseline=(git rev-parse upstream/master).Trim();$upstreamSubject=(git log -1 --format=%s upstream/master).Trim();$upstreamFiles=@(git diff-tree --no-commit-id --name-only -r upstream/master);$parentSubject=(git log -1 --format=%s upstream/master^).Trim();$parentFiles=@(git diff-tree --no-commit-id --name-only -r upstream/master^|Sort-Object);$versionCount=([regex]::Matches((git show upstream/master:build.gradle),"(?m)^\\s*version\\s*=\\s*'1\\.0\\.0'\\s*$")).Count;$remoteTagObject=((git ls-remote --tags upstream refs/tags/v1.0.0)-split'\\s+')[0];$remoteTagCommit=((git ls-remote --tags upstream 'refs/tags/v1.0.0^{}')-split'\\s+')[0]
+ if($personalBaseline-ne$originBaseline){Write-Host "STOP: Local personal master does not match personal origin/master.";$syncReady=$false};git merge-base --is-ancestor $personalBaseline $teamBaseline;if($LASTEXITCODE-ne0){Write-Host "STOP: Personal master contains commits not present in team master. Review before final sync.";$syncReady=$false};if($upstreamSubject-ne"Finalise version 1.0.0"-or$upstreamFiles.Count-ne1-or$upstreamFiles[0]-ne"build.gradle"-or$parentSubject-ne"Finalise assignment documentation and build"-or$parentFiles.Count-ne2-or$parentFiles[0]-ne"Makefile"-or$parentFiles[1]-ne"README.md"-or$versionCount-ne1-or-not$remoteTagObject-or$remoteTagCommit-ne$teamBaseline){Write-Host "STOP: Team final release verification failed.";$syncReady=$false}
+}
+if($syncReady){git rev-parse -q --verify refs/tags/v1.0.0 2>$null|Out-Null;if($LASTEXITCODE-eq0){$localTagObject=(git rev-parse refs/tags/v1.0.0).Trim();$localTagCommit=(git rev-list -n 1 v1.0.0).Trim();$tagType=(git cat-file -t v1.0.0).Trim();if($localTagObject-ne$remoteTagObject-or$localTagCommit-ne$teamBaseline-or$tagType-ne"tag"){Write-Host "STOP: Local v1.0.0 does not match team v1.0.0.";$syncReady=$false}}}
+if($syncReady){git merge --no-edit --ff-only upstream/master;if($LASTEXITCODE-ne0){Write-Host "STOP: Personal master could not fast-forward to team master.";$syncReady=$false}}
+if($syncReady){if((git rev-parse HEAD).Trim()-ne$teamBaseline-or@(git status --porcelain).Count-ne0-or-not(Test-Path README.md)-or-not(Test-Path Makefile)){Write-Host "STOP: Fast-forward result does not exactly match team master.";$syncReady=$false}}
+if($syncReady){git rev-parse -q --verify refs/tags/v1.0.0 2>$null|Out-Null;if($LASTEXITCODE-ne0){git fetch upstream refs/tags/v1.0.0:refs/tags/v1.0.0;if($LASTEXITCODE-ne0){$syncReady=$false}}}
+if($syncReady){if((git cat-file -t v1.0.0).Trim()-ne"tag"-or(git rev-parse refs/tags/v1.0.0).Trim()-ne$remoteTagObject-or(git rev-list -n 1 v1.0.0).Trim()-ne$teamBaseline){Write-Host "STOP: Local final tag does not match team tag.";$syncReady=$false}}
+if($syncReady){git fetch upstream;$currentTeam=(git rev-parse upstream/master).Trim();$currentTag=((git ls-remote --tags upstream 'refs/tags/v1.0.0^{}')-split'\\s+')[0];if($currentTeam-ne$teamBaseline-or$currentTag-ne$teamBaseline){Write-Host "STOP: Team final release changed during personal sync. Restart Step 12.";$syncReady=$false}}
+if($syncReady){git fetch origin;if((git rev-parse origin/master).Trim()-ne$personalBaseline){Write-Host "STOP: Personal origin/master changed during final sync. Restart Step 12.";$syncReady=$false}}
+if($syncReady){git push origin master;if($LASTEXITCODE-ne0){Write-Host "STOP: Personal master push failed; v1.0.0 was not pushed.";$syncReady=$false}else{$masterPushed=$true}}
+if($syncReady){git push origin v1.0.0;if($LASTEXITCODE-ne0){Write-Host "STOP: Personal master was pushed, but v1.0.0 was NOT pushed.";$syncReady=$false}}
+if($syncReady){git fetch origin;$localHead=(git rev-parse HEAD).Trim();$originHead=(git rev-parse origin/master).Trim();$upstreamHead=(git rev-parse upstream/master).Trim();$localTag=(git rev-list -n 1 v1.0.0).Trim();$originTag=((git ls-remote --tags origin 'refs/tags/v1.0.0^{}')-split'\\s+')[0];$upstreamTag=((git ls-remote --tags upstream 'refs/tags/v1.0.0^{}')-split'\\s+')[0];if($localHead-ne$originHead-or$localHead-ne$upstreamHead-or$localTag-ne$originTag-or$localTag-ne$upstreamTag-or@(git status --porcelain).Count-ne0){Write-Host "STOP: Post-push personal repository verification failed.";$syncReady=$false}}
+if($syncReady){Write-Host "FINAL PERSONAL SYNC:";Write-Host "Member: ${member.name}";Write-Host "Unikey: ${unikey}";Write-Host "Version: 1.0.0";Write-Host "Tag: v1.0.0";Write-Host "Personal master: $(git rev-parse --short HEAD)";Write-Host "Team master: $(git rev-parse --short upstream/master)";$syncSucceeded=$true}
+if(-not$syncReady-and$personalBaseline-and(git rev-parse HEAD).Trim()-ne$personalBaseline){Write-Host "STOP: Personal master was fast-forwarded locally but the sync did not complete. No history was reset; review the reported state."}`;
+
+  const normalizedPowerShellBody = powershellBody
+    .replaceAll("-ne", " -ne ")
+    .replaceAll("-eq", " -eq ")
+    .replaceAll("-or", " -or ")
+    .replaceAll("-and", " -and ")
+    .replaceAll("-not", " -not ");
+
+  finalPersonalSyncCommands.textContent = selectedOperatingSystem() === "windows"
+    ? powershellRepositoryStep({ folder: targets.personalFolderName, repositoryLabel: "personal repository", remotes: { origin: targets.personalRepoUrl, upstream: targets.teamRepoUrl }, body: normalizedPowerShellBody, successVariable: "$syncSucceeded", readyMessage: "READY TO SUBMIT PERSONAL REPOSITORY" })
+    : bashRepositoryStep({ folder: targets.personalFolderName, repositoryLabel: "personal repository", remotes: { origin: targets.personalRepoUrl, upstream: targets.teamRepoUrl }, body: bashBody, successVariable: "$sync_succeeded", readyMessage: "READY TO SUBMIT PERSONAL REPOSITORY" });
 }
 
 function renderWorkflowGuidance(assignment) {
@@ -2531,6 +2951,14 @@ function renderWorkflowGuidance(assignment) {
   const targets = resolveRepositoryTargets(enteredUnikey);
   const personalFolder = targets.personalFolderName;
   const usesPowerShell = selectedOperatingSystem() === "windows";
+  const changelogEntries = assignment.changelogEntries || [assignment.changelog];
+  const changelogDisplay = changelogEntries.join("\n");
+  const powershellChangelogEntries = changelogEntries
+    .map((entry) => `"${entry.replaceAll("`", "``").replaceAll('"', '`"')}"`)
+    .join(", ");
+  const bashChangelogEntries = changelogEntries
+    .map((entry) => `'${entry.replaceAll("'", "'\\''")}'`)
+    .join(" ");
   const guardedTeamMasterPush = usesPowerShell
     ? `git fetch origin
     if ($LASTEXITCODE -ne 0) {
@@ -2634,33 +3062,36 @@ if ($integrationReady) {
       if ($LASTEXITCODE -ne 0) { $changelogReady = $false }
       if ($changelogReady) {
         $originalChangelog = [IO.File]::ReadAllText((Resolve-Path "CHANGELOG.md"))
-        $entry = "${assignment.changelog}"
-        $entryCount = @($originalChangelog -split "\\r?\\n" | Where-Object { $_ -ceq $entry }).Count
-        if ($entryCount -gt 1) {
-          Write-Host "STOP: The selected CHANGELOG entry already appears more than once. Team master was not pushed."
+        $entries = @(${powershellChangelogEntries})
+        $originalLines = @($originalChangelog -split "\\r?\\n")
+        $invalidEntryCount = @($entries | Where-Object { $entry = $_; @($originalLines | Where-Object { $_ -ceq $entry }).Count -gt 1 }).Count
+        if ($invalidEntryCount -gt 0) {
+          Write-Host "STOP: A selected CHANGELOG entry already appears more than once. Team master was not pushed."
           $changelogReady = $false
-        } elseif ($entryCount -eq 0) {
+        } else {
+          $entriesToInsert = @($entries | Where-Object { $entry = $_; @($originalLines | Where-Object { $_ -ceq $entry }).Count -eq 0 })
           $headingMatches = [regex]::Matches($originalChangelog, "(?m)^## Unreleased\\s*$")
           if ($headingMatches.Count -ne 1) {
             Write-Host "STOP: Expected exactly one ## Unreleased heading. CHANGELOG.md was not staged."
             $changelogReady = $false
-          } else {
+          } elseif ($entriesToInsert.Count -gt 0) {
             $windowsNewline = ([string][char]13) + ([string][char]10)
             $newline = if ($originalChangelog.Contains($windowsNewline)) { $windowsNewline } else { [string][char]10 }
             $insertAt = $headingMatches[0].Index + $headingMatches[0].Length
-            $expectedChangelog = $originalChangelog.Insert($insertAt, $newline + $entry)
+            $expectedChangelog = $originalChangelog.Insert($insertAt, $newline + ($entriesToInsert -join $newline))
             [IO.File]::WriteAllText((Resolve-Path "CHANGELOG.md"), $expectedChangelog, (New-Object Text.UTF8Encoding($false)))
+          } else {
+            $expectedChangelog = $originalChangelog
           }
-        } else {
-          $expectedChangelog = $originalChangelog
         }
       }
       if ($changelogReady) {
         $resolvedChangelog = [IO.File]::ReadAllText((Resolve-Path "CHANGELOG.md"))
-        $resolvedEntryCount = @($resolvedChangelog -split "\\r?\\n" | Where-Object { $_ -ceq $entry }).Count
+        $resolvedLines = @($resolvedChangelog -split "\\r?\\n")
+        $invalidResolvedCount = @($entries | Where-Object { $entry = $_; @($resolvedLines | Where-Object { $_ -ceq $entry }).Count -ne 1 }).Count
         $hasMarkers = $resolvedChangelog -match "(?m)^(<<<<<<<|=======|>>>>>>>)"
         git rev-parse -q --verify MERGE_HEAD *> $null
-        if ($LASTEXITCODE -ne 0 -or $hasMarkers -or $resolvedEntryCount -ne 1 -or $resolvedChangelog -cne $expectedChangelog) {
+        if ($LASTEXITCODE -ne 0 -or $hasMarkers -or $invalidResolvedCount -ne 0 -or $resolvedChangelog -cne $expectedChangelog) {
           Write-Host "STOP: Automatic CHANGELOG verification failed. CHANGELOG.md was not staged and team master was not pushed."
           $changelogReady = $false
         }
@@ -2677,7 +3108,7 @@ if ($integrationReady) {
         }
       }
       if ($changelogReady) {
-        Write-Host "CHANGELOG RESOLVED: preserved existing entries and added ${assignment.changelog}."
+        Write-Host "CHANGELOG RESOLVED: preserved existing entries and added the selected feature entries."
         git commit --no-edit
         if ($LASTEXITCODE -eq 0) {
           ${postMergeValidation}
@@ -2728,48 +3159,46 @@ if git checkout master && \
       changelog_resolved_lines=".git/CHANGELOG.step07.resolved-lines"
       if ! git checkout --ours CHANGELOG.md; then changelog_ready=false; fi
       if [ "$changelog_ready" = true ]; then cp CHANGELOG.md "$changelog_base" || changelog_ready=false; fi
-      changelog_entry='${assignment.changelog}'
-      entry_was_present=false
+      changelog_entries=(${bashChangelogEntries})
+      changelog_entries_file=".git/CHANGELOG.step07.entries"
       if [ "$changelog_ready" = true ]; then
-        entry_count=$(grep -Fxc -- "$changelog_entry" CHANGELOG.md || true)
-        if [ "$entry_count" -gt 1 ]; then
-          echo "STOP: The selected CHANGELOG entry already appears more than once. Team master was not pushed."
-          changelog_ready=false
-        elif [ "$entry_count" -eq 0 ]; then
+        : > "$changelog_entries_file"
+        for changelog_entry in "\${changelog_entries[@]}"; do
+          entry_count=$(grep -Fxc -- "$changelog_entry" CHANGELOG.md || true)
+          if [ "$entry_count" -gt 1 ]; then
+            echo "STOP: A selected CHANGELOG entry already appears more than once. Team master was not pushed."
+            changelog_ready=false
+          elif [ "$entry_count" -eq 0 ]; then
+            printf '%s\n' "$changelog_entry" >> "$changelog_entries_file" || changelog_ready=false
+          fi
+        done
+        if [ "$changelog_ready" = true ]; then
           heading_count=$(grep -c '^## Unreleased[[:space:]]*$' CHANGELOG.md || true)
           if [ "$heading_count" -ne 1 ]; then
             echo "STOP: Expected exactly one ## Unreleased heading. CHANGELOG.md was not staged."
             changelog_ready=false
-          elif ! awk -v entry="$changelog_entry" '{ print; if ($0 ~ /^## Unreleased[[:space:]]*$/) print entry }' "$changelog_base" > "$changelog_expected"; then
+          elif ! awk -v entries_file="$changelog_entries_file" '{ print; if ($0 ~ /^## Unreleased[[:space:]]*$/) while ((getline entry < entries_file) > 0) print entry; close(entries_file) }' "$changelog_base" > "$changelog_expected"; then
             echo "STOP: Could not prepare the expected CHANGELOG.md. Team master was not pushed."
             changelog_ready=false
-          elif ! mv "$changelog_expected" CHANGELOG.md; then
+          elif ! cp "$changelog_expected" CHANGELOG.md; then
             echo "STOP: Could not update CHANGELOG.md. Team master was not pushed."
             changelog_ready=false
           fi
-        else
-          entry_was_present=true
-          cp "$changelog_base" "$changelog_expected" || changelog_ready=false
         fi
       fi
       if [ "$changelog_ready" = true ]; then
-        resolved_entry_count=$(grep -Fxc -- "$changelog_entry" CHANGELOG.md || true)
+        for changelog_entry in "\${changelog_entries[@]}"; do
+          resolved_entry_count=$(grep -Fxc -- "$changelog_entry" CHANGELOG.md || true)
+          if [ "$resolved_entry_count" -ne 1 ]; then changelog_ready=false; fi
+        done
         if ! git rev-parse -q --verify MERGE_HEAD >/dev/null 2>&1 ||
-            grep -Eq '^(<<<<<<<|=======|>>>>>>>)' CHANGELOG.md ||
-            [ "$resolved_entry_count" -ne 1 ]; then
+            grep -Eq '^(<<<<<<<|=======|>>>>>>>)' CHANGELOG.md || [ "$changelog_ready" != true ]; then
           echo "STOP: Automatic CHANGELOG verification failed. CHANGELOG.md was not staged and team master was not pushed."
           changelog_ready=false
         fi
       fi
-      if [ "$changelog_ready" = true ] && [ "$entry_was_present" = false ]; then
-        if ! awk '{ sub(/\\r$/, ""); print }' "$changelog_base" > "$changelog_base_lines" ||
-            ! awk -v entry="$changelog_entry" 'BEGIN { removed = 0 } { sub(/\\r$/, ""); if (!removed && $0 == entry) { removed = 1; next } print }' CHANGELOG.md > "$changelog_resolved_lines" ||
-            ! cmp -s "$changelog_base_lines" "$changelog_resolved_lines"; then
-          echo "STOP: Existing team CHANGELOG lines or their order changed unexpectedly. CHANGELOG.md was not staged."
-          changelog_ready=false
-        fi
-      elif [ "$changelog_ready" = true ]; then
-        if ! awk '{ sub(/\\r$/, ""); print }' "$changelog_base" > "$changelog_base_lines" ||
+      if [ "$changelog_ready" = true ]; then
+        if ! awk '{ sub(/\\r$/, ""); print }' "$changelog_expected" > "$changelog_base_lines" ||
             ! awk '{ sub(/\\r$/, ""); print }' CHANGELOG.md > "$changelog_resolved_lines" ||
             ! cmp -s "$changelog_base_lines" "$changelog_resolved_lines"; then
           echo "STOP: Existing team CHANGELOG lines or their order changed unexpectedly. CHANGELOG.md was not staged."
@@ -2786,14 +3215,14 @@ if git checkout master && \
         fi
       fi
       if [ "$changelog_ready" = true ]; then
-        echo "CHANGELOG RESOLVED: preserved existing entries and added ${assignment.changelog}."
+        echo "CHANGELOG RESOLVED: preserved existing entries and added the selected feature entries."
         if git commit --no-edit; then
           ${postMergeValidation}
         else
           echo "STOP: The automatic CHANGELOG merge commit failed. Team master was not pushed."
         fi
       fi
-      rm -f "$changelog_base" "$changelog_expected" "$changelog_base_lines" "$changelog_resolved_lines"
+      rm -f "$changelog_base" "$changelog_expected" "$changelog_base_lines" "$changelog_resolved_lines" "$changelog_entries_file"
     elif [ "$merge_in_progress" = true ] && [ -n "$unresolved_files" ]; then
       echo "STOP: Conflicts include Java, test, source, or multiple files. Resolve every file carefully; these conflicts are never handled automatically."
       printf '%s\n' "$unresolved_files"
@@ -2873,12 +3302,21 @@ fi`;
       nextStep: "03",
     });
 
+  const additionalProductionFiles = assignment.additionalProductionFiles || [];
+  const additionalTestFiles = assignment.additionalTestFiles || [];
+  const stagedProductionFiles = [classFiles.sourceFile, ...additionalProductionFiles.map((item) => item.file)];
+  const stagedTestFiles = [classFiles.testFile, ...additionalTestFiles.map((item) => item.file)];
+  const stagedFeatureFiles = [...stagedProductionFiles, ...stagedTestFiles, "CHANGELOG.md"].join(" ");
+
   productionInstruction.textContent =
     `LOCATION SAFETY: Edit inside ${personalFolder} only, with branch ${assignment.branch} checked out. ` +
     `FILE: ${classFiles.sourceFile} · ${assignment.productionInstruction} ` +
     "Copy only this method; do not replace the whole Java file.";
   productionCodeLabel.textContent = `REPLACE METHOD · ${assignment.method}`;
-  productionCode.textContent = assignment.productionSnippet;
+  productionCode.textContent = additionalProductionFiles.length
+    ? [`FILE: ${classFiles.sourceFile}\nREPLACE METHOD: ${assignment.method}\n\n${assignment.productionSnippet}`,
+      ...additionalProductionFiles.map((item) => `FILE: ${item.file}\nREPLACE METHOD: ${item.method}\n\n${item.snippet}`)].join("\n\n")
+    : assignment.productionSnippet;
   testFileNote.textContent =
     `LOCATION SAFETY: Edit inside ${personalFolder} only, with branch ${assignment.branch} checked out. ` +
     `FILE: ${classFiles.testFile} · ${assignment.testInstruction} ` +
@@ -2886,14 +3324,17 @@ fi`;
   testCodeLabel.textContent = assignment.testMethods.length
     ? `REPLACE / ADD TEST METHOD(S) · ${assignment.testMethods.join(", ")}`
     : "EXISTING TEST ASSERTIONS";
-  testCode.textContent = assignment.testSnippet;
+  testCode.textContent = additionalTestFiles.length
+    ? [`FILE: ${classFiles.testFile}\n\n${assignment.testSnippet}`,
+      ...additionalTestFiles.map((item) => `FILE: ${item.file}\nREPLACE / ADD: ${item.methods.join(", ")}\n\n${item.snippet}`)].join("\n\n")
+    : assignment.testSnippet;
   testCode.dataset.placeholder = assignment.testSnippet
     ? ""
     : `No test code change required. ${assignment.testReference}`;
-  changelogLine.textContent = assignment.changelog;
+  changelogLine.textContent = changelogDisplay;
   changelogInstruction.textContent =
     `LOCATION SAFETY: Edit CHANGELOG.md inside ${personalFolder} only, with branch ${assignment.branch} checked out. ` +
-    "Add this exact line underneath ## Unreleased.";
+    `Add ${changelogEntries.length === 1 ? "this exact line" : "these exact lines"} underneath ## Unreleased.`;
 
   const commitPushBody = usesPowerShell
     ? `$stepSucceeded = $false
@@ -2902,7 +3343,7 @@ if ($currentBranch -ne "${assignment.branch}") {
   Write-Host "STOP: Step 06 requires branch ${assignment.branch}; current branch is $currentBranch. Nothing was staged or committed."
 } else {
   git status
-  if ($LASTEXITCODE -eq 0) { git add ${classFiles.sourceFile} ${classFiles.testFile} CHANGELOG.md }
+  if ($LASTEXITCODE -eq 0) { git add ${stagedFeatureFiles} }
   if ($LASTEXITCODE -eq 0) { git commit -m "${assignment.commitSubject}" -m "${assignment.commitBody}" }
   if ($LASTEXITCODE -eq 0) { git push -u origin ${assignment.branch} }
   if ($LASTEXITCODE -eq 0) { $stepSucceeded = $true }
@@ -2913,7 +3354,7 @@ if [ "$current_branch" != "${assignment.branch}" ]; then
   echo "STOP: Step 06 requires branch ${assignment.branch}; current branch is $current_branch. Nothing was staged or committed."
 else
   if git status && \
-      git add ${classFiles.sourceFile} ${classFiles.testFile} CHANGELOG.md && \
+      git add ${stagedFeatureFiles} && \
       git commit -m "${assignment.commitSubject}" -m "${assignment.commitBody}" && \
       git push -u origin ${assignment.branch}; then
     step_succeeded=true
@@ -2960,6 +3401,7 @@ fi`;
 function renderAssignment() {
   assignmentRound.textContent = `Round ${currentRound}`;
   renderFinalisationGuidance();
+  renderFinalPersonalSyncGuidance();
 
   if (!selectedMember) {
     assignmentMessage.textContent = "Select a member to view their assignment.";
