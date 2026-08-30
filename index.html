@@ -405,12 +405,23 @@
             <p class="workflow-note">The final complete assignment becomes <strong>v1.0.0</strong>.</p>
           </div>
         </details>
-          <details class="workflow-step">
+        <details class="workflow-step">
           <summary><span class="step-number">09</span><span>Sync Personal Repository</span></summary>
           <div class="workflow-content">
             <p class="workflow-note">Run separately for each member after the round release. This step automatically enters the selected member's personal repository.</p>
             <div class="code-header"><span id="syncLocationLabel">Personal working repository</span><button type="button" class="copy-code-button" data-copy-target="syncCommands">Copy</button></div>
             <pre class="workflow-code compact-code"><code id="syncCommands"></code></pre>
+          </div>
+        </details>
+        <details class="workflow-step" id="finalisationStep">
+          <summary><span class="step-number">10</span><span>Finalise Assignment</span></summary>
+          <div class="workflow-content">
+            <p id="finalisationMessage" class="workflow-note">Raj performs the shared finalisation after the Round 3 sync.</p>
+            <div id="finalisationContent">
+              <p class="workflow-note">Copy and run this once from the configured finalisation owner's member root. It checks the workspace and repository, writes both files, validates everything, and pushes team master. It does not create the final release or tag.</p>
+              <div class="code-header"><span>Complete assignment finalisation</span><button type="button" class="copy-code-button" data-copy-target="finalisationCommands">Copy</button></div>
+              <pre class="workflow-code"><code id="finalisationCommands"></code></pre>
+            </div>
           </div>
         </details>
         </section>

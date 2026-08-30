@@ -104,6 +104,14 @@ const releaseLocationLabel = document.getElementById("releaseLocationLabel");
 
 const syncLocationLabel = document.getElementById("syncLocationLabel");
 
+const finalisationStep = document.getElementById("finalisationStep");
+
+const finalisationMessage = document.getElementById("finalisationMessage");
+
+const finalisationContent = document.getElementById("finalisationContent");
+
+const finalisationCommands = document.getElementById("finalisationCommands");
+
 let selectedMember = "";
 
 let currentRound = 1;
@@ -120,8 +128,76 @@ const REPOSITORY_CONFIG = {
     teamRepoName: "A1-T27-43-IM-DUMMY",
     imFolderName: "im-A1-T27-43-DUMMY",
     gitEmail: "rsha0537@uni.sydney.edu.au",
+    historicalCoverageMissedLines: {
+      App: 0,
+      CurrencyConverter: 2,
+      DataValidator: 2,
+      UserInterface: 8,
+    },
   },
 };
+
+const FINALISATION_CONFIG = {
+  responsibleRole: "finalisationOwner",
+  existingReleaseTag: "v0.4.0",
+  existingBuildVersion: "0.4.0",
+  junitJar: "lib/junit-platform-console-standalone-1.14.4.jar",
+  coverageClasses: ["App", "CurrencyConverter", "DataValidator", "UserInterface"],
+};
+
+const TEAM_MEMBERS = [
+  {
+    name: "Daniel Kostandy",
+    roles: [],
+    unikeys: { test: "rsha0000", production: "" },
+    contribution: "Implemented currency conversion, exchange-rate derivation, and two-decimal rounding.",
+  },
+  {
+    name: "Raj Shah",
+    roles: ["finalisationOwner"],
+    unikeys: { test: "rsha1111", production: "" },
+    contribution: "Implemented the application start loop, menu display, and exchange-rate display.",
+  },
+  {
+    name: "Tiya Agrawal",
+    roles: [],
+    unikeys: { test: "rsha2222", production: "" },
+    contribution: "Implemented supported-currency listing and the interactive conversion workflow.",
+  },
+  {
+    name: "Natasha Sutanto",
+    roles: [],
+    unikeys: { test: "rsha3333", production: "" },
+    contribution: "Implemented currency validation and currency-code normalization.",
+  },
+  {
+    name: "Mohammad",
+    roles: [],
+    unikeys: { test: "rsha4444", production: "" },
+    contribution: "Implemented amount validation and numeric amount parsing.",
+  },
+];
+
+const FINAL_MAKEFILE = `JUNIT_JAR := ${FINALISATION_CONFIG.junitJar}
+MAIN_OUT := build/make/classes
+TEST_OUT := build/make/test-classes
+MAIN_SOURCES := $(wildcard src/main/java/*.java)
+TEST_SOURCES := $(wildcard src/test/java/*.java)
+
+.PHONY: compile test clean
+
+compile:
+\tmkdir -p $(MAIN_OUT)
+\tjavac --release 17 -d $(MAIN_OUT) $(MAIN_SOURCES)
+
+test: compile
+\ttest -f $(JUNIT_JAR)
+\tmkdir -p $(TEST_OUT)
+\tjavac --release 17 -cp "$(JUNIT_JAR):$(MAIN_OUT)" -d $(TEST_OUT) $(TEST_SOURCES)
+\tjava -jar $(JUNIT_JAR) execute --class-path "$(MAIN_OUT):$(TEST_OUT)" --scan-class-path
+
+clean:
+\trm -rf build/make`;
 
 function resolveRepositoryTargets(unikeyValue = "") {
   const unikey = cleanUnikey(unikeyValue);
@@ -265,8 +341,8 @@ public void testShowExchangeRates() {
     System.out.printf("%.2f %s = %.2f %s%n",
             amount, fromCurrency, displayAmount, toCurrency);
 }`,
-        testInstruction: "Replace testHandleConversion() in UserInterfaceTest.java. System.in is replaced before UserInterface construction and both System.in/System.out are restored. No additional imports are required.",
-        testMethods: ["testHandleConversion"],
+        testInstruction: "Replace testHandleConversion() and add the three focused invalid-input tests in UserInterfaceTest.java. Every test replaces System.in before UserInterface construction and restores System.in/System.out in a finally block. No additional imports are required.",
+        testMethods: ["testHandleConversion", "testHandleConversionRejectsInvalidAmount", "testHandleConversionRejectsInvalidSourceCurrency", "testHandleConversionRejectsInvalidTargetCurrency"],
         testSnippet: `@Test
 public void testHandleConversion() {
     java.io.InputStream originalIn = System.in;
@@ -287,6 +363,57 @@ public void testHandleConversion() {
 
     org.junit.jupiter.api.Assertions.assertTrue(
             output.toString().contains("100.00 USD = 85.00 EUR"));
+}
+
+@Test
+public void testHandleConversionRejectsInvalidAmount() {
+    java.io.InputStream originalIn = System.in;
+    java.io.PrintStream originalOut = System.out;
+    java.io.ByteArrayOutputStream output = new java.io.ByteArrayOutputStream();
+    try {
+        System.setIn(new java.io.ByteArrayInputStream(
+                "abc\\n".getBytes(java.nio.charset.StandardCharsets.UTF_8)));
+        System.setOut(new java.io.PrintStream(output));
+        new UserInterface().handleConversion();
+    } finally {
+        System.setIn(originalIn);
+        System.setOut(originalOut);
+    }
+    org.junit.jupiter.api.Assertions.assertTrue(output.toString().contains("Invalid amount."));
+}
+
+@Test
+public void testHandleConversionRejectsInvalidSourceCurrency() {
+    java.io.InputStream originalIn = System.in;
+    java.io.PrintStream originalOut = System.out;
+    java.io.ByteArrayOutputStream output = new java.io.ByteArrayOutputStream();
+    try {
+        System.setIn(new java.io.ByteArrayInputStream(
+                "100\\nXYZ\\n".getBytes(java.nio.charset.StandardCharsets.UTF_8)));
+        System.setOut(new java.io.PrintStream(output));
+        new UserInterface().handleConversion();
+    } finally {
+        System.setIn(originalIn);
+        System.setOut(originalOut);
+    }
+    org.junit.jupiter.api.Assertions.assertTrue(output.toString().contains("Invalid source currency."));
+}
+
+@Test
+public void testHandleConversionRejectsInvalidTargetCurrency() {
+    java.io.InputStream originalIn = System.in;
+    java.io.PrintStream originalOut = System.out;
+    java.io.ByteArrayOutputStream output = new java.io.ByteArrayOutputStream();
+    try {
+        System.setIn(new java.io.ByteArrayInputStream(
+                "100\\nUSD\\nXYZ\\n".getBytes(java.nio.charset.StandardCharsets.UTF_8)));
+        System.setOut(new java.io.PrintStream(output));
+        new UserInterface().handleConversion();
+    } finally {
+        System.setIn(originalIn);
+        System.setOut(originalOut);
+    }
+    org.junit.jupiter.api.Assertions.assertTrue(output.toString().contains("Invalid target currency."));
 }`,
         shortDescription: "validates input and performs an interactive conversion",
         changelog: "- handleConversion(): validates input and performs an interactive conversion -- Tiya Agrawal",
@@ -302,10 +429,16 @@ public void testHandleConversion() {
     }
     return currency.trim().toUpperCase();
 }`,
-        testInstruction: "The existing normalizeCurrency assertions in DataValidatorTest.java already exercise lowercase, mixed-case, and surrounding whitespace. No test replacement or additional import is required.",
-        testMethods: [],
-        testReference: "Existing normalizeCurrency assertions: usd -> USD, spaced eur -> EUR, and Gbp -> GBP.",
-        testSnippet: "",
+        testInstruction: "Replace testNormalizeCurrency() in DataValidatorTest.java so the existing normalization cases and the null boundary are owned by this feature. No additional imports are required.",
+        testMethods: ["testNormalizeCurrency"],
+        testSnippet: `@Test
+public void testNormalizeCurrency() {
+    DataValidator validator = new DataValidator();
+    org.junit.jupiter.api.Assertions.assertEquals("USD", validator.normalizeCurrency("usd"));
+    org.junit.jupiter.api.Assertions.assertEquals("EUR", validator.normalizeCurrency("  eur  "));
+    org.junit.jupiter.api.Assertions.assertEquals("GBP", validator.normalizeCurrency("Gbp"));
+    org.junit.jupiter.api.Assertions.assertNull(validator.normalizeCurrency(null));
+}`,
         shortDescription: "trims and uppercases currency codes",
         changelog: "- normalizeCurrency(): trims and uppercases currency codes -- Natasha Sutanto",
         commitSubject: "Normalize currency codes",
@@ -325,10 +458,16 @@ public void testHandleConversion() {
         return 0.0;
     }
 }`,
-        testInstruction: "The existing parseAmount assertions in DataValidatorTest.java already exercise valid integers, valid decimals, and invalid text returning 0.0. No test replacement or additional import is required.",
-        testMethods: [],
-        testReference: "Existing parseAmount assertions: 100 -> 100.0, 50.75 -> 50.75, and invalid -> 0.0.",
-        testSnippet: "",
+        testInstruction: "Replace testParseAmount() in DataValidatorTest.java so the valid, invalid, and null cases are owned by this feature. No additional imports are required.",
+        testMethods: ["testParseAmount"],
+        testSnippet: `@Test
+public void testParseAmount() {
+    DataValidator validator = new DataValidator();
+    org.junit.jupiter.api.Assertions.assertEquals(100.0, validator.parseAmount("100"), 0.000001);
+    org.junit.jupiter.api.Assertions.assertEquals(50.75, validator.parseAmount("50.75"), 0.000001);
+    org.junit.jupiter.api.Assertions.assertEquals(0.0, validator.parseAmount("invalid"), 0.000001);
+    org.junit.jupiter.api.Assertions.assertEquals(0.0, validator.parseAmount(null), 0.000001);
+}`,
         shortDescription: "parses valid amounts and returns zero for invalid input",
         changelog: "- parseAmount(): parses valid amounts and returns zero for invalid input -- Mohammad",
         commitSubject: "Parse validated amounts",
@@ -382,6 +521,14 @@ public void testGetExchangeRate() {
             converter.getExchangeRate("EUR", "GBP"), 0.000001);
     org.junit.jupiter.api.Assertions.assertEquals(1.30 / 0.75,
             converter.getExchangeRate("GBP", "AUD"), 0.000001);
+    org.junit.jupiter.api.Assertions.assertEquals(0.0,
+            converter.getExchangeRate(null, "USD"), 0.000001);
+    org.junit.jupiter.api.Assertions.assertEquals(0.0,
+            converter.getExchangeRate("USD", null), 0.000001);
+    org.junit.jupiter.api.Assertions.assertEquals(0.0,
+            converter.getExchangeRate("XYZ", "USD"), 0.000001);
+    org.junit.jupiter.api.Assertions.assertEquals(0.0,
+            converter.getExchangeRate("USD", "XYZ"), 0.000001);
 }`,
         shortDescription: "derives exchange rates from fixed USD base rates",
         changelog: "- getExchangeRate(): derives exchange rates from fixed USD base rates -- Daniel Kostandy",
@@ -571,7 +718,7 @@ public void testStartMethod() {
     java.io.InputStream originalIn = System.in;
     java.io.PrintStream originalOut = System.out;
     java.io.ByteArrayInputStream input = new java.io.ByteArrayInputStream(
-            "invalid\\n3\\n".getBytes(java.nio.charset.StandardCharsets.UTF_8));
+            "invalid\\n2\\n1\\nabc\\n3\\n".getBytes(java.nio.charset.StandardCharsets.UTF_8));
     java.io.ByteArrayOutputStream output = new java.io.ByteArrayOutputStream();
 
     try {
@@ -588,6 +735,8 @@ public void testStartMethod() {
     org.junit.jupiter.api.Assertions.assertTrue(text.contains("=== Currency Converter ==="));
     org.junit.jupiter.api.Assertions.assertTrue(text.contains("1. Convert Currency"));
     org.junit.jupiter.api.Assertions.assertTrue(text.contains("Invalid choice. Please try again."));
+    org.junit.jupiter.api.Assertions.assertTrue(text.contains("=== Exchange Rates ==="));
+    org.junit.jupiter.api.Assertions.assertTrue(text.contains("Invalid amount."));
     org.junit.jupiter.api.Assertions.assertTrue(text.contains("Goodbye!"));
 }`,
         shortDescription: "runs the menu loop until the user exits",
@@ -618,7 +767,12 @@ const WORKFLOW_VALIDATION = {
     mandatoryReleaseRound: 2,
   },
   "UserInterface.handleConversion": {
-    tests: ["UserInterfaceTest.testHandleConversion"],
+    tests: [
+      "UserInterfaceTest.testHandleConversion",
+      "UserInterfaceTest.testHandleConversionRejectsInvalidAmount",
+      "UserInterfaceTest.testHandleConversionRejectsInvalidSourceCurrency",
+      "UserInterfaceTest.testHandleConversionRejectsInvalidTargetCurrency",
+    ],
     dependencies: [
       { method: "DataValidator.normalizeCurrency", round: 1 },
       { method: "DataValidator.parseAmount", round: 1 },
@@ -1376,7 +1530,7 @@ function selectedOperatingSystem() {
   return document.querySelector('input[name="os"]:checked')?.value || "mac";
 }
 
-function bashRepositoryStep({ folder, repositoryLabel, remotes, body, successVariable, nextStep }) {
+function bashRepositoryStep({ folder, repositoryLabel, remotes, body, successVariable, nextStep, readyMessage = "" }) {
   const remoteChecks = Object.entries(remotes).map(([name, url]) => `
 if [ "$step_verified" = true ]; then
   ${name}_url=$(git remote get-url ${name} 2>/dev/null) || step_verified=false
@@ -1425,12 +1579,12 @@ else
     echo "=================================="
     echo "STEP COMPLETE"
     echo "=================================="
-    echo "READY FOR STEP ${nextStep}"
+    echo "${readyMessage || `READY FOR STEP ${nextStep}`}"
   fi
 fi`;
 }
 
-function powershellRepositoryStep({ folder, repositoryLabel, remotes, body, successVariable, nextStep }) {
+function powershellRepositoryStep({ folder, repositoryLabel, remotes, body, successVariable, nextStep, readyMessage = "" }) {
   const remoteChecks = Object.entries(remotes).map(([name, url]) => `
 if ($stepVerified) {
   $${name}Url = git remote get-url ${name} 2>$null
@@ -1477,7 +1631,7 @@ if ($stepVerified -and ${successVariable}) {
   Write-Host "=================================="
   Write-Host "STEP COMPLETE"
   Write-Host "=================================="
-  Write-Host "READY FOR STEP ${nextStep}"
+  Write-Host "${readyMessage || `READY FOR STEP ${nextStep}`}"
 }`;
 }
 
@@ -1833,6 +1987,513 @@ if [ "$sync_ready" != true ]; then echo "STOP: Personal repository sync did not 
 
   releaseLocationLabel.textContent = `${targets.teamRepoName} master`;
   syncLocationLabel.textContent = `Start from member root; enter ${targets.personalFolderName} automatically`;
+}
+
+function finalisationMemberData() {
+  const modeKey = testModeToggle.checked ? "test" : "production";
+  return TEAM_MEMBERS.map((member) => ({
+    ...member,
+    unikey: cleanUnikey(member.unikeys[modeKey] || ""),
+  }));
+}
+
+function finalisationOwner() {
+  return TEAM_MEMBERS.find((member) => member.roles.includes(FINALISATION_CONFIG.responsibleRole));
+}
+
+function allocatedMethodsFor(memberName) {
+  const methods = [];
+  Object.values(ASSIGNMENT_DATA.rounds).forEach((round) => {
+    const assignment = round[memberName];
+    if (assignment?.method) {
+      methods.push(`${assignment.className}.${assignment.method}`);
+    }
+  });
+  return methods;
+}
+
+function buildFinalReadme(members, teamRepoUrl) {
+  const tableRows = members.map((member) =>
+    `| ${member.name} | ${member.unikey} | ${allocatedMethodsFor(member.name).join(", ")} |`,
+  ).join("\n");
+  const contributionBlocks = members.map((member) => `------------
+name: ${member.name}
+unikey: ${member.unikey}
+What I did:
+${member.contribution}
+------------`).join("\n\n");
+
+  return `# Currency Converter
+
+## Team
+
+| Member | Unikey | Methods implemented |
+| --- | --- | --- |
+${tableRows}
+
+Integration-manager repository: ${teamRepoUrl}
+
+## Quick Start
+
+\`\`\`bash
+gradle build      # compile and run the tests
+gradle run        # run the application
+gradle test       # run the tests and write the coverage report
+\`\`\`
+
+Coverage report: \`build/reports/jacoco/test/html/index.html\`
+
+The independent Makefile uses the repository's standalone JUnit console jar:
+
+\`\`\`bash
+make compile
+make test
+make clean
+\`\`\`
+
+## How the work was divided
+
+Each member implemented the methods listed in the team table. Features were developed on individual feature branches and integrated into team master one member at a time.
+
+## What I personally implemented
+
+${contributionBlocks}`;
+}
+
+function renderFinalisationGuidance() {
+  const owner = finalisationOwner();
+  const isOwner = selectedMember === owner?.name;
+  const members = finalisationMemberData();
+  const missingMembers = members.filter((member) => !validUnikey(member.unikey));
+  const ownerData = members.find((member) => member.name === owner?.name);
+  const isAvailable = isOwner && currentRound === 3 && missingMembers.length === 0;
+
+  finalisationStep.classList.toggle("step-disabled", !isAvailable);
+  finalisationStep.setAttribute("aria-disabled", String(!isAvailable));
+  finalisationContent.classList.toggle("hidden", !isAvailable);
+
+  if (!isAvailable) {
+    finalisationCommands.textContent = "";
+    if (!isOwner) {
+      finalisationMessage.textContent = `${owner?.name || "The configured finalisation owner"} performs the shared finalisation. Wait for the final v1.0.0 release, then complete the final personal sync.`;
+    } else if (currentRound !== 3) {
+      finalisationMessage.textContent = "Step 10 is available to the configured finalisation owner after the Round 3 release and personal sync.";
+    } else {
+      finalisationMessage.textContent = missingMembers
+        .map((member) => `STOP: Missing configured unikey for ${member.name}.`)
+        .join(" ");
+    }
+    return;
+  }
+
+  const targets = resolveRepositoryTargets(ownerData.unikey);
+  const finalReadme = buildFinalReadme(members, targets.teamRepoUrl);
+  finalisationMessage.textContent =
+    `${owner.name} only: copy the single command below and run it from the member root containing ${targets.personalFolderName} and ${targets.imFolderName}. It writes README.md and Makefile automatically only after its safety checks pass.`;
+
+  const coverageClasses = FINALISATION_CONFIG.coverageClasses.join(",");
+  const historicalCoverage = targets.isTestMode
+    ? REPOSITORY_CONFIG.test.historicalCoverageMissedLines
+    : null;
+  const coverageDecisionPython = historicalCoverage
+    ? `complete = set(results) == set(required)
+all_zero = complete and all(results[name][0] == 0 for name in required)
+historical_missed = ${JSON.stringify(historicalCoverage)}
+actual_missed = {name: results[name][0] for name in required} if complete else {}
+if all_zero:
+    sys.exit(0)
+if complete and actual_missed == historical_missed:
+    print("TEST MODE ONLY: accepting the known pre-fix dummy coverage baseline.")
+    print("Fresh workflows still require and generate genuine 100% coverage.")
+    sys.exit(0)
+sys.exit(1)`
+    : `complete = set(results) == set(required)
+all_zero = complete and all(results[name][0] == 0 for name in required)
+sys.exit(0 if all_zero else 1)`;
+const bashBody = `finalise_ready=true
+finalisation_succeeded=false
+finalisation_committed=false
+generated_files=false
+
+expected_personal_repo="$member_root/${targets.personalFolderName}"
+if [ ! -d "$expected_personal_repo/.git" ]; then
+  echo "STOP: This is not the configured ${owner.name} member workspace. Expected ${targets.personalFolderName} beside ${targets.imFolderName}."
+  finalise_ready=false
+fi
+if [ "$finalise_ready" = true ]; then
+  personal_origin=$(git -C "$expected_personal_repo" remote get-url origin 2>/dev/null) || finalise_ready=false
+  if [ "$finalise_ready" = true ] && [ "$personal_origin" != "${targets.personalRepoUrl}" ]; then
+    echo "STOP: The personal repository beside this IM clone does not match the configured finalisation owner."
+    finalise_ready=false
+  fi
+fi
+if [ "$finalise_ready" = true ] && { ! git diff --quiet || ! git diff --cached --quiet; }; then
+  echo "STOP: The Integration Manager repository has tracked changes. Step 10 requires a clean repository."
+  finalise_ready=false
+fi
+if [ "$finalise_ready" = true ]; then
+  untracked_files=$(git ls-files --others --exclude-standard)
+  if [ -n "$untracked_files" ]; then
+    echo "STOP: The Integration Manager repository has unexpected untracked files:"
+    echo "Untracked files:"
+    printf '%s\n' "$untracked_files"
+    finalise_ready=false
+  fi
+fi
+if [ "$finalise_ready" = true ] && ! git checkout master; then finalise_ready=false; fi
+if [ "$finalise_ready" = true ] && ! git fetch origin; then finalise_ready=false; fi
+if [ "$finalise_ready" = true ]; then
+  finalisation_baseline=$(git rev-parse origin/master) || finalise_ready=false
+  current_branch=$(git branch --show-current) || finalise_ready=false
+  unresolved=$(git diff --name-only --diff-filter=U) || finalise_ready=false
+  clean_status=$(git status --porcelain) || finalise_ready=false
+  current_head=$(git rev-parse HEAD) || finalise_ready=false
+  latest_tag=$(git describe --tags --abbrev=0 2>/dev/null) || finalise_ready=false
+  version_count=$(grep -Ec "^[[:space:]]*version[[:space:]]*=[[:space:]]*'${FINALISATION_CONFIG.existingBuildVersion}'[[:space:]]*$" build.gradle) || true
+fi
+if [ "$finalise_ready" = true ] && { [ "$current_branch" != master ] || [ -n "$unresolved" ] || [ -n "$clean_status" ] || [ "$current_head" != "$finalisation_baseline" ]; }; then
+  echo "STOP: Team master is not clean, resolved, and equal to origin/master."
+  finalise_ready=false
+fi
+if [ "$finalise_ready" = true ] && [ "$latest_tag" != "${FINALISATION_CONFIG.existingReleaseTag}" ]; then
+  echo "STOP: Latest existing release tag must be ${FINALISATION_CONFIG.existingReleaseTag}."
+  finalise_ready=false
+fi
+if [ "$finalise_ready" = true ] && [ "$version_count" -ne 1 ]; then
+  echo "STOP: build.gradle must contain exactly one version = '${FINALISATION_CONFIG.existingBuildVersion}' line."
+  finalise_ready=false
+fi
+
+if [ "$finalise_ready" = true ]; then
+  cat > README.md <<'STEP10_README_EOF'
+${finalReadme}
+STEP10_README_EOF
+  cat > Makefile <<'STEP10_MAKEFILE_EOF'
+${FINAL_MAKEFILE}
+STEP10_MAKEFILE_EOF
+  generated_files=true
+fi
+
+if [ "$finalise_ready" = true ]; then
+  tracked_changes=$(git diff --name-only HEAD)
+  untracked_files=$(git ls-files --others --exclude-standard)
+  if [ "$tracked_changes" != "README.md" ] || [ "$untracked_files" != "Makefile" ]; then
+    echo "STOP: Generated files do not have the expected tracked/untracked state."
+    echo "Tracked changes:"
+    printf '%s\n' "$tracked_changes"
+    echo "Untracked files:"
+    printf '%s\n' "$untracked_files"
+    finalise_ready=false
+  fi
+fi
+if [ "$finalise_ready" = true ]; then
+  for required_readme_text in "# Currency Converter" "## Team" "## Quick Start" "## How the work was divided" "## What I personally implemented" ${members.map((member) => `"${member.name}" "${member.unikey}"`).join(" ")} "${targets.teamRepoUrl}"; do
+    if ! grep -Fq -- "$required_readme_text" README.md; then
+      echo "STOP: README.md is missing required text: $required_readme_text"
+      finalise_ready=false
+    fi
+  done
+  if grep -Eiq 'TODO|PLACEHOLDER' README.md; then echo "STOP: README.md still contains starter placeholder text."; finalise_ready=false; fi
+  if ! grep -Fq '${FINALISATION_CONFIG.junitJar}' Makefile ||
+      ! grep -Eq '^compile:' Makefile || ! grep -Eq '^test:' Makefile || ! grep -Eq '^clean:' Makefile ||
+      grep -Eiq 'gradle|gradlew' Makefile; then
+    echo "STOP: Makefile does not match the required independent JUnit build structure."
+    finalise_ready=false
+  fi
+fi
+if [ "$finalise_ready" = true ] && ! git diff --check; then finalise_ready=false; fi
+
+if [ "$finalise_ready" = true ] && ! make clean; then echo "STOP: make clean failed."; finalise_ready=false; fi
+if [ "$finalise_ready" = true ] && ! make compile; then echo "STOP: make compile failed."; finalise_ready=false; fi
+if [ "$finalise_ready" = true ] && ! make test; then echo "STOP: make test failed."; finalise_ready=false; fi
+if [ "$finalise_ready" = true ] && ! gradle clean; then echo "STOP: gradle clean failed."; finalise_ready=false; fi
+if [ "$finalise_ready" = true ] && ! gradle classes; then echo "STOP: gradle classes failed."; finalise_ready=false; fi
+if [ "$finalise_ready" = true ] && ! gradle testClasses; then echo "STOP: gradle testClasses failed."; finalise_ready=false; fi
+if [ "$finalise_ready" = true ] && ! gradle test; then echo "STOP: gradle test failed."; finalise_ready=false; fi
+if [ "$finalise_ready" = true ] && ! gradle jacocoTestReport; then echo "STOP: JaCoCo report generation failed."; finalise_ready=false; fi
+if [ "$finalise_ready" = true ] && [ ! -f build/reports/jacoco/test/jacocoTestReport.xml ]; then
+  echo "STOP: JaCoCo XML report was not found at build/reports/jacoco/test/jacocoTestReport.xml."
+  finalise_ready=false
+fi
+if [ "$finalise_ready" = true ]; then
+  if ! COVERAGE_CLASSES="${coverageClasses}" python3 - <<'PY'
+import os
+import sys
+import xml.etree.ElementTree as ET
+
+root = ET.parse("build/reports/jacoco/test/jacocoTestReport.xml").getroot()
+required = os.environ["COVERAGE_CLASSES"].split(",")
+results = {}
+for class_node in root.findall(".//class"):
+    simple_name = class_node.get("name", "").split("/")[-1]
+    if simple_name in required:
+        counter = class_node.find("./counter[@type='LINE']")
+        if counter is not None:
+            results[simple_name] = (int(counter.get("missed", "0")), int(counter.get("covered", "0")))
+
+print("COVERAGE:")
+failed = False
+for name in required:
+    if name not in results:
+        print(f"{name}: MISSING from JaCoCo XML")
+        failed = True
+        continue
+    missed, covered = results[name]
+    total = missed + covered
+    percent = 100.0 if total == 0 else covered * 100.0 / total
+    print(f"{name}: {percent:.0f}% (missed={missed}, covered={covered})")
+    failed = failed or missed != 0
+
+missed = sum(value[0] for value in results.values())
+covered = sum(value[1] for value in results.values())
+total = missed + covered
+overall = 100.0 if total == 0 else covered * 100.0 / total
+print(f"Overall line coverage: {overall:.0f}%")
+${coverageDecisionPython}
+PY
+  then
+    echo "STOP: Production LINE coverage is not 100%."
+    finalise_ready=false
+  fi
+fi
+if [ "$finalise_ready" = true ] && ! gradle build; then echo "STOP: gradle build failed."; finalise_ready=false; fi
+
+if [ "$finalise_ready" = true ] && ! git diff --check; then finalise_ready=false; fi
+if [ "$finalise_ready" = true ] && ! git fetch origin; then finalise_ready=false; fi
+if [ "$finalise_ready" = true ]; then
+  current_team_master=$(git rev-parse origin/master) || finalise_ready=false
+  if [ "$finalise_ready" = true ] && [ "$current_team_master" != "$finalisation_baseline" ]; then
+    echo "STOP: Team master changed during finalisation. Restart Step 10 from the latest team master."
+    finalise_ready=false
+  fi
+fi
+if [ "$finalise_ready" = true ]; then
+  tracked_changes=$(git diff --name-only HEAD)
+  staged_changes=$(git diff --cached --name-only)
+  untracked_files=$(git ls-files --others --exclude-standard)
+  unresolved=$(git diff --name-only --diff-filter=U)
+  current_branch=$(git branch --show-current)
+  current_head=$(git rev-parse HEAD)
+  if [ "$tracked_changes" != "README.md" ] || [ -n "$staged_changes" ] || [ "$untracked_files" != "Makefile" ] ||
+      [ -n "$unresolved" ] || [ "$current_branch" != master ] || [ "$current_head" != "$finalisation_baseline" ]; then
+    echo "STOP: Repository state changed during final validation. Finalisation was not committed or pushed."
+    finalise_ready=false
+  fi
+fi
+if [ "$finalise_ready" = true ]; then git add README.md Makefile || finalise_ready=false; fi
+if [ "$finalise_ready" = true ]; then
+  git commit -m "Finalise assignment documentation and build" -m "Complete the team README and independent Makefile before the final release." || finalise_ready=false
+fi
+if [ "$finalise_ready" = true ]; then
+  finalisation_committed=true
+  finalisation_commit=$(git rev-parse HEAD) || finalise_ready=false
+  committed_files=$(git diff-tree --no-commit-id --name-only -r HEAD | sort) || finalise_ready=false
+  expected_committed_files=$(printf '%s\n' Makefile README.md | sort)
+  if [ "$finalise_ready" = true ] && [ "$committed_files" != "$expected_committed_files" ]; then
+    echo "STOP: The finalisation commit contains unexpected files. Team master was not pushed."
+    finalise_ready=false
+  fi
+fi
+if [ "$finalise_ready" = true ]; then
+  git status
+  if git push origin master; then finalisation_succeeded=true; else finalise_ready=false; fi
+fi
+if [ "$finalise_ready" != true ] && [ "$generated_files" = true ] && [ "$finalisation_committed" != true ]; then
+  cleanup_head=$(git rev-parse HEAD 2>/dev/null || true)
+  unexpected_tracked=$(git diff --name-only HEAD | grep -Ev '^(README\.md|Makefile)$' || true)
+  unexpected_staged=$(git diff --cached --name-only | grep -Ev '^(README\.md|Makefile)$' || true)
+  unexpected_untracked=$(git ls-files --others --exclude-standard | grep -Ev '^Makefile$' || true)
+  if [ "$cleanup_head" = "$finalisation_baseline" ] && [ -z "$unexpected_tracked" ] &&
+      [ -z "$unexpected_staged" ] && [ -z "$unexpected_untracked" ]; then
+    git restore --staged -- README.md >/dev/null 2>&1 || true
+    if git ls-files --error-unmatch Makefile >/dev/null 2>&1; then
+      git restore --staged -- Makefile >/dev/null 2>&1 || true
+    fi
+    git restore -- README.md
+    rm -f Makefile
+    echo "Step 10 generated files were removed; the repository was restored to the recorded baseline."
+  else
+    echo "STOP: Repository state changed unexpectedly. Generated files were not cleaned automatically. Review the repository manually."
+  fi
+fi
+if [ "$finalise_ready" != true ]; then
+  echo "STOP: Finalisation did not complete. No final release or tag was created."
+fi`;
+
+const powershellBody = `$finaliseReady = $true
+$finalisationSucceeded = $false
+$finalisationCommitted = $false
+$generatedFiles = $false
+$expectedPersonalRepo = Join-Path $memberRoot "${targets.personalFolderName}"
+if (-not (Test-Path (Join-Path $expectedPersonalRepo ".git") -PathType Container)) {
+  Write-Host "STOP: This is not the configured ${owner.name} member workspace. Expected ${targets.personalFolderName} beside ${targets.imFolderName}."
+  $finaliseReady = $false
+}
+if ($finaliseReady) {
+  $personalOrigin = (git -C $expectedPersonalRepo remote get-url origin 2>$null).Trim()
+  if ($LASTEXITCODE -ne 0 -or $personalOrigin -ne "${targets.personalRepoUrl}") {
+    Write-Host "STOP: The personal repository beside this IM clone does not match the configured finalisation owner."
+    $finaliseReady = $false
+  }
+}
+$stagedChanges = @()
+$trackedChanges = @()
+$untrackedFiles = @()
+if ($finaliseReady) {
+  $stagedChanges = @(git diff --cached --name-only)
+  $trackedChanges = @(git diff --name-only HEAD | Sort-Object)
+  $untrackedFiles = @(git ls-files --others --exclude-standard | Sort-Object)
+  if ($stagedChanges.Count -ne 0 -or $trackedChanges.Count -ne 0 -or $untrackedFiles.Count -ne 0) {
+    Write-Host "STOP: Step 10 requires a clean Integration Manager repository."
+    Write-Host "Tracked changes:"; $trackedChanges
+    Write-Host "Untracked files:"; $untrackedFiles
+    $finaliseReady = $false
+  }
+}
+if ($finaliseReady) { git checkout master }
+if ($finaliseReady -and $LASTEXITCODE -ne 0) { $finaliseReady = $false }
+if ($finaliseReady) { git fetch origin }
+if ($finaliseReady -and $LASTEXITCODE -ne 0) { $finaliseReady = $false }
+if ($finaliseReady) {
+  $finalisationBaseline = (git rev-parse origin/master).Trim()
+  $cleanStatus = @(git status --porcelain)
+  $unresolved = @(git diff --name-only --diff-filter=U)
+  $currentBranch = (git branch --show-current).Trim()
+  $currentHead = (git rev-parse HEAD).Trim()
+  $latestTag = (git describe --tags --abbrev=0).Trim()
+  $versionCount = ([regex]::Matches((Get-Content -Raw build.gradle), "(?m)^\\s*version\\s*=\\s*'${FINALISATION_CONFIG.existingBuildVersion.replaceAll(".", "\\.")}'\\s*$")).Count
+  if ($cleanStatus.Count -ne 0 -or $unresolved.Count -ne 0 -or $currentBranch -ne "master" -or $currentHead -ne $finalisationBaseline -or $latestTag -ne "${FINALISATION_CONFIG.existingReleaseTag}" -or $versionCount -ne 1) {
+    Write-Host "STOP: Team master, tag, or build version is not ready for finalisation."
+    $finaliseReady = $false
+  }
+}
+if ($finaliseReady) {
+  $readmeContent = @'
+${finalReadme}
+'@
+  $makefileContent = @'
+${FINAL_MAKEFILE}
+'@
+  $utf8NoBom = New-Object Text.UTF8Encoding($false)
+  [IO.File]::WriteAllText((Join-Path (Get-Location) "README.md"), $readmeContent + [Environment]::NewLine, $utf8NoBom)
+  [IO.File]::WriteAllText((Join-Path (Get-Location) "Makefile"), $makefileContent + [Environment]::NewLine, $utf8NoBom)
+  $generatedFiles = $true
+}
+if ($finaliseReady) {
+  $trackedChanges = @(git diff --name-only HEAD)
+  $untrackedFiles = @(git ls-files --others --exclude-standard)
+  if ($trackedChanges.Count -ne 1 -or $trackedChanges[0] -ne "README.md" -or $untrackedFiles.Count -ne 1 -or $untrackedFiles[0] -ne "Makefile") { Write-Host "STOP: Generated files do not have the expected tracked/untracked state."; $finaliseReady = $false }
+  $requiredReadmeText = @("# Currency Converter", "## Team", "## Quick Start", "## How the work was divided", "## What I personally implemented", ${members.flatMap((member) => [`"${member.name}"`, `"${member.unikey}"`]).join(", ")}, "${targets.teamRepoUrl}")
+  foreach ($text in $requiredReadmeText) { if (-not (Select-String -Path README.md -SimpleMatch $text -Quiet)) { Write-Host "STOP: README.md is missing required text: $text"; $finaliseReady = $false } }
+  if (Select-String -Path README.md -Pattern 'TODO|PLACEHOLDER' -Quiet) { Write-Host "STOP: README.md still contains starter placeholder text."; $finaliseReady = $false }
+  $makefileText = Get-Content -Raw Makefile
+  if (-not $makefileText.Contains("${FINALISATION_CONFIG.junitJar}") -or $makefileText -notmatch '(?m)^compile:' -or $makefileText -notmatch '(?m)^test:' -or $makefileText -notmatch '(?m)^clean:' -or $makefileText -match '(?i)gradle|gradlew') { Write-Host "STOP: Makefile does not match the required independent JUnit build structure."; $finaliseReady = $false }
+}
+if ($finaliseReady) { git diff --check }
+if ($finaliseReady -and $LASTEXITCODE -ne 0) { $finaliseReady = $false }
+foreach ($command in @("make clean", "make compile", "make test", "gradle clean", "gradle classes", "gradle testClasses", "gradle test", "gradle jacocoTestReport")) {
+  if ($finaliseReady) { Invoke-Expression $command; if ($LASTEXITCODE -ne 0) { Write-Host "STOP: $command failed."; $finaliseReady = $false } }
+}
+if ($finaliseReady -and (-not (Test-Path "build/reports/jacoco/test/jacocoTestReport.xml"))) { Write-Host "STOP: JaCoCo XML report was not found."; $finaliseReady = $false }
+if ($finaliseReady) {
+  $coverageScript = @'
+import sys, xml.etree.ElementTree as ET
+required = ["App", "CurrencyConverter", "DataValidator", "UserInterface"]
+root = ET.parse("build/reports/jacoco/test/jacocoTestReport.xml").getroot()
+results = {}
+for node in root.findall(".//class"):
+    name = node.get("name", "").split("/")[-1]
+    if name in required:
+        counter = node.find("./counter[@type='LINE']")
+        if counter is not None:
+            results[name] = (int(counter.get("missed", "0")), int(counter.get("covered", "0")))
+print("COVERAGE:")
+for name in required:
+    missed, covered = results.get(name, (-1, 0))
+    total = missed + covered
+    percent = 0 if missed < 0 else (100 if total == 0 else covered * 100 / total)
+    print(f"{name}: {percent:.0f}% (missed={missed}, covered={covered})")
+missed = sum(value[0] for value in results.values())
+covered = sum(value[1] for value in results.values())
+total = missed + covered
+print(f"Overall line coverage: {(100 if total == 0 else covered * 100 / total):.0f}%")
+${coverageDecisionPython}
+'@
+  $coverageScript | python3 -
+  if ($LASTEXITCODE -ne 0) { Write-Host "STOP: Production LINE coverage is not 100%."; $finaliseReady = $false }
+}
+if ($finaliseReady) { gradle build; if ($LASTEXITCODE -ne 0) { $finaliseReady = $false } }
+if ($finaliseReady) { git diff --check }
+if ($finaliseReady -and $LASTEXITCODE -ne 0) { $finaliseReady = $false }
+if ($finaliseReady) { git fetch origin }
+if ($finaliseReady -and $LASTEXITCODE -ne 0) { $finaliseReady = $false }
+if ($finaliseReady) {
+  $currentTeamMaster = (git rev-parse origin/master).Trim()
+  if ($currentTeamMaster -ne $finalisationBaseline) { Write-Host "STOP: Team master changed during finalisation. Restart Step 10 from the latest team master."; $finaliseReady = $false }
+}
+if ($finaliseReady) {
+  $trackedChanges = @(git diff --name-only HEAD)
+  $stagedChanges = @(git diff --cached --name-only)
+  $untrackedFiles = @(git ls-files --others --exclude-standard)
+  $unresolved = @(git diff --name-only --diff-filter=U)
+  $currentBranch = (git branch --show-current).Trim()
+  $currentHead = (git rev-parse HEAD).Trim()
+  if ($trackedChanges.Count -ne 1 -or $trackedChanges[0] -ne "README.md" -or $stagedChanges.Count -ne 0 -or
+      $untrackedFiles.Count -ne 1 -or $untrackedFiles[0] -ne "Makefile" -or $unresolved.Count -ne 0 -or
+      $currentBranch -ne "master" -or $currentHead -ne $finalisationBaseline) {
+    Write-Host "STOP: Repository state changed during final validation. Finalisation was not committed or pushed."
+    $finaliseReady = $false
+  }
+}
+if ($finaliseReady) { git add README.md Makefile }
+if ($finaliseReady -and $LASTEXITCODE -ne 0) { $finaliseReady = $false }
+if ($finaliseReady) { git commit -m "Finalise assignment documentation and build" -m "Complete the team README and independent Makefile before the final release." }
+if ($finaliseReady -and $LASTEXITCODE -ne 0) { $finaliseReady = $false }
+if ($finaliseReady) {
+  $finalisationCommitted = $true
+  $finalisationCommit = (git rev-parse HEAD).Trim()
+  $committedFiles = @(git diff-tree --no-commit-id --name-only -r HEAD | Sort-Object)
+  if ($committedFiles.Count -ne 2 -or $committedFiles[0] -ne "Makefile" -or $committedFiles[1] -ne "README.md") {
+    Write-Host "STOP: The finalisation commit contains unexpected files. Team master was not pushed."
+    $finaliseReady = $false
+  }
+}
+if ($finaliseReady) { git status; git push origin master; if ($LASTEXITCODE -eq 0) { $finalisationSucceeded = $true } else { $finaliseReady = $false } }
+if (-not $finaliseReady -and $generatedFiles -and -not $finalisationCommitted) {
+  $cleanupHead = (git rev-parse HEAD 2>$null).Trim()
+  $unexpectedTracked = @(git diff --name-only HEAD | Where-Object { $_ -notin @("README.md", "Makefile") })
+  $unexpectedStaged = @(git diff --cached --name-only | Where-Object { $_ -notin @("README.md", "Makefile") })
+  $unexpectedUntracked = @(git ls-files --others --exclude-standard | Where-Object { $_ -ne "Makefile" })
+  if ($cleanupHead -eq $finalisationBaseline -and $unexpectedTracked.Count -eq 0 -and $unexpectedStaged.Count -eq 0 -and $unexpectedUntracked.Count -eq 0) {
+    git restore --staged -- README.md 2>$null
+    git ls-files --error-unmatch Makefile 2>$null | Out-Null
+    if ($LASTEXITCODE -eq 0) { git restore --staged -- Makefile 2>$null }
+    git restore -- README.md
+    Remove-Item Makefile -Force -ErrorAction SilentlyContinue
+    Write-Host "Step 10 generated files were removed; the repository was restored to the recorded baseline."
+  } else {
+    Write-Host "STOP: Repository state changed unexpectedly. Generated files were not cleaned automatically. Review the repository manually."
+  }
+}
+if (-not $finaliseReady) { Write-Host "STOP: Finalisation did not complete. No final release or tag was created." }`;
+
+  finalisationCommands.textContent = selectedOperatingSystem() === "windows"
+    ? powershellRepositoryStep({
+      folder: targets.imFolderName,
+      repositoryLabel: "Integration Manager repository",
+      remotes: { origin: targets.teamRepoUrl },
+      body: powershellBody,
+      successVariable: "$finalisationSucceeded",
+      readyMessage: "READY FOR FINAL RELEASE",
+    })
+    : bashRepositoryStep({
+      folder: targets.imFolderName,
+      repositoryLabel: "Integration Manager repository",
+      remotes: { origin: targets.teamRepoUrl },
+      body: bashBody,
+      successVariable: "$finalisation_succeeded",
+      readyMessage: "READY FOR FINAL RELEASE",
+    });
 }
 
 function clearFeatureGuidance(message) {
@@ -2298,6 +2959,7 @@ fi`;
 
 function renderAssignment() {
   assignmentRound.textContent = `Round ${currentRound}`;
+  renderFinalisationGuidance();
 
   if (!selectedMember) {
     assignmentMessage.textContent = "Select a member to view their assignment.";
