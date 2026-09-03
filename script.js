@@ -1313,7 +1313,7 @@ foreach ($searchRoot in $jdkSearchRoots) {
 }
 
 foreach ($candidate in ($jdkCandidates | Select-Object -Unique)) {
-    $candidateJavac = Join-Path $candidate "bin\javac.exe"
+    $candidateJavac = Join-Path $candidate "bin\\javac.exe"
     if (Test-Path $candidateJavac) {
         $javacVersion = (& $candidateJavac -version 2>&1 | Out-String).Trim()
         if ($LASTEXITCODE -eq 0 -and $javacVersion -match '^javac 17(?:\.|\s|$)') {
